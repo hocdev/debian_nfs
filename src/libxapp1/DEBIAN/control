@@ -1,0 +1,20 @@
+Package: libxapp1
+Priority: optional
+Section: libs
+Installed-Size: 342
+Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
+Architecture: amd64
+Multi-Arch: same
+Source: xapp
+Version: 2.0.7-1+nfs5
+Replaces: xapps-common (<< 2.0.6-2~)
+Depends: libgnomekbd8 (>= 3.6.0), xapps-common (>= 2.0.7-1+nfs5), libc6 (>= 2.4), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.2.4), libdbusmenu-gtk3-4 (>= 0.4.2), libgdk-pixbuf-2.0-0 (>= 2.23.0), libglib2.0-0 (>= 2.57.2), libgtk-3-0 (>= 3.21.5), libx11-6
+Breaks: nemo (<< 4.0), xapps-common (<< 2.0.6-2~)
+Conffiles: 
+ /etc/xdg/autostart/xapp-sn-watcher.desktop a9fa3be7aaf46761adcdb856c63c125f
+Description: XApp library
+ Xapp provides components which are common to multiple desktop environments
+ and required to implement cross-DE solutions.
+ .
+ This library is used by several Xapp apps.
+Homepage: http://cinnamon.linuxmint.com/

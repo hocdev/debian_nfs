@@ -103,6 +103,8 @@ build_pkg_from_src "gir1.2-xapp-1.0"            "gir1.2-xapp-1.0_2.0.7-1+nfs5_am
 build_pkg_from_src "gir1.2-mutter-6"            "gir1.2-mutter-6_3.36.11-m38+1nfs5_amd64.deb"
 build_pkg_from_src "gir1.2-nemo-3.0"            "gir1.2-nemo-3.0_4.8.6-m262+1nfs5_amd64.deb"
 build_pkg_from_src "nemo-share"                 "nemo-share_3.2.0+2-m11+1nfs5_amd64.deb"
+build_pkg_from_src "libxapp1"                   "libxapp1_2.0.7-1+nfs5_amd64.deb"
+build_pkg_from_src "nemo-print"                 "nemo-print_1.0.5-m2+1nfs5_amd64.deb"
 
 echo "=== 3. Built packages in $OUT_DIR ==="
 ls -lh "$OUT_DIR"

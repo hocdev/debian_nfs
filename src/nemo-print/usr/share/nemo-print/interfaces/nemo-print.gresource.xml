@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<gresources>
+  <gresource prefix='/org/cdos/nemo/print-file-item'>
+    <file>interfaces/print-file-item.ui</file>
+  </gresource>
+</gresources>

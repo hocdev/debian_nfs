@@ -76,12 +76,26 @@ static void free_property_page(gpointer data) {
     g_free(page);
 }
 
-static void set_share_name_too_long(PropertyPage *page) {
-    gtk_label_set_text(GTK_LABEL(page->label_status),
-                       g_dgettext("nemo-share", "Share name is too long"));
-    GdkColor color;
-    gdk_color_parse("#ECDF62", &color);
-    gtk_widget_modify_base(page->entry_share_name, GTK_STATE_NORMAL, &color);
+static void set_share_name_warning(PropertyPage *page, gboolean warn) {
+    static GtkCssProvider *provider = NULL;
+    if (provider == NULL) {
+        provider = gtk_css_provider_new();
+        gtk_css_provider_load_from_data(provider,
+                                        "entry.nemo-share-warn { background-color: #ECDF62; }",
+                                        -1, NULL);
+        gtk_style_context_add_provider_for_screen(gdk_screen_get_default(),
+                                                  GTK_STYLE_PROVIDER(provider),
+                                                  GTK_STYLE_PROVIDER_PRIORITY_APPLICATION);
+    }
+    GtkStyleContext *ctx = gtk_widget_get_style_context(page->entry_share_name);
+    if (warn) {
+        gtk_label_set_text(GTK_LABEL(page->label_status),
+                           g_dgettext("nemo-share", "Share name is too long"));
+        gtk_style_context_add_class(ctx, "nemo-share-warn");
+    } else {
+        gtk_label_set_text(GTK_LABEL(page->label_status), "");
+        gtk_style_context_remove_class(ctx, "nemo-share-warn");
+    }
 }
 
 static void property_page_check_sensitivity(PropertyPage *page) {
@@ -203,12 +217,7 @@ static void on_share_name_changed(GtkEditable *ed, gpointer user_data) {
     PropertyPage *page = (PropertyPage *)user_data;
     page->is_dirty = TRUE;
     const char *txt = gtk_entry_get_text(GTK_ENTRY(page->entry_share_name));
-    if (g_utf8_strlen(txt, -1) > 13)
-        set_share_name_too_long(page);
-    else {
-        gtk_label_set_text(GTK_LABEL(page->label_status), "");
-        gtk_widget_modify_base(page->entry_share_name, GTK_STATE_NORMAL, NULL);
-    }
+    set_share_name_warning(page, g_utf8_strlen(txt, -1) > 13);
     property_page_check_sensitivity(page);
 }
 
@@ -262,7 +271,7 @@ static void on_button_apply_clicked(GtkButton *btn, gpointer user_data) {
                     g_dgettext("nemo-share", "The folder \"%s\" needs the following extra permissions for sharing to work:\n%s%s%sDo you want Nemo to add these permissions to the folder automatically?"),
                     base, "", "", "");
                 g_free(base);
-                gtk_dialog_add_button(GTK_DIALOG(dlg), GTK_STOCK_CANCEL, GTK_RESPONSE_CANCEL);
+                gtk_dialog_add_button(GTK_DIALOG(dlg), g_dgettext("nemo-share", "_Cancel"), GTK_RESPONSE_CANCEL);
                 gtk_dialog_add_button(GTK_DIALOG(dlg),
                                       g_dgettext("nemo-share", "Add the permissions automatically"),
                                       GTK_RESPONSE_OK);
@@ -353,12 +362,13 @@ static PropertyPage *create_property_page(NemoFileInfo *fileinfo) {
     gtk_entry_set_text(GTK_ENTRY(page->entry_share_comment), (info && info->comment) ? info->comment : "");
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(page->checkbutton_share_folder), info != NULL);
     if (g_utf8_strlen(gtk_entry_get_text(GTK_ENTRY(page->entry_share_name)), -1) > 13)
-        set_share_name_too_long(page);
+        set_share_name_warning(page, TRUE);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(page->checkbutton_share_rw_ro), info && info->is_writable);
     gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(page->checkbutton_share_guest_ok), info && info->guest_ok);
 
     gtk_button_set_use_underline(GTK_BUTTON(page->button_apply), TRUE);
-    gtk_button_set_image(GTK_BUTTON(page->button_apply), gtk_image_new_from_stock("gtk-save", GTK_ICON_SIZE_BUTTON));
+    gtk_button_set_image(GTK_BUTTON(page->button_apply),
+                         gtk_image_new_from_icon_name("document-save", GTK_ICON_SIZE_BUTTON));
     gtk_widget_set_sensitive(page->button_apply, FALSE);
 
     property_page_check_sensitivity(page);
@@ -466,25 +476,31 @@ static GList *nemo_share_get_name_and_desc(gpointer provider) {
     return g_list_append(NULL, "nemo-share:::Allows to quickly share a folder");
 }
 
-static void nemo_share_property_page_iface_init(NemoPropertyPageProviderIface *iface) {
-    iface->get_pages = nemo_share_get_pages;
+static void nemo_share_property_page_iface_init(gpointer iface, gpointer iface_data) {
+    (void)iface_data;
+    ((NemoPropertyPageProviderIface *)iface)->get_pages = nemo_share_get_pages;
 }
-static void nemo_share_info_iface_init(NemoInfoProviderIface *iface) {
-    iface->update_file_info = nemo_share_update_file_info;
-    iface->cancel_update = nemo_share_cancel_update;
+static void nemo_share_info_iface_init(gpointer iface, gpointer iface_data) {
+    (void)iface_data;
+    ((NemoInfoProviderIface *)iface)->update_file_info = nemo_share_update_file_info;
+    ((NemoInfoProviderIface *)iface)->cancel_update = nemo_share_cancel_update;
 }
-static void nemo_share_menu_iface_init(NemoMenuProviderIface *iface) {
-    iface->get_file_items = nemo_share_get_file_items;
+static void nemo_share_menu_iface_init(gpointer iface, gpointer iface_data) {
+    (void)iface_data;
+    ((NemoMenuProviderIface *)iface)->get_file_items = nemo_share_get_file_items;
 }
-static void nemo_share_name_desc_iface_init(NemoNameAndDescProviderIface *iface) {
-    iface->get_name_and_desc = nemo_share_get_name_and_desc;
+static void nemo_share_name_desc_iface_init(gpointer iface, gpointer iface_data) {
+    (void)iface_data;
+    ((NemoNameAndDescProviderIface *)iface)->get_name_and_desc = nemo_share_get_name_and_desc;
 }
 
-static void nemo_share_class_init(NemoShareClass *klass) {
+static void nemo_share_class_init(gpointer klass, gpointer class_data) {
+    (void)class_data;
     g_type_class_peek_parent(klass);
 }
-static void nemo_share_instance_init(NemoShare *self) {
-    (void)self;
+static void nemo_share_instance_init(GTypeInstance *instance, gpointer g_class) {
+    (void)instance;
+    (void)g_class;
 }
 
 void nemo_module_initialize(GTypeModule *module) {
@@ -493,16 +509,16 @@ void nemo_module_initialize(GTypeModule *module) {
 
     static const GTypeInfo info = {
         sizeof(NemoShareClass), NULL, NULL,
-        (GClassInitFunc)nemo_share_class_init, NULL, NULL,
+        nemo_share_class_init, NULL, NULL,
         sizeof(NemoShare), 0,
-        (GInstanceInitFunc)nemo_share_instance_init, NULL
+        nemo_share_instance_init, NULL
     };
     nemo_share_type = g_type_module_register_type(module, G_TYPE_OBJECT, "NemoShare", &info, 0);
 
-    static const GInterfaceInfo pp_info = { (GInterfaceInitFunc)nemo_share_property_page_iface_init, NULL, NULL };
-    static const GInterfaceInfo ip_info = { (GInterfaceInitFunc)nemo_share_info_iface_init, NULL, NULL };
-    static const GInterfaceInfo mp_info = { (GInterfaceInitFunc)nemo_share_menu_iface_init, NULL, NULL };
-    static const GInterfaceInfo nd_info = { (GInterfaceInitFunc)nemo_share_name_desc_iface_init, NULL, NULL };
+    static const GInterfaceInfo pp_info = { nemo_share_property_page_iface_init, NULL, NULL };
+    static const GInterfaceInfo ip_info = { nemo_share_info_iface_init, NULL, NULL };
+    static const GInterfaceInfo mp_info = { nemo_share_menu_iface_init, NULL, NULL };
+    static const GInterfaceInfo nd_info = { nemo_share_name_desc_iface_init, NULL, NULL };
 
     g_type_module_add_interface(module, nemo_share_type, nemo_property_page_provider_get_type(), &pp_info);
     g_type_module_add_interface(module, nemo_share_type, nemo_info_provider_get_type(), &ip_info);

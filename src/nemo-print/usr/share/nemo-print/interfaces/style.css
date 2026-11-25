@@ -1,0 +1,45 @@
+/* use gtk defined colors */
+.main-window 
+{
+    background-color: @content_view_bg;
+}
+
+.message-label
+{
+    font-size: larger;
+}
+
+.message-box
+{
+    border-bottom: 1px solid @borders;
+    background-color: @theme_bg_color;
+}
+
+.preview-box
+{
+    border: 1px solid @borders;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.buttons-box
+{
+    background-color: @theme_bg_color;
+}
+
+.format-window
+{
+    background-color: @content_view_bg;
+    border-top-width: 0;
+    border-bottom-width: 0;
+    border-right-width: 0;
+}
+
+.list-item-button, 
+.list-item-button:hover
+{
+    border: none;
+    background: none;
+}
+
+

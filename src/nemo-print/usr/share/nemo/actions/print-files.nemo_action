@@ -1,0 +1,11 @@
+[Nemo Action]
+Name=Printer files
+Comment=Print the selected text or pdf files.
+Exec=nemo-print %U
+Selection=notnone
+Icon-Name=printer
+Mimetypes=text/*;application/pdf;
+Name[en_GB]=Print
+Name[zh_CN]=打印
+Comment[en_GB]=Print the selected text or pdf files.
+Comment[zh_CN]=打印选中的文本或pdf文件
