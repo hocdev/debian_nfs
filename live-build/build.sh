@@ -60,7 +60,8 @@ chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 cd "${WORK_DIR}"
 
 lb clean --binary || true
-rm -rf "${WORK_DIR}/chroot" "${WORK_DIR}/binary" "${WORK_DIR}/.build"
+rm -rf "${WORK_DIR}/chroot" "${WORK_DIR}/binary" "${WORK_DIR}/.build" \
+       "${WORK_DIR}/cache/bootstrap" "${WORK_DIR}/cache/stages_bootstrap"
 
 lb config \
   --mode debian \
@@ -72,7 +73,7 @@ lb config \
   --cache true \
   --cache-indices true \
   --cache-packages true \
-  --cache-stages "none" \
+  --cache-stages "" \
   --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8,vi_VN.UTF-8" \
   --iso-application "Debian 12 NFS Desktop" \
   --iso-publisher "Debian NFS" \
