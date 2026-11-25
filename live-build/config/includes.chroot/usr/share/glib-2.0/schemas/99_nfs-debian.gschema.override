@@ -1,5 +1,7 @@
 [org.cdos]
 desktop-layout='classic'
+enable-feedback=false
+enabled-applets=['left:0:menu@cdos.org', 'center:0:scale@cdos.org', 'center:1:window-list@cdos.org', 'right:0:systray@cdos.org', 'right:1:grouped-applets@cdos.org', 'right:2:keyboard@cdos.org', 'right:4:removable-drives@cdos.org', 'right:5:power@cdos.org', 'right:6:sound@cdos.org', 'right:7:network@cdos.org', 'right:8:calendar@cdos.org', 'right:9:notifications@cdos.org', 'right:10:show-desktop@cdos.org']
 panel-launchers=['firefox-esr.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'found-control-center.desktop']
 favorite-apps=['firefox-esr.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'found-control-center.desktop', 'org.gnome.gedit.desktop', 'evince.desktop']
 

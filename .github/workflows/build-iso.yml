@@ -77,6 +77,8 @@ jobs:
                 zstd \
                 dpkg-dev \
                 apt-utils \
+                gcc \
+                libglib2.0-dev \
                 python3 \
                 ca-certificates
               mkdir -p out

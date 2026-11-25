@@ -70,6 +70,37 @@ fi
 cp -a "${ROOT_DIR}/live-build/config" "${WORK_DIR}/config"
 chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 
+# Build isolated libgoa stubs so found-control-center (libsoup-2.4) does not pull Debian 12 libsoup-3.0
+COMPAT_GOA_DIR="${WORK_DIR}/config/includes.chroot/usr/lib/found-control-center-compat"
+mkdir -p "${COMPAT_GOA_DIR}"
+cat > "${WORK_DIR}/goa_stub.c" <<'EOF'
+#include <glib-object.h>
+GType goa_provider_get_type(void) { return g_object_get_type(); }
+void goa_account_call_remove(void) {}
+gboolean goa_account_call_remove_finish(void) { return FALSE; }
+gboolean goa_account_call_remove_sync(void) { return FALSE; }
+const gchar *goa_account_get_id(void) { return NULL; }
+gboolean goa_account_get_is_locked(void) { return FALSE; }
+const gchar *goa_account_get_presentation_identity(void) { return NULL; }
+gpointer goa_account_get_provider_icon(void) { return NULL; }
+const gchar *goa_account_get_provider_name(void) { return NULL; }
+const gchar *goa_account_get_provider_type(void) { return NULL; }
+GList *goa_client_get_accounts(void) { return NULL; }
+gpointer goa_client_new_sync(void) { return NULL; }
+gpointer goa_object_peek_account(void) { return NULL; }
+gpointer goa_provider_add_account(void) { return NULL; }
+void goa_provider_get_all(void) {}
+gboolean goa_provider_get_all_finish(void) { return FALSE; }
+gpointer goa_provider_get_for_provider_type(void) { return NULL; }
+guint goa_provider_get_provider_features(void) { return 0; }
+gpointer goa_provider_get_provider_icon(void) { return NULL; }
+const gchar *goa_provider_get_provider_name(void) { return NULL; }
+void goa_provider_show_account(void) {}
+EOF
+gcc -shared -fPIC -Wl,-soname,libgoa-1.0.so.0 "${WORK_DIR}/goa_stub.c" $(pkg-config --cflags --libs gobject-2.0) -o "${COMPAT_GOA_DIR}/libgoa-1.0.so.0"
+gcc -shared -fPIC -Wl,-soname,libgoa-backend-1.0.so.1 "${WORK_DIR}/goa_stub.c" $(pkg-config --cflags --libs gobject-2.0) -o "${COMPAT_GOA_DIR}/libgoa-backend-1.0.so.1"
+rm -f "${WORK_DIR}/goa_stub.c"
+
 cd "${WORK_DIR}"
 
 lb clean --binary || true

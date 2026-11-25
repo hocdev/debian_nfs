@@ -94,6 +94,18 @@ if [ -f /etc/locale.gen ]; then
     locale-gen || true
 fi
 
+# Isolate found-control-center from Debian 12 libgoa (libsoup-3.0) so libsoup-2.4 does not abort
+if [ -x /usr/bin/found-control-center ] && [ ! -e /usr/libexec/found-control-center.real ]; then
+    mkdir -p /usr/libexec
+    mv /usr/bin/found-control-center /usr/libexec/found-control-center.real
+    cat > /usr/bin/found-control-center <<'EOF'
+#!/bin/sh
+export LD_LIBRARY_PATH="/usr/lib/found-control-center-compat${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+exec /usr/libexec/found-control-center.real "$@"
+EOF
+    chmod 0755 /usr/bin/found-control-center
+fi
+
 # Verify all core NFS Found binaries have zero missing shared libraries
 echo "=== Verifying ELF shared library resolution (ldd) ==="
 MISSING=0
@@ -101,7 +113,7 @@ for bin in \
     /usr/bin/cdos-desktop \
     /usr/lib/cdos-session/cdos-session-binary \
     /usr/lib/found-settings-daemon/cdos-settings-daemon \
-    /usr/bin/found-control-center \
+    /usr/libexec/found-control-center.real \
     /usr/bin/nemo \
     /usr/bin/nemo-desktop \
     /usr/lib/x86_64-linux-gnu/libmutter-6.so.0 \
@@ -110,7 +122,15 @@ for bin in \
 do
     if [ -e "$bin" ]; then
         echo "--- ldd $bin ---"
-        if ldd "$bin" | grep -E "not found"; then
+        LDD_PREFIX=""
+        if [ "$bin" = "/usr/libexec/found-control-center.real" ]; then
+            LDD_PREFIX="LD_LIBRARY_PATH=/usr/lib/found-control-center-compat"
+            if eval "$LDD_PREFIX ldd \"$bin\"" | grep -q "libsoup-3"; then
+                echo "ERROR: $bin still links libsoup-3"
+                MISSING=1
+            fi
+        fi
+        if eval "$LDD_PREFIX ldd \"$bin\"" | grep -E "not found"; then
             echo "ERROR: Missing shared library for $bin"
             MISSING=1
         fi
