@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
 
     steps:
       - name: Maximize free disk space on runner
@@ -38,6 +39,28 @@ jobs:
           key: debian-12-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
           restore-keys: |
             debian-12-lb-cache-v3-
+
+      - name: Keep only the latest cache entry
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          KEEP_KEY: debian-12-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+        run: |
+          python3 - <<'PY' || true
+          import json, os, urllib.request
+          repo = os.environ["GITHUB_REPOSITORY"]
+          token = os.environ["GH_TOKEN"]
+          keep = os.environ["KEEP_KEY"]
+          headers = {"Authorization": f"Bearer {token}", "Accept": "application/vnd.github+json"}
+          req = urllib.request.Request(f"https://api.github.com/repos/{repo}/actions/caches?per_page=100", headers=headers)
+          with urllib.request.urlopen(req, timeout=15) as r:
+              caches = json.load(r).get("actions_caches", [])
+          for c in caches:
+              if c.get("key") != keep:
+                  dreq = urllib.request.Request(f"https://api.github.com/repos/{repo}/actions/caches/{c['id']}", headers=headers, method="DELETE")
+                  urllib.request.urlopen(dreq, timeout=15).read()
+                  print(f"Deleted old cache: {c.get('key')}")
+          PY
 
       - name: Verify exported .deb packages
         run: |
