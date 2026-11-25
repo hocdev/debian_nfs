@@ -11,7 +11,15 @@ mkdir -p "${OUT_DIR}" "${CACHE_DIR}"
 
 # Build APT repository metadata for local NFS packages
 cd "${REPO_DIR}"
-dpkg-scanpackages --multiversion pool/main /dev/null > Packages
+: > /tmp/nfs.override
+for deb in pool/main/*.deb; do
+    pkg="$(dpkg-deb -f "$deb" Package)"
+    prio="$(dpkg-deb -f "$deb" Priority)"
+    sect="$(dpkg-deb -f "$deb" Section)"
+    printf "%s\t%s\t%s\n" "${pkg}" "${prio:-optional}" "${sect:-misc}" >> /tmp/nfs.override
+done
+dpkg-scanpackages --multiversion pool/main /tmp/nfs.override > Packages
+rm -f /tmp/nfs.override
 gzip -9c Packages > Packages.gz
 apt-ftparchive \
   -o APT::FTPArchive::Release::Origin="DebianNFS" \
@@ -111,7 +119,7 @@ lb config \
   --mode debian \
   --distribution bookworm \
   --archive-areas "main contrib non-free non-free-firmware" \
-  --debian-installer false \
+  --debian-installer none \
   --architectures amd64 \
   --linux-flavours amd64 \
   --cache true \
