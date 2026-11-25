@@ -51,9 +51,10 @@ done
 rm -rf "${WORK_DIR}"
 mkdir -p "${WORK_DIR}"
 if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; then
-    # Purge only local NFS packages from cache so updated .deb files are always used
+    # Purge local NFS packages and local repo indices from cache so updated .deb files & hashes are always used
     find "${CACHE_DIR}" -type f \( \
-        -name "found-*" -o -name "libfound-*" -o -name "mutter*" -o -name "libmutter-6-0*" \
+        -name "*127.0.0.1*" \
+        -o -name "found-*" -o -name "libfound-*" -o -name "mutter*" -o -name "libmutter-6-0*" \
         -o -name "gir1.2-mutter-6*" -o -name "nemo*" -o -name "libnemo-*" -o -name "gir1.2-nemo-*" \
         -o -name "libxapp1*" -o -name "xapps-common*" -o -name "gir1.2-xapp-1.0*" \
         -o -name "nfs-*" -o -name "cdos-*" \
