@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# 输出当前桌面环境的安装包列表及其版本号
+print_help()
+{
+    echo "options: -v  print current found de version."
+    echo "         -l  print current found de packages info."
+    echo "         -o  print origin found de packages info when system installed."
+    echo "         -d  print differences between current and origin packages info."
+}
+
+if [ $# -eq 0 ];then
+	print_help
+    exit 0;
+fi
+
+arg=$1
+target=$2
+packages_file=/etc/desktop/packages
+version_file=/etc/desktop/version
+
+packages=("found-session" 
+          "found-desktop" 
+          "found-settings-daemon" 
+          "found-themes" 
+          "found-icon-theme"
+          "found-gsettings-schemas"
+          "found-tools"
+          "found-backgrounds"
+          "found-control-center"
+          "found-ui-scaling"
+          "accountsservice"
+          "libgtk-3-0"
+          "gvfs"
+          "gsettings-desktop-schemas"
+          "policykit"
+          "tracker-miners"
+          "gnome-menus"
+          "gnome-desktop"
+          "libnma"
+          "nemo"
+          "mutter"
+          "nfs-custom-")
+
+# print version info.
+print_version()
+{
+    if [ -f "$version_file" ];then
+        cat $version_file
+    else 
+        echo "Can't find $version_file."
+    fi
+}
+
+# print -l  info
+print_current_packages()
+{
+    for p in ${packages[@]}
+    do
+        dpkg -l | awk  '{print $2 "  "  $3}' | grep "$p"
+    done
+}
+
+# print -o  info
+print_origin_packages()
+{
+    if [ -f "$packages_file" ];then
+        cat $packages_file 
+    else 
+        echo "Can't find $packages_file."
+    fi
+}
+
+# print -o  info
+print_differences()
+{
+    if [ ! -f "$packages_file" ];then
+        echo "Can't find $packages_file."
+        exit 0
+    fi
+    tmp=/tmp/found-packages
+    print_current_packages > $tmp
+    diff -Nur $packages_file $tmp
+}
+
+if [ "$arg" == "-v" ];then
+    if [ -n "$target" ];then
+        print_version > $target
+    else 
+        print_version
+    fi
+elif [ "$arg" == "-l" ];then
+    if [ -n "$target" ];then
+        print_current_packages > $target
+    else 
+        print_current_packages
+    fi
+elif [ "$arg" == "-o" ];then
+    if [ -n "$target" ];then
+        print_origin_packages > $target
+    else 
+        print_origin_packages
+    fi
+elif [ "$arg" == "-d" ];then
+    if [ -n "$target" ];then
+        print_differences > $target
+    else 
+        print_differences
+    fi
+else 
+    print_help
+fi
+
+exit 0;

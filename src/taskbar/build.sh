@@ -24,8 +24,10 @@ build_pkg_from_src() {
   chmod 0755 "$stage/DEBIAN"
   [ -f "$stage/DEBIAN/postinst" ] && chmod 0755 "$stage/DEBIAN/postinst" || true
 
+  local size_dir="$stage/usr"
+  [ -d "$stage/etc" ] && size_dir="$stage/usr $stage/etc" || true
   local installed_kb
-  installed_kb=$(du -sk "$stage/usr" | awk '{print $1}')
+  installed_kb=$(du -sk $size_dir | awk '{sum+=$1} END{print sum}')
   sed -i -e "s|^Maintainer:.*|Maintainer: $MAINTAINER_NAME <$MAINTAINER_EMAIL>|" \
          -e "s|^Installed-Size:.*|Installed-Size: $installed_kb|" \
          "$stage/DEBIAN/control"
@@ -40,5 +42,14 @@ build_pkg_from_src "found-desktop" "$OUT_DIR/found-desktop_4.0.5-m117+1nfs5_amd6
 echo "=== 3. Building found-desktop-common_4.0.5-m117+1nfs5_all.deb from src/ ==="
 build_pkg_from_src "found-desktop-common" "$OUT_DIR/found-desktop-common_4.0.5-m117+1nfs5_all.deb"
 
-echo "=== 4. Built packages in $OUT_DIR ==="
+echo "=== 4. Building found-desktop-environment_4.0.6-m1+1nfs5_all.deb from src/ ==="
+build_pkg_from_src "found-desktop-environment" "$OUT_DIR/found-desktop-environment_4.0.6-m1+1nfs5_all.deb"
+
+echo "=== 5. Building found-ui-scaling_1.0.0-m1+1nfs5_all.deb from src/ ==="
+build_pkg_from_src "found-ui-scaling" "$OUT_DIR/found-ui-scaling_1.0.0-m1+1nfs5_all.deb"
+
+echo "=== 6. Building found-livecd-customization_1.0.0-1+0nfs5_amd64.deb from src/ ==="
+build_pkg_from_src "found-livecd-customization" "$OUT_DIR/found-livecd-customization_1.0.0-1+0nfs5_amd64.deb"
+
+echo "=== 7. Built packages in $OUT_DIR ==="
 ls -lh "$OUT_DIR"

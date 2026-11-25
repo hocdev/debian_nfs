@@ -1,0 +1,8 @@
+#!/bin/bash
+set -e
+
+packages_file=/etc/desktop/packages
+
+if [ -f "$packages_file" ];then
+    found-de -l $packages_file || true
+fi

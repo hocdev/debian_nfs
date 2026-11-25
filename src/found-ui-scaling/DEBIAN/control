@@ -1,0 +1,9 @@
+Package: found-ui-scaling
+Priority: optional
+Section: gnome
+Installed-Size: 2
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: all
+Version: 1.0.0-m1+1nfs5
+Depends: mutter (>= 3.36.6)
+Description: Found desktop enable x11 randr fractional scaling for mutter.

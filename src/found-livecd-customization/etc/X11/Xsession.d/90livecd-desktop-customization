@@ -1,0 +1,10 @@
+# livecd desktop customization
+gsettings set org.cdos.settings-daemon.plugins.power sleep-display-ac 0
+gsettings set org.cdos.settings-daemon.plugins.power sleep-display-battery 0
+gsettings set org.cdos.settings-daemon.plugins.power sleep-inactive-ac-timeout 0
+gsettings set org.cdos.settings-daemon.plugins.power sleep-inactive-battery-timeout 0
+
+gsettings set org.cdos.settings-daemon.plugins.power idle-screensaver-timeout 0
+gsettings set org.cdos.settings-daemon.plugins.power lock-on-screensaver true
+gsettings set org.cdos.desktop.session idle-delay 0
+xset -dpms s off
