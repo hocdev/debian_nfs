@@ -72,7 +72,7 @@ lb config \
   --cache true \
   --cache-indices true \
   --cache-packages true \
-  --cache-stages "bootstrap" \
+  --cache-stages "none" \
   --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8,vi_VN.UTF-8" \
   --iso-application "Debian 12 NFS Desktop" \
   --iso-publisher "Debian NFS" \

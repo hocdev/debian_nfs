@@ -35,9 +35,9 @@ jobs:
         uses: actions/cache@v5
         with:
           path: .lb-cache
-          key: debian-12-lb-cache-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+          key: debian-12-lb-cache-v2-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
           restore-keys: |
-            debian-12-lb-cache-
+            debian-12-lb-cache-v2-
 
       - name: Verify exported .deb packages
         run: |
