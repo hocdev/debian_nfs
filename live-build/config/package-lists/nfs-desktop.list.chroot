@@ -72,6 +72,7 @@ libnemo-extension1
 gir1.2-nemo-3.0
 nemo
 nemo-print
+nemo-share
 found-desktop-environment
 nfs-custom-jjw
 cdos-plymouth-theme-nfslogo

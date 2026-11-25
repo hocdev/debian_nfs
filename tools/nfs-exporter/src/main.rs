@@ -37,6 +37,7 @@ const EXPORT_PACKAGES: &[&str] = &[
     "libnemo-extension1",
     "gir1.2-nemo-3.0",
     "nemo-print",
+    "nemo-share",
     "mutter",
     "mutter-common",
     "libmutter-6-0",
