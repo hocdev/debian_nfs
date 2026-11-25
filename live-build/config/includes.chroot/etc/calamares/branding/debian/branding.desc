@@ -1,0 +1,36 @@
+---
+componentName:   debian
+welcomeStyleCalamares: true
+welcomeExpandingLogo: true
+windowExpanding: normal
+windowSize: 800px,520px
+windowPlacement: center
+
+strings:
+    productName:         Debian NFS Desktop
+    shortProductName:    Debian NFS
+    version:             12 (bookworm)
+    shortVersion:        12
+    versionedName:       Debian 12 NFS Desktop
+    shortVersionedName:  Debian NFS 12
+    bootloaderEntryName: Debian NFS
+    productUrl:          https://linux.hocdev.com
+    supportUrl:          https://www.debian.org/support
+    knownIssuesUrl:      https://bugs.debian.org
+    releaseNotesUrl:     https://www.debian.org/releases/bookworm/releasenotes
+    donateUrl:           https://www.debian.org
+
+images:
+    productLogo:         "debian-logo.png"
+    productIcon:         "debian-logo.png"
+    productWelcome:      "welcome.png"
+
+slideshow:               "show.qml"
+
+style:
+   sidebarBackground:    "#2c3133"
+   sidebarText:          "#FFFFFF"
+   sidebarTextSelect:    "#292F34"
+   sidebarTextHighlight: "#4d7079"
+
+slideshowAPI: 2

@@ -7,3 +7,4 @@
 /tools/nfs-exporter/target/
 *.iso
 *.sha256
+/new
