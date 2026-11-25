@@ -1,0 +1,52 @@
+#! /bin/bash
+
+SMB_CONF_FILE="/etc/samba/smb.conf"
+
+if [ -f $SMB_CONF_FILE ]; then
+    #删除force user = root
+    if [ `grep -c "force user = root" $SMB_CONF_FILE` -eq '1' ]; then
+        sudo sed -i '/force user = root/d' $SMB_CONF_FILE
+    fi
+    
+    #删除min protocol = SMB3
+    if [ `grep -c "min protocol = SMB3" $SMB_CONF_FILE` -eq '1' ]; then
+        sudo sed -i '/min protocol = SMB3/d' $SMB_CONF_FILE
+    fi
+    
+    #删除min protocol = CORE
+    if [ `grep -c "min protocol = CORE" $SMB_CONF_FILE` -eq '1' ]; then
+        sudo sed -i '/min protocol = CORE/d' $SMB_CONF_FILE
+    fi
+    
+    #添加client min protocol = NT1
+    if [ `grep -c "client min protocol = NT1" $SMB_CONF_FILE` -eq '0' ]; then
+        sudo sed -i '/usershare allow guests = yes/a\\n   client min protocol = NT1' $SMB_CONF_FILE
+    fi
+    
+    #添加max protocol = SMB3
+    if [ `grep -c "max protocol = SMB3" $SMB_CONF_FILE` -eq '0' ]; then
+        sudo sed -i '/client min protocol = NT1/a\\n   max protocol = SMB3' $SMB_CONF_FILE
+    fi
+
+    #添加inherit owner = yes
+    if [ `grep -c "inherit owner = yes" $SMB_CONF_FILE` -eq '0' ]; then
+        sudo sed -i '/max protocol = SMB3/a\\n   inherit owner = yes' $SMB_CONF_FILE
+    fi
+
+    #添加inherit permissions = yes
+    if [ `grep -c "inherit permissions = yes" $SMB_CONF_FILE` -eq '0' ]; then
+        sudo sed -i '/inherit owner = yes/a\   inherit permissions = yes' $SMB_CONF_FILE
+    fi
+    
+   #home下添加available = no
+    res=`sed -n '/comment = Home Directories/{n;p;}' $SMB_CONF_FILE | grep '   available = no'`
+    if [ -z "$res" ]; then
+        sudo sed -i '/comment = Home Directories/a \ \ \ available = no' $SMB_CONF_FILE
+    fi
+    
+   #[homes]创建文件权限改为755
+    sed -i '/create files with group=rw permissions/{n;s/0700/0755/;}' $SMB_CONF_FILE
+    
+   #[homes]创建文件夹权限改为755
+    sed -i '/create dirs. with group=rw permissions/{n;s/0700/0755/;}' $SMB_CONF_FILE
+fi

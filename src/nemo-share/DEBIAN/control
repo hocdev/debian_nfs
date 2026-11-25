@@ -1,0 +1,12 @@
+Package: nemo-share
+Priority: optional
+Section: gnome
+Installed-Size: 296
+Maintainer: Clement Lefebvre <root@linuxmint.com>
+Architecture: amd64
+Version: 3.2.0+2-m11+1nfs5
+Depends: nemo, samba, samba-common (>= 3.0.27a), samba-common-bin | samba-common (<< 2:3.4.0~pre2-1~0), libc6 (>= 2.7), libglib2.0-0 (>= 2.35.9), libgtk-3-0 (>= 3.0.0), libnemo-extension1 (>= 2.6.5)
+Enhances: nemo
+Description: Nemo extension to share folder using Samba
+ Nemo Share allows you to quickly share a folder from
+ the Nemo file manager without requiring root access.

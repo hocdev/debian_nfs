@@ -1,0 +1,8 @@
+#!/bin/sh
+
+user=$1
+if [ -z "$1" ]; then
+    user="root"
+fi
+
+pkexec /usr/share/nemo-share/samba-user-clear $user

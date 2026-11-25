@@ -16,10 +16,16 @@ strip --strip-unneeded "$TASKBAR_DIR/libcdos-desktop-taskbar.so"
 
 make -C "$SRC_ROOT/libfound-gtk3/src" clean all
 strip --strip-unneeded "$SRC_ROOT/libfound-gtk3/src/libfound-gtk3.so.0.0.0"
+mkdir -p "$SRC_ROOT/libfound-gtk3/usr/lib/x86_64-linux-gnu"
 cp "$SRC_ROOT/libfound-gtk3/src/libfound-gtk3.so.0.0.0" "$SRC_ROOT/libfound-gtk3/usr/lib/x86_64-linux-gnu/libfound-gtk3.so.0.0.0"
 
 make -C "$SRC_ROOT/libfound-desktop-4/src" clean all
 strip --strip-unneeded "$SRC_ROOT/libfound-desktop-4/src/libfound-desktop-4-reconstructed.so"
+
+make -C "$SRC_ROOT/nemo-share/src" clean all
+strip --strip-unneeded "$SRC_ROOT/nemo-share/src/libnemo-share.so"
+mkdir -p "$SRC_ROOT/nemo-share/usr/lib/x86_64-linux-gnu/nemo/extensions-3.0"
+cp "$SRC_ROOT/nemo-share/src/libnemo-share.so" "$SRC_ROOT/nemo-share/usr/lib/x86_64-linux-gnu/nemo/extensions-3.0/libnemo-share.so"
 
 build_pkg_from_src() {
   local name="$1"
@@ -93,6 +99,10 @@ build_pkg_from_src "found-control-center-data"  "found-control-center-data_1_3.3
 build_pkg_from_src "found-icon-theme"           "found-icon-theme_4.0.6-m10+1nfs5_all.deb"
 build_pkg_from_src "libfound-gtk3"              "libfound-gtk3_4.0.0-m3+1nfs5_amd64.deb"
 build_pkg_from_src "libfound-desktop-4"         "libfound-desktop-4_4.0.10-m1+2nfs5_amd64.deb"
+build_pkg_from_src "gir1.2-xapp-1.0"            "gir1.2-xapp-1.0_2.0.7-1+nfs5_amd64.deb"
+build_pkg_from_src "gir1.2-mutter-6"            "gir1.2-mutter-6_3.36.11-m38+1nfs5_amd64.deb"
+build_pkg_from_src "gir1.2-nemo-3.0"            "gir1.2-nemo-3.0_4.8.6-m262+1nfs5_amd64.deb"
+build_pkg_from_src "nemo-share"                 "nemo-share_3.2.0+2-m11+1nfs5_amd64.deb"
 
 echo "=== 3. Built packages in $OUT_DIR ==="
 ls -lh "$OUT_DIR"

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+#read -p "Please Input you password for Samba account?" passwd
+user=$1
+if [ -z "$1" ]; then
+    user="root"
+fi
+
+passwd=$2
+if [ -z "$2" ]; then
+    passwd="123456"
+fi
+
+pkexec /usr/share/nemo-share/samba-add $user $passwd

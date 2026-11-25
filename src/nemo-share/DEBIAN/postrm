@@ -1,0 +1,41 @@
+#! /bin/sh
+
+SMB_CONF_FILE="/etc/samba/smb.conf"
+
+if [ -f $SMB_CONF_FILE ]; then
+    if [ `grep -c "client min protocol = NT1" $SMB_CONF_FILE` -eq '1' ]; then
+        #删除client min protocol = NT1行的上一行
+        sudo sed -i 'N;/\n.*client min protocol = NT1/!P;D' $SMB_CONF_FILE
+        #删除client min protocol = NT1行
+        sudo sed -i '/client min protocol = NT1/d' $SMB_CONF_FILE
+    fi
+    
+    if [ `grep -c "max protocol = SMB3" $SMB_CONF_FILE` -eq '1' ]; then
+        #删除max protocol = SMB3行的上一行
+        sudo sed -i 'N;/\n.*max protocol = SMB3/!P;D' $SMB_CONF_FILE
+        #删除max protocol = SMB3行
+        sudo sed -i '/max protocol = SMB3/d' $SMB_CONF_FILE
+    fi
+
+    if [ `grep -c "inherit owner = yes" $SMB_CONF_FILE` -eq '1' ]; then
+        #删除inherit owner = yes行
+        sudo sed -i '/inherit owner = yes/d' $SMB_CONF_FILE
+    fi
+
+    if [ `grep -c "inherit permissions = yes" $SMB_CONF_FILE` -eq '1' ]; then
+        #删除inherit permissions = yes行
+        sudo sed -i '/inherit permissions = yes/d' $SMB_CONF_FILE
+    fi
+
+   #home下删除available = no
+    res=`sed -n '/comment = Home Directories/{n;p;}' $SMB_CONF_FILE | grep '   available = no'`
+    if [ -n "$res" ]; then
+        sudo sed -i '/comment = Home Directories/{n;/available = no/d}' $SMB_CONF_FILE
+    fi
+    
+   #[homes]创建文件权限改为700
+    sed -i '/create files with group=rw permissions/{n;s/0755/0700/;}' $SMB_CONF_FILE
+    
+   #[homes]创建文件夹权限改为700
+    sed -i '/create dirs. with group=rw permissions/{n;s/0755/0700/;}' $SMB_CONF_FILE
+fi

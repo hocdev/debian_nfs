@@ -16,3 +16,6 @@
 /src/libfound-gtk3/usr/lib/x86_64-linux-gnu/*.so.0.0.0
 /src/libfound-desktop-4/src/*.o
 /src/libfound-desktop-4/src/*.so*
+/src/nemo-share/src/*.o
+/src/nemo-share/src/*.so
+/src/nemo-share/usr/lib/x86_64-linux-gnu/nemo/extensions-3.0/*.so
