@@ -23,4 +23,4 @@ Bản dựng **Debian 12 (Bookworm) Live + Installable ISO (amd64)** sử dụng
 
 1. Khởi tạo git (nếu chưa có), commit toàn bộ repository và push lên GitHub (`main`).
 2. Vào tab **Actions** trên GitHub để theo dõi workflow **Build Debian 12 NFS Desktop ISO** (hoặc chạy thủ công qua **Run workflow**, có thể nhập `release_tag` để tạo GitHub Release kèm tệp `.iso` và `.sha256`).
-3. Tải artifact `debian-12-nfs-desktop-amd64-iso` sau khi build hoàn tất.
+3. Tải artifact `nfs-desktop-amd64-iso` sau khi build hoàn tất.

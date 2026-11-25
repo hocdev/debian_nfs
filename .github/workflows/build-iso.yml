@@ -130,14 +130,14 @@ jobs:
       - name: Upload ISO artifact
         uses: actions/upload-artifact@v7
         with:
-          name: debian-12-nfs-desktop-amd64-iso
+          name: nfs-desktop-amd64-iso
           path: out/*.iso
           retention-days: 14
 
       - name: Upload SHA256 artifact
         uses: actions/upload-artifact@v7
         with:
-          name: debian-12-nfs-desktop-amd64-sha256
+          name: nfs-desktop-amd64-sha256
           path: out/*.sha256
           retention-days: 14
 

@@ -1,6 +1,7 @@
 /build/
 /out/
 /.lb-cache/
+/.lb-repo/
 /repo/Packages
 /repo/Packages.gz
 /repo/Release

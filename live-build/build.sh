@@ -4,9 +4,10 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WORK_DIR="${ROOT_DIR}/build"
 OUT_DIR="${ROOT_DIR}/out"
-REPO_DIR="${WORK_DIR}/repo"
+REPO_DIR="${ROOT_DIR}/.lb-repo"
 CACHE_DIR="${ROOT_DIR}/.lb-cache"
 
+rm -rf "${REPO_DIR}"
 mkdir -p "${OUT_DIR}" "${CACHE_DIR}" "${REPO_DIR}/pool/main"
 
 # Stage local APT repository from repo/pool/main + build/debs (built from src/)
@@ -37,6 +38,7 @@ python3 -m http.server 18123 --bind 127.0.0.1 --directory "${REPO_DIR}" >/tmp/nf
 HTTP_PID=$!
 cleanup() {
     kill "${HTTP_PID}" >/dev/null 2>&1 || true
+    rm -rf "${REPO_DIR}" >/dev/null 2>&1 || true
     if [ -d "${WORK_DIR}/cache" ]; then
         # Pack bootstrap rootfs as root so actions/cache preserves uid/gid, setuid, and /tmp 1777
         if [ -d "${WORK_DIR}/cache/bootstrap" ]; then
@@ -148,7 +150,7 @@ if [ -z "${ISO_FILE}" ]; then
     exit 1
 fi
 
-OUT_ISO="${OUT_DIR}/debian-12-nfs-desktop-amd64.iso"
+OUT_ISO="${OUT_DIR}/nfs-desktop-amd64.iso"
 mv -f "${ISO_FILE}" "${OUT_ISO}"
 (cd "${OUT_DIR}" && sha256sum "$(basename "${OUT_ISO}")" > "$(basename "${OUT_ISO}").sha256")
 ls -lh "${OUT_DIR}"
