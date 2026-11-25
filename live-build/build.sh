@@ -24,6 +24,13 @@ HTTP_PID=$!
 cleanup() {
     kill "${HTTP_PID}" >/dev/null 2>&1 || true
     if [ -d "${WORK_DIR}/cache" ]; then
+        # Pack bootstrap rootfs as root so actions/cache preserves uid/gid, setuid, and /tmp 1777
+        if [ -d "${WORK_DIR}/cache/bootstrap" ]; then
+            tar --numeric-owner --zstd -cpf "${WORK_DIR}/cache/bootstrap.tar.zst.tmp" -C "${WORK_DIR}/cache" bootstrap \
+              && mv -f "${WORK_DIR}/cache/bootstrap.tar.zst.tmp" "${WORK_DIR}/cache/bootstrap.tar.zst" \
+              || rm -f "${WORK_DIR}/cache/bootstrap.tar.zst.tmp"
+            rm -rf "${WORK_DIR}/cache/bootstrap"
+        fi
         rm -rf "${CACHE_DIR}"
         mv "${WORK_DIR}/cache" "${CACHE_DIR}" || true
     fi
@@ -52,6 +59,12 @@ if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; t
         -o -name "nfs-*" -o -name "cdos-*" \
     \) -delete || true
     mv "${CACHE_DIR}" "${WORK_DIR}/cache"
+    if [ -f "${WORK_DIR}/cache/bootstrap.tar.zst" ]; then
+        rm -rf "${WORK_DIR}/cache/bootstrap"
+        tar --numeric-owner --zstd -xpf "${WORK_DIR}/cache/bootstrap.tar.zst" -C "${WORK_DIR}/cache" \
+          || rm -rf "${WORK_DIR}/cache/bootstrap"
+        rm -f "${WORK_DIR}/cache/bootstrap.tar.zst"
+    fi
 fi
 
 cp -a "${ROOT_DIR}/live-build/config" "${WORK_DIR}/config"
@@ -60,8 +73,7 @@ chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 cd "${WORK_DIR}"
 
 lb clean --binary || true
-rm -rf "${WORK_DIR}/chroot" "${WORK_DIR}/binary" "${WORK_DIR}/.build" \
-       "${WORK_DIR}/cache/bootstrap" "${WORK_DIR}/cache/stages_bootstrap"
+rm -rf "${WORK_DIR}/chroot" "${WORK_DIR}/binary" "${WORK_DIR}/.build"
 
 lb config \
   --mode debian \
@@ -73,7 +85,7 @@ lb config \
   --cache true \
   --cache-indices true \
   --cache-packages true \
-  --cache-stages "" \
+  --cache-stages "bootstrap" \
   --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8,vi_VN.UTF-8" \
   --iso-application "Debian 12 NFS Desktop" \
   --iso-publisher "Debian NFS" \
