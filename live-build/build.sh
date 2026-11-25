@@ -4,18 +4,59 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WORK_DIR="${ROOT_DIR}/build"
 OUT_DIR="${ROOT_DIR}/out"
+REPO_DIR="${ROOT_DIR}/repo"
+CACHE_DIR="${ROOT_DIR}/.lb-cache"
+
+mkdir -p "${OUT_DIR}" "${CACHE_DIR}"
+
+# Build APT repository metadata for local NFS packages
+cd "${REPO_DIR}"
+dpkg-scanpackages --multiversion pool/main /dev/null > Packages
+gzip -9c Packages > Packages.gz
+apt-ftparchive release . > Release
+
+# Serve local APT repo over HTTP so live-build chroot apt-get resolves all dependencies cleanly
+python3 -m http.server 18123 --bind 127.0.0.1 --directory "${REPO_DIR}" >/tmp/nfs-apt-http.log 2>&1 &
+HTTP_PID=$!
+cleanup() {
+    kill "${HTTP_PID}" >/dev/null 2>&1 || true
+    if [ -d "${WORK_DIR}/cache" ]; then
+        rm -rf "${CACHE_DIR}"
+        mv "${WORK_DIR}/cache" "${CACHE_DIR}" || true
+    fi
+    if [ -d "${CACHE_DIR}" ]; then
+        chown -R "$(stat -c '%u:%g' "${ROOT_DIR}")" "${CACHE_DIR}" >/dev/null 2>&1 || true
+        chmod -R u+rwX,go+rX "${CACHE_DIR}" >/dev/null 2>&1 || true
+    fi
+}
+trap cleanup EXIT
+
+for _ in $(seq 1 30); do
+    if python3 -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18123/Release', timeout=1)" >/dev/null 2>&1; then
+        break
+    fi
+    sleep 0.2
+done
 
 rm -rf "${WORK_DIR}"
-mkdir -p "${WORK_DIR}" "${OUT_DIR}"
+mkdir -p "${WORK_DIR}"
+if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; then
+    # Purge only local NFS packages from cache so updated .deb files are always used
+    find "${CACHE_DIR}" -type f \( \
+        -name "found-*" -o -name "libfound-*" -o -name "mutter*" -o -name "libmutter-6-0*" \
+        -o -name "gir1.2-mutter-6*" -o -name "nemo*" -o -name "libnemo-*" -o -name "gir1.2-nemo-*" \
+        -o -name "nfs-*" -o -name "cdos-*" \
+    \) -delete || true
+    mv "${CACHE_DIR}" "${WORK_DIR}/cache"
+fi
 
 cp -a "${ROOT_DIR}/live-build/config" "${WORK_DIR}/config"
-mkdir -p "${WORK_DIR}/config/packages.chroot"
-cp -f "${ROOT_DIR}/repo/pool/main/"*.deb "${WORK_DIR}/config/packages.chroot/"
 chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 
 cd "${WORK_DIR}"
 
-lb clean --purge || true
+lb clean --binary || true
+rm -rf "${WORK_DIR}/chroot" "${WORK_DIR}/binary" "${WORK_DIR}/.build"
 
 lb config \
   --mode debian \
@@ -24,6 +65,10 @@ lb config \
   --debian-installer false \
   --architectures amd64 \
   --linux-flavours amd64 \
+  --cache true \
+  --cache-indices true \
+  --cache-packages true \
+  --cache-stages "bootstrap" \
   --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8,vi_VN.UTF-8" \
   --iso-application "Debian 12 NFS Desktop" \
   --iso-publisher "Debian NFS" \

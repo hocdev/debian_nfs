@@ -27,6 +27,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Restore cached Debian 12 base & APT packages
+        uses: actions/cache@v4
+        with:
+          path: .lb-cache
+          key: debian-12-lb-cache-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+          restore-keys: |
+            debian-12-lb-cache-
+
       - name: Verify exported .deb packages
         run: |
           docker run --rm -v "${{ github.workspace }}:/work" -w /work debian:bookworm bash -c '
@@ -61,6 +69,8 @@ jobs:
                 dosfstools \
                 mtools \
                 dpkg-dev \
+                apt-utils \
+                python3 \
                 ca-certificates
               ./live-build/build.sh
             '

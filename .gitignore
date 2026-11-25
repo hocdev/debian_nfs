@@ -1,5 +1,9 @@
 /build/
 /out/
+/.lb-cache/
+/repo/Packages
+/repo/Packages.gz
+/repo/Release
 /tools/nfs-exporter/target/
 *.iso
 *.sha256
