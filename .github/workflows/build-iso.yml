@@ -72,6 +72,9 @@ jobs:
                 grub-efi-amd64-bin \
                 dosfstools \
                 mtools \
+                cpio \
+                xz-utils \
+                zstd \
                 dpkg-dev \
                 apt-utils \
                 python3 \
