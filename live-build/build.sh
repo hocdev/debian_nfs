@@ -48,6 +48,7 @@ if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; t
     find "${CACHE_DIR}" -type f \( \
         -name "found-*" -o -name "libfound-*" -o -name "mutter*" -o -name "libmutter-6-0*" \
         -o -name "gir1.2-mutter-6*" -o -name "nemo*" -o -name "libnemo-*" -o -name "gir1.2-nemo-*" \
+        -o -name "libxapp1*" -o -name "xapps-common*" -o -name "gir1.2-xapp-1.0*" \
         -o -name "nfs-*" -o -name "cdos-*" \
     \) -delete || true
     mv "${CACHE_DIR}" "${WORK_DIR}/cache"

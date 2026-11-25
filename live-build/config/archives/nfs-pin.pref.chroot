@@ -3,7 +3,11 @@ Package: *
 Pin: release o=DebianNFS
 Pin-Priority: 1001
 
-# Keep mutter 3.36.11-m38+1nfs5 pinned even after build repo is removed
+# Keep mutter 3.36.11-m38+1nfs5 and xapp 2.0.7-1+nfs5 pinned even after build repo is removed
 Package: mutter mutter-common libmutter-6-0 gir1.2-mutter-6
 Pin: version 3.36.11-m38+1nfs5
+Pin-Priority: 1001
+
+Package: libxapp1 xapps-common gir1.2-xapp-1.0
+Pin: version 2.0.7-1+nfs5
 Pin-Priority: 1001
