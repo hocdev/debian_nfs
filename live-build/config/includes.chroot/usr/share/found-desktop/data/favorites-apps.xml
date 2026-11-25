@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+  <group name="0" section="1">
+    <label translatable="yes">Internet &amp; Files</label>
+    <item>firefox-esr.desktop</item>
+    <item>nemo.desktop</item>
+    <item>org.gnome.FileRoller.desktop</item>
+  </group>
+  <group name="1" section="2">
+    <label translatable="yes">Work &amp; System</label>
+    <item>org.gnome.Terminal.desktop</item>
+    <item>found-control-center.desktop</item>
+    <item>org.gnome.gedit.desktop</item>
+    <item>gnome-calculator.desktop</item>
+    <item>evince.desktop</item>
+  </group>
+</data>

@@ -1,0 +1,15 @@
+[Default Applications]
+inode/directory=nemo.desktop
+application/x-gnome-saved-search=nemo.desktop
+text/html=firefox-esr.desktop
+application/xhtml+xml=firefox-esr.desktop
+x-scheme-handler/http=firefox-esr.desktop
+x-scheme-handler/https=firefox-esr.desktop
+text/plain=org.gnome.gedit.desktop
+application/pdf=org.gnome.Evince.desktop
+application/x-7z-compressed=org.gnome.FileRoller.desktop
+application/x-bzip-compressed-tar=org.gnome.FileRoller.desktop
+application/x-compressed-tar=org.gnome.FileRoller.desktop
+application/x-xz-compressed-tar=org.gnome.FileRoller.desktop
+application/zip=org.gnome.FileRoller.desktop
+application/x-tar=org.gnome.FileRoller.desktop

@@ -1,11 +1,35 @@
 #!/bin/sh
 set -e
 
+echo "=== Removing any stock desktop/DM packages so Found Desktop completely replaces them ==="
+STOCK_PKGS=""
+for p in \
+    gnome-shell gnome-session gnome-session-bin gnome-session-common gnome-panel \
+    nautilus xfce4-session xfce4-panel xfdesktop4 mate-session-manager mate-panel \
+    cinnamon cinnamon-session lxqt-session lxpanel openbox tint2 gdm3 sddm lxdm
+do
+    if dpkg-query -W -f='${Status}\n' "$p" 2>/dev/null | grep -q "install ok installed"; then
+        STOCK_PKGS="$STOCK_PKGS $p"
+    fi
+done
+if [ -n "$STOCK_PKGS" ]; then
+    echo "Purging stock packages:$STOCK_PKGS"
+    DEBIAN_FRONTEND=noninteractive apt-get purge -y $STOCK_PKGS
+    DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge
+fi
+
 echo "=== Configuring NFS Found Desktop on Debian 12 ==="
 ldconfig
 
+# Patch Python 3.11 collections.abc compatibility in found-tools
+for pyf in /usr/share/found-menu-editor/cme/util.py /usr/share/found-launcher-editor/main.py; do
+    if [ -f "$pyf" ]; then
+        sed -i 's/from collections import Sequence/from collections.abc import Sequence/' "$pyf"
+    fi
+done
+
 if [ -d /usr/share/glib-2.0/schemas ]; then
-    glib-compile-schemas /usr/share/glib-2.0/schemas
+    glib-compile-schemas --strict /usr/share/glib-2.0/schemas || glib-compile-schemas /usr/share/glib-2.0/schemas
 fi
 
 if [ -x /usr/bin/cdos-session ]; then
@@ -18,9 +42,11 @@ if [ -x /usr/bin/cdos-desktop ]; then
     update-alternatives --set x-window-manager /usr/bin/cdos-desktop || true
 fi
 
-# Ensure LightDM defaults to cdos-xorg
+# Ensure LightDM is the sole DM and defaults to cdos-xorg
+echo "/usr/sbin/lightdm" > /etc/X11/default-display-manager
 if [ -f /etc/lightdm/lightdm.conf ]; then
     sed -i 's/^#*user-session=.*/user-session=cdos-xorg/' /etc/lightdm/lightdm.conf || true
+    sed -i 's/^#*greeter-session=.*/greeter-session=lightdm-gtk-greeter/' /etc/lightdm/lightdm.conf || true
 fi
 
 # Ensure Plymouth uses nfslogo theme
@@ -28,7 +54,7 @@ if command -v plymouth-set-default-theme >/dev/null 2>&1; then
     plymouth-set-default-theme nfslogo || true
 fi
 
-# Remove any stock non-CDOS xsessions if present so Found Desktop completely replaces stock desktop
+# Keep only cdos-xorg as desktop xsession
 for f in /usr/share/xsessions/*.desktop; do
     [ -e "$f" ] || continue
     case "$(basename "$f")" in
@@ -84,6 +110,9 @@ done
 if [ "$MISSING" -ne 0 ]; then
     exit 1
 fi
+
+# Ensure temporary local build repo list is never left in target rootfs
+rm -f /etc/apt/sources.list.d/nfs.list* || true
 
 # Rebuild initramfs so Plymouth nfslogo theme is embedded
 if command -v update-initramfs >/dev/null 2>&1; then

@@ -1,3 +1,11 @@
+[org.cdos]
+desktop-layout='classic'
+panel-launchers=['firefox-esr.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'found-control-center.desktop']
+favorite-apps=['firefox-esr.desktop', 'nemo.desktop', 'org.gnome.Terminal.desktop', 'found-control-center.desktop', 'org.gnome.gedit.desktop', 'evince.desktop']
+
+[org.cdos.theme]
+name='Found'
+
 [org.cdos.desktop.interface]
 gtk-theme='Found'
 icon-theme='Found'
