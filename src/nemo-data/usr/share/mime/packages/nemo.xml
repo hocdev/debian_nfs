@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+   <mime-type type="application/x-gnome-saved-search">
+     <sub-class-of type="text/xml"/>
+     <comment>Saved search</comment>
+     <comment xml:lang="be">Захаваны пошук</comment>
+     <comment xml:lang="ca">Cerca desada</comment>
+     <comment xml:lang="cs">Uložené hledání</comment>
+     <comment xml:lang="cy">Chwiliad wedi cadw</comment>
+     <comment xml:lang="da">Gemt søgning</comment>
+     <comment xml:lang="de">Gespeicherte Suche</comment>
+     <comment xml:lang="el">Αποθηκευμένη αναζήτηση</comment>
+     <comment xml:lang="en_GB">Saved search</comment>
+     <comment xml:lang="eo">Konservita serĉo</comment>
+     <comment xml:lang="es">Búsqueda guardada</comment>
+     <comment xml:lang="et">Salvestatud otsing</comment>
+     <comment xml:lang="eu">Gordetako bilaketa</comment>
+     <comment xml:lang="fi">Tallennettu haku</comment>
+     <comment xml:lang="fr">Recherche enregistrée</comment>
+     <comment xml:lang="fr_CA">Recherche enregistrée</comment>
+     <comment xml:lang="he">חיפוש שמור</comment>
+     <comment xml:lang="hi">संचित खोज</comment>
+     <comment xml:lang="hr">Spremljena pretraga</comment>
+     <comment xml:lang="hu">Mentett keresés</comment>
+     <comment xml:lang="ia">Recerca salvate</comment>
+     <comment xml:lang="id">Pencarian tersimpan</comment>
+     <comment xml:lang="is">Vistuð leit</comment>
+     <comment xml:lang="it">Ricerca salvata</comment>
+     <comment xml:lang="ja">保存した検索</comment>
+     <comment xml:lang="kab">Anadi yettwaskelsen</comment>
+     <comment xml:lang="ko">저장된 검색 결과</comment>
+     <comment xml:lang="la">Quaestiones servatae</comment>
+     <comment xml:lang="lt">Įrašyta paieška</comment>
+     <comment xml:lang="lv">Saglabātais meklējums</comment>
+     <comment xml:lang="ml">സംരക്ഷിച്ച തിരച്ചില്‍</comment>
+     <comment xml:lang="mo">Кэутаре салватэ</comment>
+     <comment xml:lang="nl">Opgeslagen zoekactie</comment>
+     <comment xml:lang="oc">Recèrca enregistrada</comment>
+     <comment xml:lang="pl">Zapisane wyszukiwanie</comment>
+     <comment xml:lang="pt">Pesquisa guardada</comment>
+     <comment xml:lang="pt_BR">Busca salva</comment>
+     <comment xml:lang="ro">Căutare salvată</comment>
+     <comment xml:lang="ru">Сохранённый поиск</comment>
+     <comment xml:lang="sk">Uložené vyhľadávanie</comment>
+     <comment xml:lang="sr">Сачувана претрага</comment>
+     <comment xml:lang="sr@latin">Sačuvana pretraga</comment>
+     <comment xml:lang="sv">Sparad sökning</comment>
+     <comment xml:lang="tr">Kayıtlı arama</comment>
+     <comment xml:lang="uk">Збережений пошук</comment>
+     <comment xml:lang="zh_HK">已儲存搜尋</comment>
+     <glob pattern="*.savedSearch"/>
+   </mime-type>
+
+
+   <mime-type type="application/nemo-action">
+     <comment>Nemo action definition</comment>
+     <comment xml:lang="be">Вызначэнне дзеяння Nemo</comment>
+     <comment xml:lang="ca">Definició d'acció de Nemo</comment>
+     <comment xml:lang="cs">Definice akce v Nemo</comment>
+     <comment xml:lang="cy">Diffiniad o weithrediadau Nemo</comment>
+     <comment xml:lang="da">Definition af Nemo-handling</comment>
+     <comment xml:lang="de">Nemo-Aktionsfestlegung</comment>
+     <comment xml:lang="el">Ορισμός Εργασίας Nemo</comment>
+     <comment xml:lang="en_GB">Nemo action definition</comment>
+     <comment xml:lang="eo">Difino de Nemo-ago</comment>
+     <comment xml:lang="es">Definición de acción de Nemo</comment>
+     <comment xml:lang="et">Nemo tegevuse definitsioon</comment>
+     <comment xml:lang="eu">Nemo ekintzaren definizioa</comment>
+     <comment xml:lang="fi">Nemo-toiminnon määritys</comment>
+     <comment xml:lang="fr">Définition d’action Nemo</comment>
+     <comment xml:lang="fr_CA">Définition d’action Nemo</comment>
+     <comment xml:lang="he">הגדרת פעולת נמו</comment>
+     <comment xml:lang="hi">निमो कार्य परिभाषा</comment>
+     <comment xml:lang="hr">Definicija Nemo radnje</comment>
+     <comment xml:lang="hu">Nemo művelet meghatározása</comment>
+     <comment xml:lang="ia">Definition de action de Nemo</comment>
+     <comment xml:lang="id">Definisi aksi Nemo</comment>
+     <comment xml:lang="is">Skilgreining aðgerðar Nemo</comment>
+     <comment xml:lang="it">Definizione azione di Nemo</comment>
+     <comment xml:lang="ja">Nemo のアクション定義</comment>
+     <comment xml:lang="kab">Asbadu n tigawt n Nemo</comment>
+     <comment xml:lang="ko">Nemo 동작 정의</comment>
+     <comment xml:lang="la">Actiones Neminis fini</comment>
+     <comment xml:lang="lt">Nemo veiksmo apibrėžimas</comment>
+     <comment xml:lang="mo">Дефиниция акциунилор Nemo</comment>
+     <comment xml:lang="nl">Nemo actiedefinitie</comment>
+     <comment xml:lang="pl">Definicja działania Nemo</comment>
+     <comment xml:lang="pt">Definição de ação do Nemo</comment>
+     <comment xml:lang="pt_BR">Definição de ação do Nemo</comment>
+     <comment xml:lang="ro">Definiția acțiunii Nemo</comment>
+     <comment xml:lang="ru">Определитель действий Nemo</comment>
+     <comment xml:lang="sk">Definícia akcie aplikácie Nemo</comment>
+     <comment xml:lang="sr">Дефиниција радње Нема</comment>
+     <comment xml:lang="sr@latin">Definicija radnje u Nemu</comment>
+     <comment xml:lang="sv">Nemos åtgärdsdefinition</comment>
+     <comment xml:lang="tr">Nemo aksiyon tanımı</comment>
+     <comment xml:lang="uk">Визначник дій Nemo</comment>
+     <comment xml:lang="zh_HK">Nemo動作定義</comment>
+     <generic-icon name="text-x-generic"/>
+     <sub-class-of type="text/plain"/>
+     <glob pattern="*.nemo_action"/>
+   </mime-type>
+
+   <mime-type type="text/x-asm">
+     <comment>Assembly Language Source Code File</comment>
+     <sub-class-of type="text/plain"/>
+     <glob pattern="*.asm"/>
+   </mime-type>
+
+   <mime-type type="application/vnd.debian.binary-package">
+     <comment>Debian package</comment>
+     <alias type="application/x-deb"/>
+     <alias type="application/x-debian-package"/>
+     <generic-icon name="package-debian"/>
+     <glob pattern="*.deb"/>
+     <glob pattern="*.udeb"/>
+   </mime-type>
+
+   <mime-type type="application/ofd">
+     <comment>OFD Document</comment>
+     <alias type="application/x-suwell"/>
+     <alias type="application/ofd"/>
+     <glob pattern="*.ofd"/>
+   </mime-type>
+
+   <mime-type type="application/uof">
+        <comment>UOF1.0 Document</comment>
+        <sub-class-of type="application/zip"/>
+        <alias type="application/wps-office.uof"/>
+        <glob pattern="*.uof"/>
+   </mime-type>
+
+</mime-info>

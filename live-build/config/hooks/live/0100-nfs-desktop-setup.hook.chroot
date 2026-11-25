@@ -137,6 +137,18 @@ rm -f /usr/share/applications/found-info-contact-panel.desktop \
       /usr/share/found-desktop/data/feedback \
       /usr/share/found-desktop/data/feedback-service-account.png || true
 
+# Ensure /etc/os-release has NFS OS branding keys expected by found-control-center
+# while preserving Debian 12 ID/VERSION_CODENAME for apt/dpkg compatibility.
+if [ -f /etc/os-release ]; then
+    sed -i '/^NAME=/d;/^NAME_EN=/d;/^MINOR_VERSION=/d;/^PRETTY_NAME=/d' /etc/os-release
+    cat >> /etc/os-release <<'EOF'
+NAME="NFS OS"
+NAME_EN="NFS OS"
+MINOR_VERSION="Desktop"
+PRETTY_NAME="NFS OS Desktop"
+EOF
+fi
+
 # Rebuild initramfs so Plymouth nfslogo theme is embedded
 if command -v update-initramfs >/dev/null 2>&1; then
     update-initramfs -u -k all || true

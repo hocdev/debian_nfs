@@ -1,0 +1,6 @@
+#! /bin/bash
+
+found-control-center display
+
+exit 0
+

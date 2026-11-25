@@ -1,0 +1,70 @@
+#!/bin/sh
+
+## 由于版本升级后，部分旧版本的壁纸设置仍为png或者jpg格式，这时候更新则会出现背景异常
+## 此脚本在桌面启动后，替换仍在使用的旧版本壁纸。
+
+replace_ext ()
+{
+    file_uri=$1;
+    prefix='/usr/share/backgrounds/'
+
+    #判断是否为标准目录下的壁纸
+    if [[ $file_uri == *"$prefix"* ]]; then
+      #获取缀名
+      ext_name=${file_uri##*.}
+      #判断后缀名是否为svg,不是svg的就替换为svg(注意字符串最后一个是')
+      if [ "${ext_name}" == "png'" ] || [ "${ext_name}" == "jpg'" ]; then
+        echo ${file_uri%.*}".svg'"
+      fi
+    fi
+}
+
+echo "========= Test Section ============"
+test_str="'file:///usr/share/backgrounds/found/default.jpg'"
+echo "$test_str"
+test_str_new=$(replace_ext $test_str)
+if [ "$test_str_new" != "" ]; then
+    echo "test str new: "$test_str_new
+else
+    echo "do nothing."
+fi
+
+echo ""
+echo "========= Desktop Background Section ============"
+desktop_id=org.cdos.desktop.background
+desktop_bg=`gsettings get ${desktop_id} picture-uri`
+echo $desktop_bg;
+desktop_bg_new=$(replace_ext $desktop_bg)
+if [ "$desktop_bg_new" != "" ]; then
+    echo "new bg uri: $desktop_bg_new" 
+    gsettings set ${desktop_id} picture-uri $desktop_bg_new
+else
+    echo "do nothing."
+fi
+
+echo ""
+echo "========= Screensaver Background Section ============"
+screensaver_id=org.cdos.desktop.background.screensaver
+ss_bg=`gsettings get ${screensaver_id} picture-uri`
+echo $ss_bg;
+ss_bg_new=$(replace_ext $ss_bg)
+if [ "$ss_bg_new" != "" ]; then
+    echo "new bg uri: $ss_bg_new"
+    gsettings set ${screensaver_id} picture-uri $ss_bg_new
+else
+    echo "do nothing."
+fi
+
+echo ""
+echo "========= Slideshow Background Section ============"
+slideshow_id=org.cdos.desktop.background.slideshow
+s_bg=`gsettings get ${slideshow_id} picture-uri`
+echo $s_bg;
+s_bg_new=$(replace_ext $s_bg)
+if [ "$s_bg_new" != "" ]; then
+    echo "new bg uri: $s_bg_new"
+    gsettings set ${slideshow_id} picture-uri $s_bg_new
+else
+    echo "do nothing."
+fi
+

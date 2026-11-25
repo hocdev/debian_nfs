@@ -1,0 +1,165 @@
+/************************************************/
+headerbar
+{
+    box-shadow: none;
+    /* 设置透明度：1.0 */
+    background: alpha(@wm_bg_a, 1.0);
+}
+
+headerbar:backdrop
+{
+    /* 加黑0.99（值越小越黑）, 设置透明度：1.0 */
+    background: alpha(shade(@wm_bg_b, 0.99), 1.0);
+}
+
+decoration
+{
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+/* 非自定义模式(无自定义元素)的标题栏(会覆盖.titlebar) */
+headerbar.default-decoration
+{
+    min-height: 38px;
+    padding: 6px 8px;
+    background: alpha(@wm_bg_a, 1.0);
+}
+
+headerbar.default-decoration:backdrop
+{
+    background: alpha(shade(@wm_bg_b, 0.99), 1.0);
+}
+
+/* 自定义模式的标题栏 */
+.titlebar
+{
+    min-height: 24px;
+}
+
+.titlebar button,
+.titlebar button.titlebutton
+{
+    min-height: 23px;
+    min-width: 23px;
+    margin-right: -1px;
+    margin-left: -1px;
+    box-shadow: none;
+}
+
+/* 仅图标按钮 */
+.titlebar button.popup,
+.titlebar button.image-button
+{
+    background: none;
+    border: none;
+}
+
+headerbar button:not(.titlebutton),
+.titlebar button:not(.titlebutton)
+{
+    margin-left: 0px;
+    margin-right: 0px;
+    padding: 6px;
+}
+
+/* 非自定义模式按钮 */
+headerbar.default-decoration button.titlebutton {
+    min-height: 23px;
+    min-width: 23px;
+    box-shadow:none;
+    margin-right: -1px;
+    margin-left: -1px;
+    padding: 6px;
+    box-shadow: none;
+}
+
+.titlebar label
+{
+    color: @wm_title;
+}
+
+.titlebar label:backdrop
+{
+    color: @wm_unfocused_title;
+}
+
+/*minimize,maximize, maximized,close button*/
+headerbar button.titlebutton.appmenu,
+headerbar button.titlebutton.close, 
+headerbar button.titlebutton.maximize, 
+headerbar button.titlebutton.maximized, 
+headerbar button.titlebutton.minimize,
+.titlebar button.titlebutton.appmenu,
+.titlebar button.titlebutton.close,
+.titlebar button.titlebutton.maximize,
+.titlebar button.titlebutton.maximized,
+.titlebar button.titlebutton.minimize
+{
+    background: none;
+    color: @theme_fg_color;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+    padding: 7px;
+}
+
+/* 自定义模式关闭按钮 */
+.titlebar button.titlebutton.close
+{
+    margin-right: 1px;
+}
+
+/* button::close */
+headerbar button.titlebutton.close,
+.titlebar button.titlebutton.close
+{
+    /* 图标颜色(svg图标)
+    color: #666; */
+}
+headerbar button.titlebutton.close:hover,
+.titlebar button.titlebutton.close:hover
+{
+    background-color: @destructive_color;
+    /* 图标颜色(svg图标) */
+    color: #FFF;
+}
+headerbar button.titlebutton.close:active,
+.titlebar button.titlebutton.close:active
+{
+    background-color: shade(@destructive_color, 0.81);
+    /* 图标颜色(svg图标) */
+    color: #FFF;
+}
+
+/* button::minimize and maximize */
+headerbar button.titlebutton.maximize,
+.titlebar button.titlebutton.maximize,
+headerbar button.titlebutton.minimize,
+.titlebar button.titlebutton.minimize
+{
+    
+}
+
+.titlebar button.image-button:hover,
+.titlebar button.popup:hover,
+headerbar button.titlebutton.maximize:hover,
+.titlebar button.titlebutton.maximize:hover,
+headerbar button.titlebutton.minimize:hover,
+.titlebar button.titlebutton.minimize:hover
+{
+    background-color: @wm_button_hover_color_a;
+}
+
+.titlebar button.image-button:active,
+.titlebar button.popup:active,
+headerbar button.titlebutton.maximize:active,
+.titlebar button.titlebutton.maximize:active,
+headerbar button.titlebutton.minimize:active,
+.titlebar button.titlebutton.minimize:active
+{
+    background-color: @wm_button_active_color_a;
+}

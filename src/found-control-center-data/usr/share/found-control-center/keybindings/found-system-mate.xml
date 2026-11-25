@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyListEntries group="system" schema="org.mate.Marco.global-keybindings" name="System and tools">
+  <KeyListEntry name="show-desktop" description="show-desktop"/>
+  <KeyListEntry name="run-command-terminal" description="lanuch-terminal"/>
+  <KeyListEntry name="run-command-screenshot" description="lanuch-screenshot"/>
+  <KeyListEntry name="run-command-area-screenshot" description="area-screenshot"/>
+</KeyListEntries>

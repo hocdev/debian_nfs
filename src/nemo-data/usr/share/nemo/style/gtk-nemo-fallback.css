@@ -1,0 +1,38 @@
+/* For Places Sidebar diskfull indicators */
+
+.places-treeview {
+    -NemoPlacesTreeView-disk-full-bg-color: shade(@theme_bg_color, .65);
+    -NemoPlacesTreeView-disk-full-fg-color: shade(@theme_selected_bg_color, 1.0);
+    -NemoPlacesTreeView-disk-full-bar-width: 2px;
+    -NemoPlacesTreeView-disk-full-bar-radius: 1px;
+    -NemoPlacesTreeView-disk-full-bottom-padding: 1px;
+    -NemoPlacesTreeView-disk-full-max-length: 70px;
+}
+
+.places-treeview:selected {
+    -NemoPlacesTreeView-disk-full-bg-color: shade(@theme_bg_color, 2.0);
+    -NemoPlacesTreeView-disk-full-fg-color: shade(@theme_fg_color, 2.0);
+}
+
+.places-treeview:hover {
+}
+
+.places-treeview:selected:hover {
+}
+
+.view {
+    -NemoIconViewContainer-disk-size-bg-color: @theme_bg_color;
+    -NemoIconViewContainer-disk-size-fg-color: shade(@theme_selected_bg_color, 1.2);
+    -NemoIconViewContainer-disk-size-full-color: shade(@error_color, 1.2);
+    -NemoIconViewContainer-disk-size-bar-width: 15;
+    -NemoIconViewContainer-disk-size-bar-radius: 6;
+    -NemoIconViewContainer-disk-size-bar-padding: 2;
+    -NemoIconViewContainer-disk-size-bar-length: 200;
+    -NemoIconViewContainer-disk-size-bar-border: 1;
+    -NemoIconViewContainer-disk-size-bar-border-color: @borders;
+}
+
+.dim-label {
+    color: @insensitive_fg_color;
+    background-color: @error_color;
+}

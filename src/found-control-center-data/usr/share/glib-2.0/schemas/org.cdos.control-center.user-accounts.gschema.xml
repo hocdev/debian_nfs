@@ -1,0 +1,23 @@
+<schemalist>
+  <schema id="org.cdos.control-center.user-accounts" path="/org/cdos/control-center/user-accounts/"
+          gettext-domain="found-control-center">
+    <key name="show-password-protection" type="b">
+      <default>true</default>
+      <summary>
+        Control 'password_protection_row' widget visible.
+      </summary>
+      <description>
+        Whether show or hide 'password_protection_row' widget in user panel.
+      </description>
+    </key>
+    <key name="show-qrcode-configure" type="b">
+      <default>true</default>
+      <summary>
+        Control wechat_row row widget visible.
+      </summary>
+      <description>
+        Whether show or hide 'wechat_row' widget in user panel.
+      </description>
+    </key>
+  </schema>
+</schemalist>

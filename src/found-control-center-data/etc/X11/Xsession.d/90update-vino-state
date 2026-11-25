@@ -1,0 +1,7 @@
+# 获取gsettings的bool值
+GSETTINGS_VALUE=$(gsettings get org.cdos.desktop.system.remote enabled)
+
+# 检查gsettings值是否为true，vino-server文件是否存在
+if [ "$GSETTINGS_VALUE" = "true" ] && [ -f /usr/libexec/vino-server ]; then
+    systemctl --user start vino-server.service
+fi

@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=X-Found-Colortheme
+Name=Platycodon Grandiflorum
+Name[zh_CN]=桔梗
+Comment=Platycodon Grandiflorum
+Comment[zh_CN]=桔梗色
+Encoding=UTF-8
+
+[X Found Metatheme]
+Represent=#6a4c9c
+MetaTheme=Found
+GtkTheme=Found
+MetacityTheme=Found
+IconTheme=Found
+CursorTheme=default

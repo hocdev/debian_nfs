@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=X-Found-Colortheme
+Name=Emerald
+Name[zh_CN]=翠涛
+Comment=Emerald
+Comment[zh_CN]=翠涛色
+Encoding=UTF-8
+
+[X Found Metatheme]
+Represent=#819d8e
+MetaTheme=FoundDark
+GtkTheme=FoundDark
+MetacityTheme=FoundDark
+IconTheme=FoundDark
+CursorTheme=default
+ColorHue=dark

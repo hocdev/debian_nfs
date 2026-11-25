@@ -1,0 +1,11 @@
+<schemalist>
+  <schema id="org.cdos.desktop.system.locale" path="/org/cdos/desktop/system/locale/">
+    <key name="language" type="s">
+      <default>''</default>
+      <summary>The locale to use for language</summary>
+      <description>
+        Specify the locale to be used for displaying language
+      </description>
+    </key>
+  </schema>
+</schemalist>

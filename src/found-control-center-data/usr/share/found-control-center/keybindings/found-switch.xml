@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyListEntries group="system" schema="org.cdos.desktop.wm.keybindings" name="Focus and switch">
+  <!-- <KeyListEntry name="cycle-windows" description="cycle-windows"/> -->
+  <!-- <KeyListEntry name="cycle-windows-backward" description="cycle-windows-backward"/> -->
+  <KeyListEntry name="switch-applications" description="switch-applications"/>
+  <KeyListEntry name="switch-applications-backward" description="cycle-windows"/>
+  <KeyListEntry name="switch-group" description="switch-group"/>
+  <!-- <KeyListEntry name="switch-group-backward" description="switch-group-backward"/> -->
+  <!-- <KeyListEntry name="switch-to-workspace-up" description="switch-to-workspace-up"/> -->
+  <!-- <KeyListEntry name="switch-to-workspace-down" description="switch-to-workspace-down"/> -->
+  <KeyListEntry name="switch-to-workspace-left" description="switch-to-workspace-left"/>
+  <KeyListEntry name="switch-to-workspace-right" description="switch-to-workspace-right"/>
+</KeyListEntries>

@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=X-Found-Colortheme
+Name=Cyan
+Name[zh_CN]=元青
+Comment=Cyan
+Comment[zh_CN]=元青色
+Encoding=UTF-8
+
+[X Found Metatheme]
+Represent=#4c4a48
+MetaTheme=FoundDark
+GtkTheme=FoundDark
+MetacityTheme=FoundDark
+IconTheme=FoundDark
+CursorTheme=default
+ColorHue=dark

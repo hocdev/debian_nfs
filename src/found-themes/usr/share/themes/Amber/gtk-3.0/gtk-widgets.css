@@ -1,0 +1,28 @@
+/* use gtk defined colors */
+label.warning
+{
+    /* see @define-color warning_color */
+    color: @warning_color; 
+}
+
+label.success{
+    /* see @define-color success_color */
+    color: @success_color; 
+}
+
+/* Maybe will be used. */
+.needs-attention
+{
+    
+}
+
+/*  OSD window progressbar */
+.osd.trough
+{
+    background-color: @theme_base_color;
+}
+.osd.progressbar
+{
+    background-color: @theme_selected_bg_color;
+}
+

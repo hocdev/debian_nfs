@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
+<wallpapers>
+
+<wallpaper deleted="false">
+    <name>default</name>
+    <filename>/usr/share/backgrounds/found/default.svg</filename>
+    <options>stretched</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+    <artist>方德</artist>
+</wallpaper>
+</wallpapers>

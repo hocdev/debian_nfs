@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+  <vendor>The GNOME Project</vendor>
+  <vendor_url>http://www.gnome.org/</vendor_url>
+  <action id="org.gnome.controlcenter.search.enable-tracker">
+    <description>Enable tracker</description>
+    <message gettext-domain="nemo">Authentication is required to enable file content search</message>
+    <icon_name>system-users</icon_name>
+    <defaults>
+      <allow_any>auth_admin_keep</allow_any>
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/enable-tracker</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+  <action id="org.gnome.controlcenter.search.disable-tracker">
+    <description>Disable tracker</description>
+    <message gettext-domain="nemo">Authentication is required to disable file content search</message>
+    <icon_name>system-users</icon_name>
+    <defaults>
+      <allow_any>auth_admin_keep</allow_any>
+      <allow_inactive>auth_admin_keep</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/disable-tracker</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+</policyconfig>

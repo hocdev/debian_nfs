@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+# Automatically added by dh_icons/13.3.4+nfs5
+if [ "$1" = "configure" ] || [ "$1" = "abort-upgrade" ] || [ "$1" = "abort-deconfigure" ] || [ "$1" = "abort-remove" ] ; then
+	if which update-icon-caches >/dev/null 2>&1 ; then
+		update-icon-caches /usr/share/icons/Adwaita /usr/share/icons/Found
+	fi
+fi
+# End automatically added section
+# Automatically added by dh_installdeb/13.3.4+nfs5
+dpkg-maintscript-helper rm_conffile /etc/xdg/menus/gnomecc.menu 1:3.8.3-2\~ -- "$@"
+dpkg-maintscript-helper rm_conffile /etc/xdg/autostart/gnome-sound-applet.desktop 1:3.8.3-2\~ -- "$@"
+# End automatically added section

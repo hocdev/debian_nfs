@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="found-gsettings-schemas">
+  <schema id="org.cdos.desktop.screensaver" path="/org/cdos/desktop/screensaver/">
+    <key name="idle-activation-enabled" type="b">
+      <default>true</default>
+      <summary>Activate when idle</summary>
+      <description>Set this to TRUE to activate the screensaver when the session is idle.</description>
+    </key>
+    <key name="lock-enabled" type="b">
+      <default>true</default>
+      <summary>Lock on activation</summary>
+      <description>Set this to TRUE to lock the screen when the screensaver goes active.</description>
+    </key>
+    <key name="bio-auth-switch-enabled" type="b">
+      <default>false</default>
+      <summary>Control bio auth types switch</summary>
+      <description>
+        Whether to switch another bio auth type when use a bio auth.
+      </description>
+    </key>
+    <key name="lock-delay" type="u">
+      <default>0</default>
+      <summary>Time before locking</summary>
+      <description>The number of seconds after screensaver activation before locking the screen.</description>
+    </key>
+    <key name="show-notifications" type="b">
+      <default>false</default>
+      <summary>Show notifications in the lock screen</summary>
+      <description>Whether notifications are shown in the lock screen or not. This only affects the standard experience.</description>
+    </key>
+    <key name="embedded-keyboard-enabled" type="b">
+      <default>false</default>
+      <summary>Allow embedding a keyboard into the window</summary>
+      <description>Set this to TRUE to allow embedding a keyboard into the window when trying to unlock.  The "keyboard_command" key must be set with the appropriate command.</description>
+    </key>
+    <key name="embedded-keyboard-command" type="s">
+      <default>''</default>
+      <summary>Embedded keyboard command</summary>
+      <description>The command that will be run, if the "embedded_keyboard_enabled" key is set to TRUE, to embed a keyboard widget into the window. This command should implement an XEMBED plug interface and output a window XID on the standard output.</description>
+    </key>
+    <key name="logout-enabled" type="b">
+      <default>false</default>
+      <summary>Allow logout</summary>
+      <description>Set this to TRUE to offer an option in the unlock dialog to allow logging out after a delay.  The delay is specified in the "logout_delay" key.</description>
+    </key>
+    <key name="logout-delay" type="u">
+      <default>7200</default>
+      <summary>Time before logout option</summary>
+      <description>The number of seconds after the screensaver activation before a logout option will appear in the unlock dialog. This key has effect only if the "logout_enable" key is set to TRUE.</description>
+    </key>
+    <key name="logout-command" type="s">
+      <default>''</default>
+      <summary>Logout command</summary>
+      <description>The command to invoke when the logout button is clicked.  This command should simply log the user out without any interaction. This key has effect only if the "logout_enable" key is set to TRUE.</description>
+    </key>
+    <key name="user-switch-enabled" type="b">
+      <default>true</default>
+      <summary>Allow user switching</summary>
+      <description>Set this to TRUE to offer an option in the unlock dialog to switch to a different user account.</description>
+    </key>
+    <key name="status-message-enabled" type="b">
+      <default>true</default>
+      <summary>Allow the session status message to be displayed</summary>
+      <description>Allow the session status message to be displayed when the screen is locked.</description>
+    </key>
+    <key name="default-message" type="s">
+      <default>""</default>
+      <summary>Default message for the screensaver</summary>
+      <description>
+        This is the message that appears on the lock screen by default.
+      </description>
+    </key>
+    <key name="ask-for-away-message" type="b">
+      <default>true</default>
+      <summary>Whether to ask for an away message when locking the screen</summary>
+      <description>
+        Whether to ask for an away message when locking the screen.
+      </description>
+    </key>
+    <key name="use-custom-format" type="b">
+      <default>false</default>
+      <summary>Whether to define a custom format for the date and time</summary>
+      <description>
+        Whether to use a custom date and time format for the lock screen.
+      </description>
+    </key>
+    <key name="time-format" type="s">
+      <default>"%H:%M"</default>
+      <summary>The custom time format</summary>
+      <description>
+        This is the time format that the lock screen will use if use-custom-format is enabled.
+      </description>
+    </key>
+    <key name="date-format" type="s">
+      <default>"%A %B %e"</default>
+      <summary>The custom date format</summary>
+      <description>
+        This is the date format that the lock screen will use if use-custom-format is enabled.
+      </description>
+    </key>
+    <key name="font-date" type="s">
+      <default>"Ubuntu 24"</default>
+      <summary>The date time font</summary>
+      <description>
+        This is the font that the date uses for the screen locker.
+      </description>
+    </key>
+    <key name="font-time" type="s">
+      <default>"Ubuntu 64"</default>
+      <summary>The time font</summary>
+      <description>
+        This is the font that the time uses for the screen locker.
+      </description>
+    </key>
+    <key name="font-message" type="s">
+      <default>"Ubuntu 14"</default>
+      <summary>The away message font</summary>
+      <description>
+        This is the font that the away message use for the screen locker.
+      </description>
+    </key>
+    <key name="screensaver-name" type="s">
+      <default>""</default>
+      <summary>The name of the screensaver. Empty string to disable</summary>
+    </key>
+    <key name="xscreensaver-hack" type="s">
+      <default>"fiberlamp"</default>
+      <summary>The screensaver hack to use when xscreensaver is used as screensaver</summary>
+    </key>
+    <key name="screensaver-webkit-theme" type="s">
+      <default>"webkit-stars@cdos.org"</default>
+      <summary>Name of the theme used in the webkit screensaver engine</summary>
+    </key>
+    <key name="use-desktop-background" type="b">
+      <default>false</default>
+      <summary>Use the desktop background</summary>
+      <description>
+        If this key is true, the desktop background will be used to screensaver.
+      </description>
+    </key>
+  </schema>
+</schemalist>

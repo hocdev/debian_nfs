@@ -1,0 +1,16 @@
+Package: found-control-center-data
+Priority: optional
+Section: gnome
+Installed-Size: 15776
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: all
+Multi-Arch: foreign
+Source: found-control-center
+Version: 1:3.38.5-m120+1nfs5
+Depends: dconf-gsettings-backend | gsettings-backend
+Conffiles: 
+ /etc/X11/Xsession.d/90update-vino-state f6bd89288c6e2f20353bcd4a04c8c71d
+ /etc/security/forgot_password_qa.xml c6e1364b40f62f0f0e5e32e1f0235135
+Description: configuration applets for GNOME - data files
+ This package contains data files (icons, pixmaps, locales files) needed by
+ the configuration applets in the gnome-control-center package.

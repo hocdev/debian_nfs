@@ -1,0 +1,15 @@
+[Desktop Background]
+# Set the default backgrounds group name.
+name=found
+# Set the background preferences mode.
+# default: get/set preferences by user gsettings,org.cdos.desktop.background. 
+# global: get/set preferences by "Desktop Background" group in this file, used for all users. 
+mode=default
+# all keys is the same as gsettings keys
+picture-options=stretched
+picture-uri=/usr/share/backgrounds/found/default.svg
+picture-opacity=100
+primary-color=#000000
+secondary-color=#000000
+color-shading-type=solid
+delay=600

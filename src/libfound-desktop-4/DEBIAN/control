@@ -1,0 +1,12 @@
+Package: libfound-desktop-4
+Priority: optional
+Section: libs
+Installed-Size: 343
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: amd64
+Multi-Arch: same
+Source: libfound-desktop
+Version: 4.0.10-m1+2nfs5
+Depends: bubblewrap, libfound-desktop-data (= 4.0.10-m1+2nfs5), gsettings-desktop-schemas (>= 3.27.0), found-gsettings-schemas (>= 4.0.0), libaccountsservice0 (>= 0.6.8), libc6 (>= 2.29), libcairo2 (>= 1.2.4), libgdk-pixbuf-2.0-0 (>= 2.36.5), libglib2.0-0 (>= 2.53.0), libgtk-3-0 (>= 3.21.4), libgudev-1.0-0 (>= 146), libseccomp2 (>= 1.0.1), libsystemd0, libudev1 (>= 196), libx11-6, libxkbregistry0 (>= 1.0.0), libxrandr2 (>= 2:1.2.99.3)
+Description: Utility library for loading .desktop files - runtime files
+ This library is used by FOUND to load the .desktop files.

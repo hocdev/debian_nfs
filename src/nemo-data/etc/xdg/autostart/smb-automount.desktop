@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Automount saved smb
+Comment=Mount saved smb at log in
+Exec=mount-smb
+NoDisplay=true
+Terminal=false
+StartupNotify=false
+Type=Application
+X-GNOME-Autostart-Phase=Desktop

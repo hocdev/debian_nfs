@@ -1,0 +1,14 @@
+<schemalist>
+  <schema id="org.cdos.control-center.power" path="/org/cdos/control-center/power/"
+          gettext-domain="found-control-center">
+    <key name="show-power-button-action" type="b">
+      <default>true</default>
+      <summary>
+        Control 'power-button' widget visible.
+      </summary>
+      <description>
+        Whether show or hide 'power-button' widget in power dialog.If false, automatically set visible by  'S3' 'S4' and 'has_batteries' options, otherwise ignore them and show it.
+      </description>
+    </key>
+  </schema>
+</schemalist>

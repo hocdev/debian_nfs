@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyListEntries group="system" schema="org.mate.SettingsDaemon.plugins.media-keys" name="System and tools">
+  <KeyListEntry name="screensaver" description="lanuch-screensaver"/>
+  <KeyListEntry name="logout" description="logout"/>
+</KeyListEntries>

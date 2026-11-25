@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyListEntries group="system" schema="org.cdos.settings-daemon.plugins.media-keys" name="System and tools">
+  <KeyListEntry name="terminal" description="lanuch-terminal"/>
+  <KeyListEntry name="screensaver" description="lanuch-screensaver"/>
+  <!-- <KeyListEntry name="search" description="lanuch-search"/> -->
+  <KeyListEntry name="screenshot" description="lanuch-screenshot"/>
+  <!-- <KeyListEntry name="area-screenshot" description="area-screenshot"/> -->
+  <!-- <KeyListEntry name="window-screenshot" description="window-screenshot"/> -->
+  <KeyListEntry name="logout" description="logout"/>
+</KeyListEntries>

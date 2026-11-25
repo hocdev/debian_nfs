@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyListEntries group="system" schema="org.mate.Marco.window-keybindings" name="Window and moveation">
+  <KeyListEntry name="move-to-monitor-n" description="move-to-monitor-up"/>
+  <KeyListEntry name="move-to-monitor-s" description="move-to-monitor-down"/>
+  <KeyListEntry name="move-to-monitor-w" description="move-to-monitor-left"/>
+  <KeyListEntry name="move-to-monitor-e" description="move-to-monitor-right"/>
+  <KeyListEntry name="close" description="close-window"/>
+  <KeyListEntry name="begin-move" description="begin-move"/>
+  <KeyListEntry name="begin-resize" description="begin-resize"/>
+  <KeyListEntry name="toggle-maximized" description="toggle-maximized"/>
+  <KeyListEntry name="unmaximize" description="unmaximize-window"/>
+  <KeyListEntry name="maximize" description="maximize-window"/>
+  <KeyListEntry name="minimize" description="minimize-window"/>
+</KeyListEntries>

@@ -1,0 +1,4 @@
+/etc/rsyslog.d/nemo.conf
+/etc/xdg/autostart/gvfsd-computer-autostart.desktop
+/etc/xdg/autostart/nemo-autostart.desktop
+/etc/xdg/autostart/smb-automount.desktop

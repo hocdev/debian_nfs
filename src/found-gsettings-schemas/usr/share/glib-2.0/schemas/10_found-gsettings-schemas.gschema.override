@@ -1,0 +1,25 @@
+[org.cdos.desktop.default-applications.terminal]
+exec='x-terminal-emulator'
+exec-arg='-e'
+
+[org.gnome.desktop.wm.preferences]
+button-layout='appmenu:minimize,maximize,close'
+action-middle-click-titlebar='lower'
+
+[org.gnome.desktop.wm.keybindings]
+show-desktop=['<Super>d']
+minimize=['<Super>n']
+
+[org.gnome.desktop.interface]
+font-name='Noto Sans CJK SC Regular  12'
+monospace-font-name='Noto Sans Mono Regular 12'
+icon-theme='Found'
+gtk-theme='Found'
+cursor-theme='Found'
+
+[org.gnome.desktop.sound]
+event-sounds=false
+
+[org.gnome.desktop.peripherals.touchpad]
+tap-to-click=true
+natural-scroll=false

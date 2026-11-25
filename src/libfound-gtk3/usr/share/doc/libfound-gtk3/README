@@ -1,0 +1,19 @@
+libfound-gtk
+=============
+
+libfound-gtk3 contains the libfound-gtk3 library as well as a data
+file that exports the "FOUND" version.
+
+The libfound-gtk3 library provides API shared by GTK+3.0 applications
+on the desktop. Documentation for the API is available with
+gtk-doc.
+
+Installation
+============
+
+See the file 'INSTALL'. If you are not using a released version of
+libfound-gtk3 (for example, if you checked out the code from git).
+
+Bubblewrap, installed as the bwrap binary, is a non-optional dependency
+on platforms where it is supported will silently fail
+when it is not installed at runtime.

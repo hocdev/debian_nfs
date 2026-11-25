@@ -1,0 +1,11 @@
+<schemalist>
+  <schema id="org.cdos.desktop.system.remote" path="/org/cdos/desktop/system/remote/">
+    <key name="enabled" type="b">
+      <default>false</default>
+      <summary>Whether desktop remote is enabled</summary>
+      <description>
+        Whether desktop remote is enabled
+      </description>
+    </key>
+  </schema>
+</schemalist>

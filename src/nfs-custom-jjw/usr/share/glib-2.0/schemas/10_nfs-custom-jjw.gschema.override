@@ -1,0 +1,3 @@
+[org.gnome.mutter]
+window-decoration-can-modify=false
+titlebar-opacity=0

@@ -1,0 +1,11 @@
+Package: found-backgrounds
+Priority: optional
+Section: Found
+Installed-Size: 14077
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: all
+Version: 4.0.2-m3+1nfs5
+Conffiles: 
+ /etc/X11/Xsession.d/49update-background-settings c978022a8ffbc3c74cc42be7db945d21
+ /etc/desktop/background 90f0cebd83bd8157b45e8376ba0b94f5
+Description: Default backgrounds for Found Desktop.

@@ -1,0 +1,15 @@
+#! /bin/bash
+
+export RES=`su - $(logname) -c "gsettings get org.nemo.search enable-file-content-search"`
+
+if [ "$RES" = "true" ]; then
+    systemctl --global unmask tracker-store tracker-writeback tracker-extract tracker-miner-fs
+
+    if [ -f '/etc/xdg/autostart/tracker-extract.desktop.bak' ]; then
+        sudo mv /etc/xdg/autostart/tracker-extract.desktop.bak /etc/xdg/autostart/tracker-extract.desktop
+    fi
+
+    if [ -f '/etc/xdg/autostart/tracker-miner-fs.desktop.bak' ]; then
+        sudo mv /etc/xdg/autostart/tracker-miner-fs.desktop.bak /etc/xdg/autostart/tracker-miner-fs.desktop
+    fi
+fi

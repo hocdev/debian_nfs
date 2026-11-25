@@ -1,0 +1,4 @@
+[org.cdos.desktop.background]
+picture-uri='file:///usr/share/backgrounds/found/default.svg'
+[org.cdos.desktop.background.screensaver]
+picture-uri='/usr/share/backgrounds/found/default.svg'

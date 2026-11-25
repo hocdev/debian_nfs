@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KeyListEntries group="system" schema="org.mate.Marco.global-keybindings" name="Focus and switch">
+  <KeyListEntry name="switch-windows" description="switch-applications"/>
+  <KeyListEntry name="cycle-windows" description="cycle-windows"/>
+  <KeyListEntry name="switch-group" description="switch-group"/>
+  <KeyListEntry name="switch-to-workspace-left" description="switch-to-workspace-left"/>
+  <KeyListEntry name="switch-to-workspace-right" description="switch-to-workspace-right"/>
+</KeyListEntries>

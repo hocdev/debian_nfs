@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Gvfsd-computer
+Comment=Start gvfsd-computer at log in
+Exec=/usr/libexec/gvfsd-computer
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-AutoRestart=false
+NoDisplay=false

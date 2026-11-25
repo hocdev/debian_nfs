@@ -1,0 +1,21 @@
+Package: xapps-common
+Priority: optional
+Section: x11
+Installed-Size: 284
+Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
+Architecture: all
+Multi-Arch: foreign
+Source: xapp
+Version: 2.0.7-1+nfs5
+Depends: python3, python3-gi, xdg-utils, dconf-gsettings-backend | gsettings-backend
+Recommends: gist, inxi
+Breaks: cinnamon (<< 4.0)
+Conffiles: 
+ /etc/X11/Xsession.d/80xapp-gtk3-module a6b56017f8db3f7540252fe74ed58ff4
+Description: Files that are common across Xapp desktop applications
+ Xapp provides components which are common to multiple desktop environments
+ and required to implement cross-DE solutions.
+ .
+ This package includes files that are shared between several XApp
+ apps (i18n files and configuration schemas).
+Homepage: http://cinnamon.linuxmint.com/

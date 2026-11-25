@@ -1,0 +1,460 @@
+/* Desktop text stuff */
+
+.nemo-window.nemo-desktop-window notebook,
+.nemo-window.nemo-desktop-window paned {
+	background-color: transparent;
+}
+
+.nemo-desktop-window,
+.nemo-desktop-window:backdrop
+{
+    box-shadow: none;
+}
+
+NemoDesktopWindow GtkPaned {
+    background-color: transparent;
+}
+
+.nemo-canvas-item {
+    border-radius: 4px;
+}
+
+.nemo-canvas-item:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.5);
+    background-image: none;
+    text-shadow: none;
+}
+
+.nemo-canvas-item:selected {
+    background-color: alpha(@theme_selected_bg_color, 0.8);
+    background-image: none;
+    text-shadow: none;
+    color: @theme_selected_fg_color;
+}
+
+.nemo-desktop {
+    -NemoIconContainer-activate-prelight-icon-label: true;
+}
+
+.nemo-desktop.nemo-canvas-item {
+    color: #FFF;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.nemo-desktop-text-no-shadow.nemo-canvas-item {
+    color: #FFF;
+    text-shadow: 1px 1px #000;
+}
+
+/* .nemo-desktop.nemo-canvas-item:hover {
+    background-color: alpha(@theme_selected_bg_color, 0.5);
+    background-image: none;
+    text-shadow: none;
+}
+
+.nemo-desktop.nemo-canvas-item:selected {
+    background-color: alpha(@theme_selected_bg_color, 0.8);
+    background-image: none;
+    text-shadow: none;
+    color: @theme_selected_fg_color;
+} */
+
+/* EelEditableLabel (icon labels) */
+.nemo-desktop.view .entry,
+.nemo-desktop.view .entry:active,
+.nemo-desktop.view .entry:focus,
+.nemo-desktop.view .entry:backdrop {
+    border-image: none;
+    border-style: solid;
+    border-width: 1px;
+    border-color: @borders;
+    border-radius: 4px;
+    color: @theme_text_color;
+    caret-color: @theme_text_color;
+    text-shadow: none;
+    background-image: -gtk-gradient(linear,
+                                    left top, left bottom,
+                                    from       (shade(@theme_bg_color, 0.86)),
+                                    color-stop (0.15, shade(@theme_bg_color, 0.96)),
+                                    color-stop (0.50, shade(@theme_bg_color, 0.98)),
+                                    to         (shade(@theme_bg_color, 1.00)));
+}
+
+.nemo-desktop.view .entry:selected,
+.nemo-desktop.view .entry:focus:selected,
+.nemo-desktop.view .entry:backdrop:selected {
+    background-color: @theme_selected_bg_color;
+    color: @theme_selected_fg_color;
+    text-shadow: none;
+}
+
+/** nemo index view start **/
+.nemo-index {
+    padding: 0px;
+}
+.nemo-index-expander {
+    padding-left: 10px;
+}
+.nemo-expander-header{
+    padding: 5px 0;
+}
+.nemo-expander-header label {
+    font-size: larger;
+}
+.nemo-index:backdrop {
+}
+
+.nemo-index-expander:backdrop {
+}
+
+/** nemo index view end **/
+
+.nemo-window {
+}
+
+.sidebar, /* 侧边栏: nemo-places-sidebar 和 sidebar-name 的父容器*/
+.nemo-window-paned > separator /* 侧边栏与右侧的分隔线 */{
+    background: none;
+}
+
+/*tree-view 的父容器 */
+.nemo-places-sidebar {
+    padding-left: 8px;
+    padding-right: 10px;
+    padding-top: 18px;
+    border: none;
+}
+
+/* 侧边栏鼠标操作区 */
+.tree-view {
+    background: none;
+    padding: 4px;
+}
+.tree-view.view:hover {
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.2);
+}
+.tree-view.view:selected {
+    color: @theme_selected_fg_color;
+    background-color: @theme_selected_bg_color;
+}
+.tree-view.view .cell.image {
+    color: @theme_selected_bg_color;
+}
+
+.tree-view.view .cell.image:selected {
+    color: @theme_selected_fg_color;
+}
+
+/* 状态栏 */
+.statusbar {
+    background-color: shade(@theme_bg_color, 1.2);
+    font-weight: 400;
+    padding: 0px;
+}
+
+/* titlebar */
+.nemo-window-headerbar {
+    background-color: @wm_bg_a;
+}
+
+/* 工具栏 */
+/* 去除工具栏中所有默认padding和margin */
+.primary-toolbar,
+.primary-toolbar * {
+    padding: 0px;
+    margin: 0px;
+}
+
+.primary-toolbar {
+    background-color: shade(@theme_bg_color, 1.2);
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+/* 图标及名称 */
+.name-box{
+    padding-left: 18px;
+}
+
+.primary-toolbar .raised,
+.primary-toolbar .linked {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.toolbar-stack {
+    padding: 0px;
+    margin: 0px;
+}
+
+/* 工具栏按钮 (image-button 也是) */
+.toolbar-button {
+    background: none;
+    background-color: shade(@theme_bg_color, 1.2);
+    border: none;
+    border-radius: 6px;
+    min-width: 36px;
+    min-height: 36px;
+    margin-left: 0px;
+    outline-style: none;
+}
+
+.toolbar-button:hover
+{
+    background-color: @wm_button_hover_color_a;
+}
+.toolbar-button:active {
+    background-color: @wm_button_active_color_a;
+}
+
+.toolbar-button.toggle:checked {
+    background-color: @wm_button_active_color_a;
+}
+
+/* 菜单选项 */
+.menu-options-box {
+    margin-left: 6px;
+}
+
+/* GtkMenu */
+/* 注销此处样式，统一使用gtk默认样式 */
+/* menu {
+    border-radius: 6px;
+} */
+
+/* 菜单分割线 */
+/* menu separator {
+    margin-left: 6px;
+    margin-right: 6px;
+} */
+
+/* 菜单项 */
+/* menu menuitem {
+    font-weight: 400;
+    min-height: 20px;
+    margin: 6px;
+    border-radius: 4px;
+} 
+
+menu menuitem:hover, menu menuitem:selected {
+    color: @theme_selected_fg_color;
+}
+
+menu menuitem:disabled {
+    color: @insensitive_fg_color;
+}*/
+
+/* 编辑栏，搜索栏 */
+.location-bar {
+    background-color: @theme_bg_color;
+    border: none;
+    border-radius: 6px;
+    padding-left: 18px;
+    padding-right: 20px;
+}
+
+.search-box {
+    background-color: @theme_bg_color;
+    border: none;
+    border-radius: 6px;
+    padding-right: 10px;
+}
+
+/* 搜索字符输入框 */
+.search-bar {
+    box-shadow: none;
+    background-color: @theme_bg_color;
+    border: none;
+    border-radius: 6px;
+    padding-left: 20px;
+    padding-right: 12px;
+}
+
+/* 搜索历史按钮 */
+.search-history-button {
+    background-color: @theme_bg_color;
+    color: #666666;
+    border: none;
+    border-radius: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    outline-style: none;
+}
+
+.search-history-button:hover {
+    background-color: @theme_bg_color;
+    color: #999999;
+}
+
+/* 地址栏 */
+.path-bar {
+    background-color: @theme_bg_color;
+    border: 1px solid @borders;
+    border-radius: 6px;
+}
+
+.path-bar * {
+    border: none;
+}
+
+/* 地址栏按钮 */
+.path-bar .text-button {
+    background: none;
+    margin: 4px 0px;
+    padding: 0 4px;
+    border-radius: 4px;
+    box-shadow: none;
+    outline-style: none;
+}
+
+.path-bar .text-button:hover {
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.2);
+}
+
+.path-bar .text-button:active {
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.25);
+}
+
+/* 地址栏slider按钮 */
+.slider-button {
+    margin: 4px;
+    outline-style: none;
+}
+
+/* 地址栏图像显示按钮 */
+.pathbar-image-button {
+    background: none;
+    margin-left: 18px;
+    margin-right: 12px;
+    outline-style: none;
+}
+
+/* 前进、后退所在的box */
+.navigation-box {
+    padding-right: 0px;
+}
+
+/* 设置界面主窗口 */
+.file-management-dialog {
+    background-color: shade(@theme_bg_color, 1.2);
+    /* border-radius:0px 0px 6px 6px; */
+}
+
+/* 设置界面侧边栏的父容器 */
+.file-management-sidebar-box {
+    background-color: @theme_bg_color;
+    /* border-radius: 0px 0px 0px 6px; */
+}
+
+/* 设置界面侧边栏 */
+stacksidebar.sidebar:dir(ltr) list,
+stacksidebar.sidebar.left list,
+stacksidebar.sidebar.left:dir(ltr) list {
+    border-style: none;
+}
+
+/* 设置界面侧边栏中的每一行 */
+stacksidebar row:not(:selected):hover{
+    background-color: mix(@theme_bg_color, @theme_fg_color, 0.2);
+    /* border-radius: 4px; */
+}
+
+/* 注销此处样式，统一使用gtk默认样式 */
+/* stacksidebar row:selected,
+stacksidebar row:selected label {
+    background-color: @theme_selected_bg_color;
+    border-radius: 4px;
+    color: @theme_selected_fg_color;
+} */
+
+/* 下拉列表 */
+/* combobox .combo {
+    border-style: none;
+    background-color: @theme_bg_color;
+    border-radius: 4px;
+} */
+
+/* .file-management-dialog checkbutton {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 0px;
+    padding-right: 30px;
+} */
+
+/* 设置界面-列表列:box */
+/* .setting-column-chooser {
+    padding-top: 22px;
+    padding-left: 23px;
+    padding-right: 40px;
+} */
+
+/* 设置界面-列表列:treeview */
+/* .list-column-treeview {
+    padding: 4px;
+    margin-right: 20px;
+} 
+
+.list-column-treeview check {
+    border-radius: 0px;
+    border: 1px solid @borders;
+    padding: 0px;
+}
+
+.list-column-treeview:hover {
+    border-radius: 4px;
+    background-color: shade(@theme_selected_bg_color, 1.4);
+}
+
+.list-column-treeview check:hover {
+    border-radius: 0px;
+    border: 1px solid @borders;
+}
+
+.list-column-treeview:selected {
+    color: @theme_selected_fg_color;
+    background-color: @theme_selected_bg_color;
+    border-radius: 4px;
+}
+
+.list-column-treeview check:selected {
+    border-radius: 0px;
+}
+*/
+/* 搜索历史记录 */
+.search-history-label {
+    margin-left: 26px;
+}
+
+.search-history-clear-all-label {
+    margin-left: 10px;
+}
+
+.search-history-item {
+    padding-left: 0px;
+}
+
+.search-history-item-hbox {
+    margin: 0px;
+}
+
+.search-condtion-row button,
+.search-condtion-row button.combo
+{
+    padding: 5px;
+}
+
+/* 内容区 */
+.nemo-content-hpaned{
+    background-color: shade(@theme_bg_color, 1.2);
+}
+
+/* 详细信息模式treeview */
+.nemo-list-treeview *{
+    border: none;
+}
+
+.nemo-list-treeview header button{
+    min-height: 30px;
+    padding: 6px;
+    font-weight: normal;
+}

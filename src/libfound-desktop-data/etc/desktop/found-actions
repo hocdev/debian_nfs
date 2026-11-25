@@ -1,0 +1,9 @@
+[Disabled Actions]
+# actions available values: none(not disabled), gui(disabled in gui), command (disabled in command),dbus(disabled in dbus),shortcut(disabled in keyboard shortcuts).
+logout=none;
+switch-user=none;
+suspend=none;
+hibernate=none;
+reboot=none;
+poweroff=none;
+screensaver-lock=none;

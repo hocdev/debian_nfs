@@ -1,0 +1,12 @@
+Package: found-gsettings-schemas
+Priority: optional
+Section: gnome
+Installed-Size: 3986
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: all
+Multi-Arch: foreign
+Version: 4.0.1-m5+1nfs5
+Depends: dconf-gsettings-backend | gsettings-backend, gsettings-desktop-schemas (>= 3.28.1)
+Breaks: cdos-control-center (<< 2.3.19), cdos-desktop (<< 3.36.4), cdos-settings-daemon (<< 2.2.16.2)
+Description: GSettings desktop-wide schemas contains a collection of GSettings schemas for
+   settings shared by various components of a desktop.

@@ -9,5 +9,10 @@
 *.iso
 *.sha256
 /new
-/src/taskbar/*.o
-/src/taskbar/*.so
+/src/found-desktop/taskbar/*.o
+/src/found-desktop/taskbar/*.so
+/src/libfound-gtk3/src/*.o
+/src/libfound-gtk3/src/*.so*
+/src/libfound-gtk3/usr/lib/x86_64-linux-gnu/*.so.0.0.0
+/src/libfound-desktop-4/src/*.o
+/src/libfound-desktop-4/src/*.so*

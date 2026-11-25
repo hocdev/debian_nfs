@@ -1,0 +1,26 @@
+Package: nemo-data
+Priority: optional
+Section: misc
+Installed-Size: 426
+Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
+Architecture: all
+Source: nemo
+Version: 4.8.6-m262+1nfs5
+Replaces: nemo (<< 3.6.5-1~)
+Depends: python3, dconf-gsettings-backend | gsettings-backend, python3:any
+Suggests: nemo
+Breaks: nemo (<< 3.6.5-1~)
+Conffiles: 
+ /etc/rsyslog.d/nemo.conf 6ee2892820ff7b16baefe607975f4d53
+ /etc/xdg/autostart/gvfsd-computer-autostart.desktop aefe404ab59c00a6ff8b4c34e1bb8bd5
+ /etc/xdg/autostart/nemo-autostart.desktop 9c1b3de762d1607aa373d5f10ce8a426
+ /etc/xdg/autostart/smb-automount.desktop 2b8dd46c6a7a3458348512d728e84018
+Description: File manager and graphical shell for Cinnamon (data files)
+ Nemo is the official file manager for the Cinnamon desktop. It allows one
+ to browse directories, preview files and launch applications associated
+ with them. It is also responsible for handling the icons on the Cinnamon
+ desktop. It works on local and remote filesystems.
+ .
+ This package contains pictures, localization files and other data
+ needed by nemo.
+Homepage: http://cinnamon.linuxmint.com/

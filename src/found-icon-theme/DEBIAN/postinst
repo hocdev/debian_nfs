@@ -1,0 +1,4 @@
+#! /bin/sh
+rm -f /usr/share/icons/Found/icon-theme.cache
+rm -f /usr/share/icons/FoundDark/icon-theme.cache
+ 

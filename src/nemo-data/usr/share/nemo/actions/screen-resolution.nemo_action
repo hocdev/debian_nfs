@@ -1,0 +1,18 @@
+[Nemo Action]
+
+Name=Screen Resolution
+
+Comment=Screen Resolution
+
+Exec=/bin/bash /usr/share/nemo/scripts/screen-resolution
+
+Selection=None
+
+Extensions=any;
+
+Dependencies=found-control-center;
+
+Conditions=desktop;
+
+Name[zh_CN]=显示设置
+Comment[zh_CN]=显示设置
