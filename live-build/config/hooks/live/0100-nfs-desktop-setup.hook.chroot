@@ -1,0 +1,91 @@
+#!/bin/sh
+set -e
+
+echo "=== Configuring NFS Found Desktop on Debian 12 ==="
+ldconfig
+
+if [ -d /usr/share/glib-2.0/schemas ]; then
+    glib-compile-schemas /usr/share/glib-2.0/schemas
+fi
+
+if [ -x /usr/bin/cdos-session ]; then
+    update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/cdos-session 100 || true
+    update-alternatives --set x-session-manager /usr/bin/cdos-session || true
+fi
+
+if [ -x /usr/bin/cdos-desktop ]; then
+    update-alternatives --install /usr/bin/x-window-manager x-window-manager /usr/bin/cdos-desktop 100 || true
+    update-alternatives --set x-window-manager /usr/bin/cdos-desktop || true
+fi
+
+# Ensure LightDM defaults to cdos-xorg
+if [ -f /etc/lightdm/lightdm.conf ]; then
+    sed -i 's/^#*user-session=.*/user-session=cdos-xorg/' /etc/lightdm/lightdm.conf || true
+fi
+
+# Ensure Plymouth uses nfslogo theme
+if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+    plymouth-set-default-theme nfslogo || true
+fi
+
+# Remove any stock non-CDOS xsessions if present so Found Desktop completely replaces stock desktop
+for f in /usr/share/xsessions/*.desktop; do
+    [ -e "$f" ] || continue
+    case "$(basename "$f")" in
+        cdos-xorg.desktop|lightdm-xsession.desktop) ;;
+        *) rm -f "$f" ;;
+    esac
+done
+
+# Ensure standard Debian 12 PAM for cdos-screensaver
+for pamfile in /etc/pam.d/cdos-screensaver /etc/pam.d/cdos-screensaver-mix /etc/pam.d/cdos-screensaver-qr; do
+    cat > "$pamfile" <<'EOF'
+auth    required        pam_env.so readenv=1 envfile=/etc/default/locale
+@include common-auth
+auth    optional        pam_cap.so
+auth    optional        pam_gnome_keyring.so
+@include common-account
+EOF
+done
+
+# Set default system locales (English + Vietnamese UTF-8)
+if [ -f /etc/locale.gen ]; then
+    sed -i 's/^# *en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+    sed -i 's/^# *vi_VN UTF-8/vi_VN UTF-8/' /etc/locale.gen
+    locale-gen || true
+fi
+
+# Verify all core NFS Found binaries have zero missing shared libraries
+echo "=== Verifying ELF shared library resolution (ldd) ==="
+MISSING=0
+for bin in \
+    /usr/bin/cdos-desktop \
+    /usr/lib/cdos-session/cdos-session-binary \
+    /usr/lib/found-settings-daemon/cdos-settings-daemon \
+    /usr/bin/found-control-center \
+    /usr/bin/nemo \
+    /usr/bin/nemo-desktop \
+    /usr/lib/x86_64-linux-gnu/libmutter-6.so.0 \
+    /usr/lib/x86_64-linux-gnu/libfound-desktop-4.so.0 \
+    /usr/lib/x86_64-linux-gnu/libfound-gtk3.so.0
+do
+    if [ -e "$bin" ]; then
+        echo "--- ldd $bin ---"
+        if ldd "$bin" | grep -E "not found"; then
+            echo "ERROR: Missing shared library for $bin"
+            MISSING=1
+        fi
+    else
+        echo "ERROR: Expected binary not found: $bin"
+        MISSING=1
+    fi
+done
+
+if [ "$MISSING" -ne 0 ]; then
+    exit 1
+fi
+
+# Rebuild initramfs so Plymouth nfslogo theme is embedded
+if command -v update-initramfs >/dev/null 2>&1; then
+    update-initramfs -u -k all || true
+fi

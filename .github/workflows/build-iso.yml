@@ -1,0 +1,85 @@
+name: Build Debian 12 NFS Desktop ISO
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: "Optional tag name to publish ISO release (e.g. v1.0.0)"
+        required: false
+        default: ""
+
+jobs:
+  build-iso:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Maximize free disk space on runner
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify exported .deb packages
+        run: |
+          docker run --rm -v "${{ github.workspace }}:/work" -w /work debian:bookworm bash -c '
+            set -euo pipefail
+            for deb in repo/pool/main/*.deb; do
+              dpkg-deb --info "$deb" >/dev/null
+              dpkg-deb --contents "$deb" >/dev/null
+            done
+            echo "Verified $(ls -1 repo/pool/main/*.deb | wc -l) .deb packages successfully."
+          '
+
+      - name: Build Debian 12 Live ISO via live-build in Debian Bookworm container
+        run: |
+          chmod +x live-build/build.sh
+          docker run --privileged --rm \
+            -v "${{ github.workspace }}:/work" \
+            -w /work \
+            debian:bookworm \
+            bash -c '
+              set -euo pipefail
+              export DEBIAN_FRONTEND=noninteractive
+              apt-get update
+              apt-get install -y --no-install-recommends \
+                live-build \
+                debootstrap \
+                squashfs-tools \
+                xorriso \
+                isolinux \
+                syslinux-common \
+                grub-pc-bin \
+                grub-efi-amd64-bin \
+                dosfstools \
+                mtools \
+                dpkg-dev \
+                ca-certificates
+              ./live-build/build.sh
+            '
+
+      - name: Upload ISO artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian-12-nfs-desktop-amd64-iso
+          path: |
+            out/*.iso
+            out/*.sha256
+          retention-days: 14
+
+      - name: Publish GitHub Release (when release_tag provided)
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.release_tag != '' }}
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ inputs.release_tag }}
+          name: "Debian 12 NFS Desktop (${{ inputs.release_tag }})"
+          files: |
+            out/*.iso
+            out/*.sha256

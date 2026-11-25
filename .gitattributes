@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.hook.chroot text eol=lf
+*.conf text eol=lf
+*.override text eol=lf
+*.list.chroot text eol=lf
+*.pref.chroot text eol=lf
+*.deb binary
+*.png binary
+*.svg binary
+*.rs text eol=lf
+*.py text eol=lf
+*.yml text eol=lf

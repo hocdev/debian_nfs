@@ -1,0 +1,5 @@
+/build/
+/out/
+/tools/nfs-exporter/target/
+*.iso
+*.sha256

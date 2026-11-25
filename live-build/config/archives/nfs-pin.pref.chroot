@@ -1,0 +1,8 @@
+# Pin NFS-exported packages above Debian 12 Bookworm defaults
+Package: mutter mutter-common libmutter-6-0 gir1.2-mutter-6
+Pin: version *nfs*
+Pin-Priority: 1001
+
+Package: found-* libfound-* nemo nemo-* libnemo-* gir1.2-nemo-3.0 nfs-* cdos-*
+Pin: version *nfs*
+Pin-Priority: 1001

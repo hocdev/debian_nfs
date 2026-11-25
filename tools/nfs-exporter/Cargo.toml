@@ -1,0 +1,8 @@
+[package]
+name = "nfs-exporter"
+version = "0.1.0"
+edition = "2021"
+description = "Export NFSDesktop-5.0 SquashFS packages and branding into Debian 12 .deb repository"
+
+[profile.release]
+opt-level = 3
