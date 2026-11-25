@@ -28,8 +28,21 @@ for pyf in /usr/share/found-menu-editor/cme/util.py /usr/share/found-launcher-ed
     fi
 done
 
+echo "=== Verifying NFS mutter 3.36 is installed (not Debian 12 mutter 43) ==="
+for mp in mutter mutter-common libmutter-6-0 gir1.2-mutter-6; do
+    VER="$(dpkg-query -W -f='${Version}\n' "$mp" 2>/dev/null || true)"
+    echo "  $mp = $VER"
+    case "$VER" in
+        *nfs*) ;;
+        *)
+            echo "ERROR: Expected NFS version of $mp, got '$VER'"
+            exit 1
+            ;;
+    esac
+done
+
 if [ -d /usr/share/glib-2.0/schemas ]; then
-    glib-compile-schemas --strict /usr/share/glib-2.0/schemas || glib-compile-schemas /usr/share/glib-2.0/schemas
+    glib-compile-schemas --strict /usr/share/glib-2.0/schemas
 fi
 
 if [ -x /usr/bin/cdos-session ]; then

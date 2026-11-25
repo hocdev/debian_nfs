@@ -12,6 +12,10 @@ on:
         required: false
         default: ""
 
+concurrency:
+  group: build-iso-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-iso:
     runs-on: ubuntu-latest

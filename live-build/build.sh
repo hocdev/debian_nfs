@@ -13,7 +13,10 @@ mkdir -p "${OUT_DIR}" "${CACHE_DIR}"
 cd "${REPO_DIR}"
 dpkg-scanpackages --multiversion pool/main /dev/null > Packages
 gzip -9c Packages > Packages.gz
-apt-ftparchive release . > Release
+apt-ftparchive \
+  -o APT::FTPArchive::Release::Origin="DebianNFS" \
+  -o APT::FTPArchive::Release::Label="DebianNFS" \
+  release . > Release
 
 # Serve local APT repo over HTTP so live-build chroot apt-get resolves all dependencies cleanly
 python3 -m http.server 18123 --bind 127.0.0.1 --directory "${REPO_DIR}" >/tmp/nfs-apt-http.log 2>&1 &

@@ -1,8 +1,9 @@
-# Pin NFS-exported packages above Debian 12 Bookworm defaults
-Package: mutter mutter-common libmutter-6-0 gir1.2-mutter-6
-Pin: version *nfs*
+# Force all packages from the local DebianNFS repository (including mutter 3.36)
+Package: *
+Pin: release o=DebianNFS
 Pin-Priority: 1001
 
-Package: found-* libfound-* nemo nemo-* libnemo-* gir1.2-nemo-3.0 nfs-* cdos-*
-Pin: version *nfs*
+# Keep mutter 3.36.11-m38+1nfs5 pinned even after build repo is removed
+Package: mutter mutter-common libmutter-6-0 gir1.2-mutter-6
+Pin: version 3.36.11-m38+1nfs5
 Pin-Priority: 1001
