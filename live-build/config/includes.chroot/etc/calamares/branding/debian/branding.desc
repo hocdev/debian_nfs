@@ -7,13 +7,13 @@ windowSize: 800px,520px
 windowPlacement: center
 
 strings:
-    productName:         Debian NFS Desktop
-    shortProductName:    Debian NFS
-    version:             12 (bookworm)
+    productName:         NFS Desktop
+    shortProductName:    NFS
+    version:             12
     shortVersion:        12
-    versionedName:       Debian 12 NFS Desktop
-    shortVersionedName:  Debian NFS 12
-    bootloaderEntryName: Debian NFS
+    versionedName:       NFS OS
+    shortVersionedName:  NFS OS
+    bootloaderEntryName: NFS OS
     productUrl:          https://linux.hocdev.com
     supportUrl:          https://www.debian.org/support
     knownIssuesUrl:      https://bugs.debian.org

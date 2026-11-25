@@ -99,9 +99,9 @@ if [ -x /usr/bin/found-control-center ] && [ ! -e /usr/libexec/found-control-cen
     mkdir -p /usr/libexec
     mv /usr/bin/found-control-center /usr/libexec/found-control-center.real
     cat > /usr/bin/found-control-center <<'EOF'
-#!/bin/sh
+#!/bin/bash
 export LD_LIBRARY_PATH="/usr/lib/found-control-center-compat${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
-exec /usr/libexec/found-control-center.real "$@"
+exec -a found-control-center /usr/libexec/found-control-center.real "$@"
 EOF
     chmod 0755 /usr/bin/found-control-center
 fi

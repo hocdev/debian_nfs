@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=NFS Install
+GenericName=System Installer
+Comment=Install NFS OS on your computer
+Exec=install-debian
+Icon=/etc/calamares/branding/debian/debian-logo.png
+Terminal=false
+Categories=Qt;System;
+StartupNotify=true
