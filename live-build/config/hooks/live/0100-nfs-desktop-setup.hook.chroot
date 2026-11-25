@@ -21,13 +21,6 @@ fi
 echo "=== Configuring NFS Found Desktop on Debian 12 ==="
 ldconfig
 
-# Patch Python 3.11 collections.abc compatibility in found-tools
-for pyf in /usr/share/found-menu-editor/cme/util.py /usr/share/found-launcher-editor/main.py; do
-    if [ -f "$pyf" ]; then
-        sed -i 's/from collections import Sequence/from collections.abc import Sequence/' "$pyf"
-    fi
-done
-
 echo "=== Verifying NFS mutter 3.36 is installed (not Debian 12 mutter 43) ==="
 for mp in mutter mutter-common libmutter-6-0 gir1.2-mutter-6; do
     VER="$(dpkg-query -W -f='${Version}\n' "$mp" 2>/dev/null || true)"
@@ -74,17 +67,6 @@ for f in /usr/share/xsessions/*.desktop; do
         cdos-xorg.desktop|lightdm-xsession.desktop) ;;
         *) rm -f "$f" ;;
     esac
-done
-
-# Ensure standard Debian 12 PAM for cdos-screensaver
-for pamfile in /etc/pam.d/cdos-screensaver /etc/pam.d/cdos-screensaver-mix /etc/pam.d/cdos-screensaver-qr; do
-    cat > "$pamfile" <<'EOF'
-auth    required        pam_env.so readenv=1 envfile=/etc/default/locale
-@include common-auth
-auth    optional        pam_cap.so
-auth    optional        pam_gnome_keyring.so
-@include common-account
-EOF
 done
 
 # Set default system locales (English + Vietnamese UTF-8)
