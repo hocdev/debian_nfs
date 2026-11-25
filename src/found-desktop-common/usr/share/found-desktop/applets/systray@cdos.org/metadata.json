@@ -1,0 +1,7 @@
+{
+ "uuid": "systray@cdos.org",
+ "name": "System Tray",
+ "description": "An applet which hosts all the system tray icons",
+ "icon": "indicator-applet",
+ "enable_panel_operation":false
+}

@@ -1,0 +1,8 @@
+{
+"uuid": "menu@cdos.org",
+"name": "CDOS Menu",
+"description": "A menu with Windows 7 like favorites style along with the default Cinnamon app selection",
+"icon": "applications-other",
+"max-instances": -1,
+"enable_panel_operation":false
+}

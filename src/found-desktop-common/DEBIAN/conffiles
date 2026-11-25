@@ -1,0 +1,5 @@
+/etc/desktop/blacklist.d/systray
+/etc/pam.d/cdos-screensaver
+/etc/pam.d/cdos-screensaver-mix
+/etc/pam.d/cdos-screensaver-qr
+/etc/xdg/menus/found-applications.menu

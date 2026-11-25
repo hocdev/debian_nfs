@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ -d /usr/share/found-desktop/data/holiday/ ]; then
+	chmod 777 /usr/share/found-desktop/data/holiday/
+fi

@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.cdos.ScreenSaver.UserVerifier
+Exec=/usr/libexec/cdos-user-verify
+Path=/org/cdos/ScreenSaver/UserVerifier

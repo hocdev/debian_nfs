@@ -1,0 +1,16 @@
+[Desktop Entry]
+Type=Application
+Name=Cdos-desktop
+Comment=Window management and application launching
+Exec=/usr/bin/cdos-desktop
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=cdos
+X-GNOME-Bugzilla-Component=general
+X-GNOME-Bugzilla-Version=3.36.4
+Categories=CDOS;GTK;System;Core;
+OnlyShowIn=CDOS;FOUND;
+NoDisplay=true
+X-GNOME-Autostart-Phase=EarlyInitialization
+X-GNOME-Provides=panel;windowmanager;
+X-GNOME-Autostart-Notify=true
+X-GNOME-AutoRestart=true

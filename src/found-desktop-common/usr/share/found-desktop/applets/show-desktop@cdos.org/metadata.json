@@ -1,0 +1,7 @@
+{
+ "uuid": "show-desktop@cdos.org",
+ "name": "Show desktop",
+ "description": "Minimize all windows",
+ "icon": "desktop",
+ "enable_panel_operation":false
+}

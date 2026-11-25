@@ -1,0 +1,7 @@
+{
+ "uuid": "removable-drives@cdos.org",
+ "name": "Removable drives",
+ "description": "Access removable drives",
+ "icon": "media-eject",
+ "enable_panel_operation":true
+}

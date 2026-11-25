@@ -1,0 +1,7 @@
+{
+"uuid": "notifications@cdos.org",
+"name": "Notifications",
+"description": "Click to display and manage system notifications",
+"role": "notifications",
+"enable_panel_operation":true
+}

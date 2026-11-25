@@ -1,0 +1,7 @@
+{
+ "uuid": "power@cdos.org",
+ "name": "Power Manager",
+ "description": "Cinnamon power management applet",
+ "icon": "battery-full-charging",
+ "enable_panel_operation":true
+}

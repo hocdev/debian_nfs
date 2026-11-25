@@ -62,15 +62,23 @@ jobs:
                   print(f"Deleted old cache: {c.get('key')}")
           PY
 
-      - name: Verify exported .deb packages
+      - name: Build .deb packages from src/ & Verify all .deb packages
         run: |
           docker run --rm -v "${{ github.workspace }}:/work" -w /work debian:bookworm bash -c '
             set -euo pipefail
-            for deb in repo/pool/main/*.deb; do
+            export DEBIAN_FRONTEND=noninteractive
+            apt-get update
+            apt-get install -y --no-install-recommends gcc make libglib2.0-dev pkg-config dpkg-dev binutils python3
+            chmod +x src/taskbar/build.sh
+            ./src/taskbar/build.sh
+            count=0
+            for deb in repo/pool/main/*.deb build/debs/*.deb; do
+              [ -e "$deb" ] || continue
               dpkg-deb --info "$deb" >/dev/null
               dpkg-deb --contents "$deb" >/dev/null
+              count=$((count + 1))
             done
-            echo "Verified $(ls -1 repo/pool/main/*.deb | wc -l) .deb packages successfully."
+            echo "Verified ${count} .deb packages successfully."
           '
 
       - name: Build Debian 12 Live ISO via live-build in Debian Bookworm container
@@ -101,11 +109,14 @@ jobs:
                 dpkg-dev \
                 apt-utils \
                 gcc \
+                make \
                 libglib2.0-dev \
                 python3 \
                 ca-certificates
               mkdir -p out
-              ./live-build/build.sh 2>&1 | tee out/build.log
+              chmod +x src/taskbar/build.sh
+              ./src/taskbar/build.sh 2>&1 | tee out/build.log
+              ./live-build/build.sh 2>&1 | tee -a out/build.log
             '
 
       - name: Upload build log

@@ -1,0 +1,7 @@
+{
+ "uuid": "sound@cdos.org",
+ "name": "Sound",
+ "description": "A Cinnamon applet to control sound and music",
+ "icon": "stock_volume",
+ "enable_panel_operation":false
+}

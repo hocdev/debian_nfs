@@ -1,0 +1,6 @@
+{
+"uuid": "scale@cdos.org",
+"name": "Scale",
+"description": "Click or hover to activate Scale view",
+"enable_panel_operation":false
+}

@@ -1,10 +1,10 @@
-# Debian 12 NFS Desktop
+# Debian 12 Found Desktop
 
-Bản dựng **Debian 12 (Bookworm) Live + Installable ISO (amd64)** thay thế hoàn toàn môi trường desktop, taskbar, trình quản lý cửa sổ, session, trung tâm điều khiển, trình quản lý tệp, theme, icon, hình nền và Plymouth boot splash gốc bằng bộ giao diện **Found Desktop (CDOS)** và các tùy biến được xuất trực tiếp từ `NFSDesktop-5.0-G240-251209-amd64.iso` kết hợp bộ `branding_edit` từ `C:\Users\Administrator\Desktop\NFS`.
+Bản dựng **Debian 12 (Bookworm) Live + Installable ISO (amd64)** sử dụng môi trường desktop **Found Desktop (CDOS)** cùng bộ giao diện, taskbar, trình quản lý cửa sổ, session, trung tâm điều khiển, trình quản lý tệp, theme, icon, hình nền và Plymouth boot splash tùy biến.
 
-## Thành phần đã xuất từ NFSDesktop-5.0
+## Thành phần chính
 
-- **Desktop Shell & Taskbar**: `found-desktop`, `found-desktop-common`, `found-desktop-environment` (`cdos-desktop`, applets thanh tác vụ `menu@cdos.org`, `window-list@cdos.org`, `systray@cdos.org`, `sound@cdos.org`, `network@cdos.org`, `calendar@cdos.org`, `notifications@cdos.org`, `show-desktop@cdos.org`)
+- **Desktop Shell & Taskbar (`src/`)**: `found-desktop`, `found-desktop-common`, `found-desktop-environment` (`cdos-desktop`, mã nguồn phục dựng taskbar `src/taskbar/`, applets thanh tác vụ `menu@cdos.org`, `window-list@cdos.org`, `systray@cdos.org`, `sound@cdos.org`, `network@cdos.org`, `calendar@cdos.org`, `notifications@cdos.org`, `show-desktop@cdos.org`)
 - **Window Manager & Session**: `mutter` (3.36), `mutter-common`, `libmutter-6-0`, `gir1.2-mutter-6`, `found-session`, `found-session-common` (`cdos-session`, `cdos-xorg.desktop`)
 - **Settings & Control Center**: `found-settings-daemon`, `found-control-center`, `found-control-center-data`, `found-gsettings-schemas`, `found-tools`, `found-ui-scaling`, `found-livecd-customization`
 - **File Manager & Desktop Icons**: `nemo`, `nemo-data`, `libnemo-extension1`, `gir1.2-nemo-3.0`, `nemo-print` (`nemo-desktop`)
@@ -13,8 +13,9 @@ Bản dựng **Debian 12 (Bookworm) Live + Installable ISO (amd64)** thay thế 
 
 ## Cấu trúc thư mục
 
-- [repo/pool/main/](repo/pool/main/): 32 gói `.deb` đã xuất và điều chỉnh phụ thuộc cho Debian 12 Bookworm.
-- [tools/nfs-exporter/](tools/nfs-exporter/): Công cụ Rust + Python để trích xuất lại các gói từ `NFSDesktop-5.0-G240-251209-amd64.iso` và `branding_edit`.
+- [repo/pool/main/](repo/pool/main/): Các gói `.deb` đã điều chỉnh phụ thuộc cho Debian 12 Bookworm.
+- [src/](src/): Mã nguồn phục dựng (`src/taskbar/`) và cây gói `src/found-desktop/`, `src/found-desktop-common/` để build trực tiếp trong CI.
+- [tools/nfs-exporter/](tools/nfs-exporter/): Công cụ Rust + Python hỗ trợ đóng gói và trích xuất tài nguyên hệ thống.
 - [live-build/](live-build/): Cấu hình `live-build` (`bookworm`, `amd64`, LightDM mặc định phiên `cdos-xorg`, Calamares, hook `ldd` kiểm tra liên kết động).
 - [.github/workflows/build-iso.yml](.github/workflows/build-iso.yml): Workflow GitHub Actions tự động build ISO trong container `debian:bookworm` và tải artifact `debian-12-nfs-desktop-amd64.iso`.
 

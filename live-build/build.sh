@@ -4,10 +4,16 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WORK_DIR="${ROOT_DIR}/build"
 OUT_DIR="${ROOT_DIR}/out"
-REPO_DIR="${ROOT_DIR}/repo"
+REPO_DIR="${WORK_DIR}/repo"
 CACHE_DIR="${ROOT_DIR}/.lb-cache"
 
-mkdir -p "${OUT_DIR}" "${CACHE_DIR}"
+mkdir -p "${OUT_DIR}" "${CACHE_DIR}" "${REPO_DIR}/pool/main"
+
+# Stage local APT repository from repo/pool/main + build/debs (built from src/)
+cp -f "${ROOT_DIR}/repo/pool/main/"*.deb "${REPO_DIR}/pool/main/"
+if compgen -G "${ROOT_DIR}/build/debs/*.deb" > /dev/null; then
+    cp -f "${ROOT_DIR}/build/debs/"*.deb "${REPO_DIR}/pool/main/"
+fi
 
 # Build APT repository metadata for local NFS packages
 cd "${REPO_DIR}"

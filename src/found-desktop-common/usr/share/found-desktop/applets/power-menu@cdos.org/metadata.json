@@ -1,0 +1,7 @@
+{
+ "uuid": "power-menu@cdos.org",
+ "name": "Open power dialog",
+ "description": "Open power dialog",
+ "icon": "found-menu-power",
+ "enable_panel_operation":false
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN"
+ "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+
+<Menu>
+
+  <Name>Applications</Name>
+  <Directory>cdos-menu-applications.directory</Directory>
+
+  <!-- Scan legacy dirs first, as later items take priority -->
+  <KDELegacyDirs/>
+  <LegacyDir>/etc/X11/applnk</LegacyDir>
+  <LegacyDir>/usr/share/cdos/apps</LegacyDir>
+
+  <!-- Read standard .directory and .desktop file locations -->
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+
+  <!-- Read in overrides and child menus from applications-merged/ -->
+  <!-- <DefaultMergeDirs/> -->
+
+  <!-- Accessories submenu -->
+  <Menu>
+    <Name>Accessories</Name>
+    <Directory>cdos-accessories.directory</Directory>
+    <Include>
+      <And>
+        <Category>Utility</Category>
+	      <!-- Accessibility spec must have either the Utility or Settings
+	     category, and we display an accessibility submenu already for
+	     the ones that do not have Settings, so don't display accessibility
+	     applications here -->
+        <Not><Category>Settings</Category></Not>
+        <Not><Category>System</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Accessories -->
+
+  <!-- Development -->
+  <!-- <Menu>
+    <Name>Development</Name>
+    <Directory>cdos-development.directory</Directory>
+    <Include>
+      <And>
+        <Category>Development</Category>
+      </And>
+      <Filename>emacs.desktop</Filename>
+    </Include>
+  </Menu> --> <!-- End Development -->
+
+  <!-- Education -->
+  <!-- <Menu>
+    <Name>Education</Name>
+    <Directory>cdos-education.directory</Directory>
+    <Include>
+      <And>
+        <Category>Education</Category>
+      </And>
+    </Include>
+  </Menu> -->
+  <!-- End Education -->
+
+  <!-- Games -->
+  <Menu>
+    <Name>Game</Name>
+    <Directory>cdos-game.directory</Directory>
+    <Include>
+      <And>
+        <Category>Game</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Game -->
+
+  <!-- Graphics -->
+  <Menu>
+    <Name>Graphics</Name>
+    <Directory>cdos-graphics.directory</Directory>
+    <Include>
+      <And>
+        <Category>Graphics</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Graphics -->
+
+  <!-- Internet -->
+  <Menu>
+    <Name>Network</Name>
+    <Directory>cdos-network.directory</Directory>
+    <Include>
+      <And>
+        <Category>Network</Category>
+      </And>
+    </Include>
+  </Menu>   <!-- End Internet -->
+
+  <!-- AudioVideo -->
+  <Menu>
+    <Name>AudioVideo</Name>
+    <Directory>cdos-audio-video.directory</Directory>
+    <Include>
+      <And>
+        <Category>AudioVideo</Category>
+      </And>
+      <And>
+        <Category>Audio</Category>
+      </And>
+      <And>
+        <Category>Video</Category>
+      </And>
+    </Include>
+  </Menu>   <!-- End AudioVideo -->
+
+  <!-- Office -->
+  <Menu>
+    <Name>Office</Name>
+    <Directory>cdos-office.directory</Directory>
+    <Include>
+      <And>
+        <Category>Office</Category>
+      </And>
+      <Category>Spreadsheet</Category><!-- wps -->
+      <Category>WordProcessor</Category><!-- wps -->
+      <Category>Presentation</Category><!-- wps -->
+    </Include>
+  </Menu> <!-- End Office -->
+
+  <!-- Other -->
+  <Menu>
+    <Name>Other</Name>
+    <Directory>cdos-other.directory</Directory>
+    <OnlyUnallocated/>
+    <Include>
+      <And>
+        <Not><Category>Core</Category></Not>
+        <Not><Category>Settings</Category></Not>
+        <Not><Category>Screensaver</Category></Not>
+        <Not><Category>Uninstall</Category></Not>
+      </And>
+    </Include>
+  </Menu> <!-- End Other -->
+
+  <!-- System Settings -->
+  <Menu>
+    <Name>System Tools</Name>
+    <Directory>cdos-system-tools.directory</Directory>
+    <Include>
+      <And>
+        <Category>Settings</Category>
+      </And>
+      <And>
+        <Category>System</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End System Settings -->
+
+  <!-- Windows -->
+  <Menu>
+    <Name>wine-wine</Name>
+    <Directory>wine-wine.directory</Directory>
+    <Include>
+      <And>
+        <Category>Wine</Category>
+      </And>
+      <And>
+        <Category>Windows</Category>
+      </And>
+    </Include>
+  </Menu> <!-- End Windows -->
+
+  <Layout>
+    <Merge type="menus"/>
+    <Menuname>wine-wine</Menuname>
+    <Menuname>Office</Menuname>
+    <Menuname>Network</Menuname>
+    <Menuname>AudioVideo</Menuname>
+    <Menuname>Graphics</Menuname>
+    <Menuname>Game</Menuname>
+    <Menuname>System Tools</Menuname>
+    <Menuname>Accessories</Menuname>
+    <Menuname>Other</Menuname>
+    <Merge type="files"/>
+  </Layout>
+
+</Menu>  <!-- End Applications -->

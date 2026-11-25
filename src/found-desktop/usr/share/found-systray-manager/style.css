@@ -1,0 +1,20 @@
+/*cdos-settings:TrayGroup*/
+.traygroup-box{
+    
+}
+.traygroup-listbox{
+    
+}
+.traygroup-listbox-item{
+	border:none;
+	padding:15px;
+}
+.traygroup-listbox-item:not(:first-child){
+	border-top: 1px solid alpha(currentColor, 0.2);
+}
+.traygroup-listbox-item:hover{
+}
+.traygroup-listbox-item-select{
+	padding:5px;
+	border:none;
+}

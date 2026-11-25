@@ -1,0 +1,7 @@
+{
+ "uuid": "network@cdos.org",
+ "name": "Network Manager",
+ "description": "Network manager applet",
+ "icon": "network-idle",
+ "enable_panel_operation":false
+}

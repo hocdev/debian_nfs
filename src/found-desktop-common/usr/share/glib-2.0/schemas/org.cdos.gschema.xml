@@ -1,0 +1,1042 @@
+
+<schemalist>
+  <schema id="org.cdos" path="/org/cdos/"
+          gettext-domain="found-desktop">
+    <key name="development-tools" type="b">
+      <default>true</default>
+      <summary>
+        Enable internal tools useful for developers and testers from Alt-F2
+      </summary>
+      <description>
+        Allows access to internal debugging and monitoring tools
+        using the Alt-F2 dialog.
+      </description>
+    </key>
+
+    <key name="grouped-applets" type="as">
+	<default>[]</default>
+	<summary>uuids of applets to group</summary>
+	<description>
+	  UUIDs of applets to groupped.
+	</description>
+    </key>
+
+    <key name="enabled-applets" type="as">
+      <default>['left:0:menu@cdos.org', 'center:0:scale@cdos.org', 'center:1:window-list@cdos.org', 'right:0:systray@cdos.org', 'right:1:grouped-applets@cdos.org', 'right:2:keyboard@cdos.org', 'right:4:removable-drives@cdos.org', 'right:5:power@cdos.org', 'right:6:sound@cdos.org', 'right:7:network@cdos.org', 'right:8:calendar@cdos.org', 'right:9:notifications@cdos.org', 'right:10:show-desktop@cdos.org']</default>
+      <summary>Uuids of applets to enable</summary>
+      <description>
+        Cdos applets have a uuid property; this key lists applets
+        which should be loaded.
+      </description>
+    </key>
+
+    <key name="next-applet-id" type="i">
+      <default>0</default>
+      <summary>The next applet id to give the next added applet</summary>
+      <description>Do not change manually.</description>
+    </key>
+
+    <key name="panel-autohide" type="b">
+      <default>false</default>
+      <summary>Auto-hide panel</summary>
+      <description>
+        Whether the panel autohides or not.
+      </description>
+    </key>
+    
+    <key type="i" name="panel-show-delay">
+      <default>1000</default>
+      <summary>Duration of the delay before a hidden panel is shown</summary>
+      <description>Duration of the delay (in milliseconds)</description>
+    </key>
+    
+    <key type="i" name="panel-hide-delay">
+      <default>0</default>
+      <summary>Duration of the delay before a shown panel is hidden</summary>
+      <description>Duration of the delay (in milliseconds)</description>
+    </key>
+    <key name="panel-contextmenu-disabled" type="b">
+      <default>false</default>
+      <summary>Panel contextmenu disabled.</summary>
+      <description>
+        Whether the panel contextmenu disabled or not.
+      </description>
+    </key>
+    <key name="dock-autohide" type="b">
+      <default>false</default>
+      <summary>Auto-hide dock</summary>
+      <description>
+        Whether the dock autohides or not.
+      </description>
+    </key>
+
+    <key type="i" name="dock-show-delay">
+      <default>0</default>
+      <summary>Duration of the delay before a hidden dock is shown</summary>
+      <description>Duration of the delay (in milliseconds)</description>
+    </key>
+
+    <key type="i" name="dock-hide-delay">
+      <default>0</default>
+      <summary>Duration of the delay before a shown dock is hidden</summary>
+      <description>Duration of the delay (in milliseconds)</description>
+    </key>
+
+    <key name="panel-resizable" type="b">
+      <default>false</default>
+      <summary>Resizable panel</summary>
+      <description>
+        Whether the panel uses a user-defined height
+      </description>
+    </key>
+    
+    <key name="panel-top-height" type="i">
+      <default>25</default>
+      <range min="20" max="100" />
+      <summary>Panel size</summary>
+      <description>
+        User-defined panel-height for top panel.  Note, this value may or may not be the true value in use at runtime, depending
+        on any scaling that may be occurring (on hidpi screens, for instance).
+      </description>
+    </key>
+
+    <key name="panel-bottom-height" type="i">
+      <default>40</default>
+      <range min="20" max="100"/>
+      <summary>Panel size</summary>
+      <description>
+        User-defined panel-height for bottom panel.  Note, this value may or may not be the true value in use at runtime, depending
+        on any scaling that may be occurring (on hidpi screens, for instance).
+      </description>
+    </key>
+    
+    <key name="panel-scale-text-icons" type="b">
+      <default>false</default>
+      <summary>Scale panel applet text and icons</summary>
+      <description>
+        Whether the panel icons and text from applets is resized according to the custom panel height
+      </description>
+    </key>
+
+    <key name="dnd-drag-threshold" type="i">
+      <default>8</default>
+      <range min="1" max="200" />
+      <summary>DND drag threshold</summary>
+      <description>
+        Amount of motion to ignore before registering a drag-and-drop intent on panel objects
+      </description>
+    </key>
+
+    <key name="desktop-effects" type="b">
+      <default>false</default>
+      <summary>Enable desktop effects</summary>
+      <description>
+        Whether to enable desktop effects and window animations.
+      </description>
+    </key>
+
+    <key name="desktop-effects-blur" type="b">
+      <default>false</default>
+      <summary>Enable desktop blur effect</summary>
+      <description>
+        Whether to enable desktop blur effects in actors.
+      </description>
+    </key>
+
+    <key name="desktop-effects-on-dialogs" type="b">
+      <default>false</default>
+      <summary>Enable desktop effects on dialog boxes</summary>
+      <description>
+        Whether to enable desktop effects on dialog boxes.
+      </description>
+    </key>
+    
+    <key type="s" name="desktop-effects-close-effect">
+      <default>"none"</default>
+      <summary>Effect used when closing windows</summary>
+      <description>
+       An effect: scale, fade, none
+      </description>
+    </key>
+    
+     <key name="desktop-effects-close-transition" type="s">
+      <default>"easeInBack"</default>
+      <summary>Transition used when closing windows</summary>
+      <description>
+          A clutter transition
+      </description>
+    </key>
+    
+    <key type="i" name="desktop-effects-close-time">
+      <default>250</default>
+      <summary>Duration of the effect (in milliseconds)</summary>
+      <description>
+       Duration of the effect (in milliseconds)    
+      </description>
+    </key>
+    
+    <key type="s" name="desktop-effects-map-effect">
+      <default>"scale"</default>
+      <summary>Effect used when mapping windows</summary>
+      <description>
+          An effect: scale, fade, none
+      </description>
+    </key>
+    
+     <key name="desktop-effects-map-transition" type="s">
+      <default>"easeOutSine"</default>
+      <summary>Transition used when mapping windows</summary>
+      <description>
+          A clutter transition
+      </description>
+    </key>
+    
+    <key type="i" name="desktop-effects-map-time">
+      <default>250</default>
+      <summary>Duration of the effect (in milliseconds)</summary>
+      <description>
+          Duration of the effect (in milliseconds)    
+      </description>
+    </key>
+    
+    
+    <key type="s" name="desktop-effects-minimize-effect">
+      <default>"scale"</default>
+      <summary>Effect used when minimizing windows</summary>
+      <description>
+          An effect: traditional, scale, fade, none
+      </description>
+    </key>
+    
+     <key name="desktop-effects-minimize-transition" type="s">
+      <default>"easeInSine"</default>
+      <summary>Transition used when minimizing windows</summary>
+      <description>
+          A clutter transition
+      </description>
+    </key>
+    
+    <key type="i" name="desktop-effects-minimize-time">
+      <default>150</default>
+      <summary>Duration of the effect (in milliseconds)</summary>
+      <description>
+          Duration of the effect (in milliseconds)    
+      </description>
+    </key>
+    
+    <key type="s" name="desktop-effects-maximize-effect">
+      <default>"none"</default>
+      <summary>Effect used when maximizing windows</summary>
+      <description>
+          An effect: none
+      </description>
+    </key>
+    
+     <key name="desktop-effects-maximize-transition" type="s">
+      <default>"easeInBack"</default>
+      <summary>Transition used when maximizing windows</summary>
+      <description>
+          A clutter transition
+      </description>
+    </key>
+    
+    <key type="i" name="desktop-effects-maximize-time">
+      <default>400</default>
+      <summary>Duration of the effect (in milliseconds)</summary>
+      <description>
+          Duration of the effect (in milliseconds)    
+      </description>
+    </key>
+    
+    <key type="s" name="desktop-effects-unmaximize-effect">
+      <default>"none"</default>
+      <summary>Effect used when unmaximizing windows</summary>
+      <description>
+          An effect: none
+      </description>
+    </key>
+    
+     <key name="desktop-effects-unmaximize-transition" type="s">
+      <default>"easeOutBounce"</default>
+      <summary>Transition used when unmaximizing windows</summary>
+      <description>
+       A clutter transition
+      </description>
+    </key>
+    
+    <key type="i" name="desktop-effects-unmaximize-time">
+      <default>400</default>
+      <summary>Duration of the effect (in milliseconds)</summary>
+      <description>
+       Duration of the effect (in milliseconds)    
+      </description>
+    </key>
+
+    <key type="s" name="desktop-effects-tile-effect">
+      <default>"none"</default>
+      <summary>Effect used when maximizing windows</summary>
+      <description>
+       An effect: none
+      </description>
+    </key>
+    
+     <key name="desktop-effects-tile-transition" type="s">
+      <default>"easeInBack"</default>
+      <summary>Transition used when maximizing windows</summary>
+      <description>
+       A clutter transition
+      </description>
+    </key>
+    
+    <key type="i" name="desktop-effects-tile-time">
+      <default>400</default>
+      <summary>Duration of the effect (in milliseconds)</summary>
+      <description>
+       Duration of the effect (in milliseconds)    
+      </description>
+    </key>
+
+    <key name="desktop-layout" type="s">
+      <default>"classic"</default>
+      <summary>Layout style</summary>
+      <description>
+       Layout styles: traditional (1 panel at the bottom), flipped (1 panel on top), classic (1 panel on top, 1 panel at the bottom)
+      </description>
+    </key>
+    
+    <key name="date-format" type="s">
+      <default>"YYYY-MM-DD"</default>
+      <summary>Date format</summary>
+      <description>
+        Format used for dates.
+      </description>
+    </key>
+    
+    <key type="b" name="display-notifications">
+      <default>true</default>
+      <summary>Whether notifications are to be displayed</summary>
+    </key>
+
+    <key type="b" name="special-version">
+      <default>false</default>
+      <summary>Whether SV os</summary>
+    </key>
+
+
+    <key type="i" name="number-workspaces">
+        <default>4</default>
+        <summary>Number of workspaces in Cdos session</summary>
+        <description>
+                Number of Workspaces</description>
+    </key>
+
+    <key name="overview-corner" type="as">
+      <default>['expo:false:false', 'scale:false:false', 'custom:false:false', 'desktop:false:false']</default>
+      <summary>Properties of overview corners</summary>
+      <description>Properties of overview corners, in the form functionality:hover:icon. The order in which properties are displayed is top left, top right, bottom left, bottom right.</description>
+    </key>
+
+    <key name="panel-launchers" type="as">
+      <default>[ 'nfs-browser.desktop', 'nemo.desktop', 'cdos-appstore.desktop', 'found-control-center.desktop']</default>
+      <summary>Desktop files of the applications to put in the panel launchers applet</summary>
+      <description>
+        Cdos allows to show applications launchers on the panel.
+        This key lists the desktop files of the applications to show there.
+      </description>
+    </key>
+
+    <key type="i" name="panel-launchers-max-number">
+      <default>8</default>
+      <summary>Set the max number of panel launchers</summary>
+      <description>Set the max number of panel launchers,if panel launchers items reach the max number,it will send a message to notification</description>
+    </key>
+
+    <key name="enable-app-monitoring" type="b">
+      <default>true</default>
+      <summary>Whether to collect stats about applications usage</summary>
+      <description>
+        Cdos normally monitors active applications in order to present
+        the most used ones (e.g. in launchers). While this data will be
+        kept private, you may want to disable this for privacy reasons.
+        Please note that doing so won't remove already saved data.
+      </description>
+    </key>
+
+    <key name="favorite-apps" type="as">
+      <default>[ 'nfs-browser.desktop', 'cdos-softcenter.desktop', 'thunderbird.desktop' ]</default>
+      <summary>List of desktop file IDs for favorite applications</summary>
+      <description>
+        The applications corresponding to these identifiers
+        will be displayed in the favorites area.
+      </description>
+    </key>
+
+    <key name="notification-apps" type="as">
+      <default>['Rhythmbox:2', 'Basics:1']</default>
+      <summary>List of app-name and blacklist level for cdos applications</summary>
+      <description>
+        The applications corresponding to these identifiers
+        will be displayed on the notification pane.
+      </description>
+    </key>
+    
+    <key type="b" name="notification-all-app-switch">
+      <default>true</default>
+      <summary>Whether to open the notification setting of all apps</summary>
+      <description>
+        Whether to open the notification setting of all apps.
+      </description>
+    </key>
+    
+    <key type="(bbb)" name="notification-system-update">
+      <default>(true, true, true)</default>
+      <summary>System update notification settings state</summary>
+      <description>
+        Save the state of system update settings. Each element in tuple represents:notification,banner,sound.
+      </description>
+    </key> 
+    
+    <key type="(bbb)" name="notification-music-player">
+      <default>(true, true, true)</default>
+      <summary>Music player notification settings state(only for rhythmbox)</summary>
+      <description>
+        Save the state of music player(only for rhythmbox) settings. Each element in tuple represents:notification,banner,sound.
+      </description>
+    </key>
+    
+   <key type="(bbb)" name="notification-printer">
+      <default>(true, true, true)</default>
+      <summary>Printer notification settings state</summary>
+      <description>
+        Save the state of printer settings. Each element in tuple represents:notification,banner,sound.
+      </description>
+    </key>
+    
+    <key type="(bbb)" name="notification-browser">
+      <default>(true, true, true)</default>
+      <summary>Browser notification settings state</summary>
+      <description>
+        Save the state of browser settings. Each element in tuple represents:notification,banner,sound.
+      </description>
+    </key>
+    
+    <key type="i" name="favorite-apps-max-number">
+      <default>8</default>
+      <summary>Set the max number of favorite apps</summary>
+      <description>Set the max number of favorite apps.</description>
+    </key>
+    
+    <key type="i" name="newly-installed-remove-days">
+      <default>14</default>
+      <summary>Set the days when app remove from newly installed apps</summary>
+      <description>Set the days when app remove from newly installed apps.</description>
+    </key>
+    
+    <key name="workspace-name-overrides" type="as">
+      <default>[]</default>
+      <summary>List of non-default workspace names</summary>
+      <description>
+        The user-set names of the workspaces.
+      </description>
+    </key>
+    
+    <key type="i" name="workspace-osd-duration">
+      <default>1000</default>
+      <summary>Duration of Workspace OSD (in milliseconds)</summary>
+      <description>
+       Duration of the OSD (in milliseconds)    
+      </description>
+    </key>
+    
+    <key type="i" name="workspace-osd-x">
+      <range min="5" max="95" />
+      <default>50</default>
+      <summary>Workspace horizontal position (in percent of the monitor's width)</summary>
+      <description>
+       Workspace horizontal position (in percent of the monitor's width)   
+      </description>
+    </key>
+    
+    <key type="i" name="workspace-osd-y">
+      <range min="5" max="95" />
+      <default>50</default>
+      <summary>Workspace vertical position (in percent of the monitor's height)</summary>
+      <description>
+       Workspace vertical position (in percent of the monitor's height)
+      </description>
+    </key>
+    
+    <key name="workspace-osd-visible" type="b">
+      <default>true</default>
+      <summary>Enable or disable the workspace OSD</summary>
+      <description>
+        Whether the name of the workspace shows up on the screen when activated or not.
+      </description>
+    </key>
+
+    <key name="workspace-expo-view-as-grid" type="b">
+      <default>false</default>
+      <summary>Display the Expo view as a grid</summary>
+      <description>
+        When enabled the Expo view will be displayed as a grid.
+      </description>
+    </key>
+
+    <key name="disabled-open-search-providers" type="as">
+      <default>[]</default>
+      <summary>disabled OpenSearch providers</summary>
+    </key>
+
+    <key name="saved-im-presence" type="i">
+      <default>1</default>
+      <summary></summary>
+    </key>
+
+    <key name="saved-session-presence" type="i">
+      <default>0</default>
+      <summary></summary>
+    </key>
+
+    <key type="b" name="panel-edit-mode">
+      <default>false</default>
+      <summary>Panel edit mode</summary>
+      <description>A mode for the user to drag and drop applets and modify the look of the desktop</description>
+    </key>
+    
+    <key type="b" name="panel-launchers-draggable">
+      <default>true</default>
+      <summary>Whether panel launchers are draggable</summary>
+    </key>
+
+    <key type="i" name="desktop-mode">
+      <range min="0" max="1" />
+      <default>0</default>
+      <summary>Set desktop mode</summary>
+      <description>The mode of desktop: 0-default mode, 1-cloud mode.</description>
+    </key>
+
+    <key name="alttab-switcher-style" type="s">
+      <default>"icons+thumbnails"</default>
+      <summary>ALT-tab switcher style</summary>
+      <description>
+       Controls the style of the ALT-tab window switcher. Can be any combination of "icons", "preview" and "thumbnails", separated by "+".
+      </description>
+    </key>
+    
+    <key type="b" name="alttab-switcher-enforce-primary-monitor">
+      <default>false</default>
+      <summary>Enforce displaying the alt-tab switcher on the primary monitor instead of the active one</summary>
+    </key>
+
+    <key name="window-list-applet-scroll" type="b">
+      <default>false</default>
+      <summary>Enable mouse-scroll in window-list applet</summary>
+      <description>
+        When enabled the mouse wheel can scroll through the items in the window list applet.
+      </description>
+    </key>
+    
+    <key name="window-list-applet-alert" type="b">
+      <default>true</default>
+      <summary>Enable window list alerts</summary>
+      <description>
+        Enable window list alerts
+      </description>
+    </key>
+
+    <key name="bring-windows-to-current-workspace" type="b">
+      <default>false</default>
+      <summary>Brings windows requiring attention to the current workspace</summary>
+      <description>
+        When enabled, if a window requires attention, it is brought to the current workspace.
+      </description>
+    </key>
+
+    <key name="prevent-focus-stealing" type="b">
+      <default>false</default>
+      <summary>Prevents windows that request user attention from stealing focus</summary>
+      <description>
+        When enabled, even if a window requires attention, it is not activated.
+      </description>
+    </key>
+
+    <key type="b" name="enable-edge-flip">
+      <default>false</default>
+      <summary>Whether edge flip is enabled</summary>
+    </key>
+
+    <key type="i" name="edge-flip-delay">
+      <default>1000</default>
+      <summary>Duration of the delay before switching the workspace</summary>
+      <description>Duration of the delay (in milliseconds)</description>
+    </key>
+
+    <key type="b" name="run-dialog-show-completions">
+      <default>true</default>
+      <summary>Whether or not to show possible completions in the run dialog (Alt-F2)</summary>
+    </key>
+
+    <child name="theme" schema="org.cdos.theme"/>   
+    <child name="recorder" schema="org.cdos.recorder"/>
+    <child name="keyboard" schema="org.cdos.keyboard"/>
+    <child name="sounds" schema="org.cdos.sounds" />
+
+    <key name="enable-vfade" type="b">
+      <default>false</default>
+      <summary>Enable the fade effect in Cdos scrollviews</summary>
+      <description>
+        Whether the vfade effect is enabled or not
+      </description>
+    </key>
+
+    <key name="hide-snap-osd" type="b">
+      <default>false</default>
+      <summary>Prevent the tile/snap OSD from showing</summary>
+      <description>
+        Hide the snap OSD.
+      </description>
+    </key>
+
+    <key type="i" name="active-display-scale">
+      <range min="1" max="4" />
+      <default>1</default>
+      <summary>Utility read-only setting used by st library</summary>
+      <description>Current scale factor</description>
+    </key>
+
+  </schema>
+ 
+  <schema id="org.cdos.theme" path="/org/cdos/theme/"
+        gettext-domain="found-desktop">
+    <key name="name" type="s">
+      <default>"Found"</default>
+      <summary>Theme name</summary>
+      <description>
+       The name of the theme
+      </description>
+    </key>
+  </schema>
+ 
+  <schema id="org.cdos.keyboard" path="/org/cdos/keyboard/"
+          gettext-domain="found-desktop">
+    <key name="keyboard-type" type="s">
+      <default>'touch'</default>
+      <summary>Which keyboard to use</summary>
+      <description>
+        The type of keyboard to use.
+      </description>
+    </key>
+    <key name="auto-hide" type="b">
+      <default>true</default>
+      <summary>Auto hide on screen keyboard</summary>
+      <description>
+        Auto hide On Screen Keyboard.
+      </description>
+    </key>
+  </schema>
+    
+  <schema id="org.cdos.recorder" path="/org/cdos/recorder/"
+          gettext-domain="found-desktop">
+    <key name="framerate" type="i">
+      <default>15</default>
+      <summary>Framerate used for recording screencasts.</summary>
+      <description>
+        The framerate of the resulting screencast recordered
+        by Cdos's screencast recorder in frames-per-second.
+      </description>
+    </key>
+    <key name="pipeline" type="s">
+      <default>''</default>
+      <summary>The gstreamer pipeline used to encode the screencast</summary>
+      <description>
+        Sets the GStreamer pipeline used to encode recordings.
+        It follows the syntax used for gst-launch. The pipeline should have
+        an unconnected sink pad where the recorded video is recorded. It will
+        normally have a unconnected source pad; output from that pad
+        will be written into the output file. However the pipeline can also
+        take care of its own output - this might be used to send the output
+        to an icecast server via shout2send or similar. When unset or set
+        to an empty value, the default pipeline will be used. This is currently
+        'videorate ! vp8enc quality=10 speed=2 threads=%T ! queue ! webmmux'
+        and records to WEBM using the VP8 codec. %T is used as a placeholder
+        for a guess at the optimal thread count on the system.
+      </description>
+    </key>
+    <key name="file-extension" type="s">
+      <default>'webm'</default>
+      <summary>File extension used for storing the screencast</summary>
+      <description>
+        The filename for recorded screencasts will be a unique filename
+        based on the current date, and use this extension. It should be
+        changed when recording to a different container format.
+      </description>
+    </key>
+  </schema>
+
+  <schema id="org.cdos.background" path="/org/cdos/background/">
+    <key name="mode" type="s">
+      <default>"wallpaper"</default>
+      <summary>Background mode</summary>
+      <description>
+        This key defines the whether the desktop background shows one
+        single wallpaper, a slideshow or an online slideshow (Flickr).
+      </description>
+    </key>
+    <key name="slideshow-folder" type="s">
+      <default>""</default>
+      <summary>Folder to use for the slideshow</summary>
+      <description>
+        This key defines the folder to use for the slideshow.
+      </description>
+    </key>
+    <key name="slideshow-recursive" type="b">
+      <default>false</default>
+      <summary>Whether to list files recursively for the slideshow</summary>
+      <description>
+        This key defines whether to list files recursively for the slideshow.
+      </description>
+    </key>
+    <key name="slideshow-delay" type="i">
+      <default>15</default>
+      <summary>Delay for the slideshow</summary>
+      <description>
+        This key defines the delay for the slideshow.
+      </description>
+    </key>
+  </schema>
+  
+  <schema id="org.cdos.screensaver" path="/org/cdos/screensaver/">
+    <key name="default-message" type="s">
+      <default>""</default>
+      <summary>Default message for the screensaver</summary>
+      <description>
+        This is the message that appears on the lock screen by default.
+      </description>
+    </key>
+  </schema>
+  
+  <schema id="org.cdos.sounds" path="/org/cdos/sounds/">
+    <key name="control-center-effect-sound" type="b">
+      <default>true</default>
+      <summary>Whether Control center effect sounds.</summary>
+      <description>
+        Whether Control center effect sounds.
+      </description>
+    </key>
+
+    <key name="switch-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound when switching workspaces</summary>
+      <description>
+        Whether to play a sound when switching workspaces.
+      </description>
+    </key> 
+   
+    <key name="switch-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/switch.oga"</default>
+      <summary>Which sound to play when switching workspaces</summary>
+      <description>
+        Which sound to play when switching workspaces.
+      </description>
+    </key>      
+
+    <key name="close-enabled" type="b">
+      <default>false</default>
+      <summary>Whether to play a sound when closing windows</summary>
+      <description>
+        Whether to play a sound when closing windows.
+      </description>
+    </key> 
+   
+    <key name="close-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/close.oga"</default>
+      <summary>Which sound to play when closing windows</summary>
+      <description>
+        Which sound to play when closing windows.
+      </description>
+    </key>      
+
+    <key name="map-enabled" type="b">
+      <default>false</default>
+      <summary>Whether to play a sound when mapping windows</summary>
+      <description>
+        Whether to play a sound when mapping windows.
+      </description>
+    </key> 
+   
+    <key name="map-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/map.oga"</default>
+      <summary>Which sound to play when mapping windows</summary>
+      <description>
+        Which sound to play when mapping windows.
+      </description>
+    </key>      
+
+    <key name="minimize-enabled" type="b">
+      <default>false</default>
+      <summary>Whether to play a sound when minimizing windows</summary>
+      <description>
+        Whether to play a sound when minimizing windows.
+      </description>
+    </key> 
+   
+    <key name="minimize-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/minimize.oga"</default>
+      <summary>Which sound to play when minimizing windows</summary>
+      <description>
+        Which sound to play when minimizing windows.
+      </description>
+    </key>      
+
+    <key name="maximize-enabled" type="b">
+      <default>false</default>
+      <summary>Whether to play a sound when maximizing windows</summary>
+      <description>
+        Whether to play a sound when maximizing windows.
+      </description>
+    </key> 
+   
+    <key name="maximize-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/maximize.oga"</default>
+      <summary>Which sound to play when maximizing windows</summary>
+      <description>
+        Which sound to play when maximizing windows.
+      </description>
+    </key>      
+
+    <key name="unmaximize-enabled" type="b">
+      <default>false</default>
+      <summary>Whether to play a sound when unmaximizing windows</summary>
+      <description>
+        Whether to play a sound when unmaximizing windows.
+      </description>
+    </key> 
+   
+    <key name="unmaximize-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/unmaximize.oga"</default>
+      <summary>Which sound to play when unmaximizing windows</summary>
+      <description>
+        Which sound to play when unmaximizing windows.
+      </description>
+    </key>      
+
+    <key name="tile-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound when tiling windows</summary>
+      <description>
+        Whether to play a sound when tiling windows.
+      </description>
+    </key> 
+   
+    <key name="tile-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/tile.oga"</default>
+      <summary>Which sound to play when tiling windows</summary>
+      <description>
+        Which sound to play when tiling windows.
+      </description>
+    </key>      
+
+    <key name="login-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound during login</summary>
+      <description>
+        Whether to play a sound during login.
+      </description>
+    </key> 
+   
+    <key name="login-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/login.oga"</default>
+      <summary>Which sound to play when logging in</summary>
+      <description>
+        Which sound to play during login.
+      </description>
+    </key> 
+
+    <key name="logout-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound during logout</summary>
+      <description>
+        Whether to play a sound during logout.
+      </description>
+    </key> 
+   
+    <key name="logout-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/logout.ogg"</default>
+      <summary>Which sound to play when logging out</summary>
+      <description>
+        Which sound to play during logout.
+      </description>
+    </key>          
+    <key name="notification-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound for new notification</summary>
+      <description>
+        Whether to play a sound during logout.
+      </description>
+    </key> 
+   
+    <key name="notification-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/notification.oga"</default>
+      <summary>Which sound to play when logging out</summary>
+      <description>
+        Which sound to play during logout.
+      </description>
+    </key>          
+
+    <key name="plug-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound when a device is plugged</summary>
+      <description>
+        Whether to play a sound when a device is plugged.
+      </description>
+    </key> 
+   
+    <key name="plug-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/plug.oga"</default>
+      <summary>Which sound to play when a device is plugged</summary>
+      <description>
+        Which sound to play when a device is plugged.
+      </description>
+    </key>     
+
+    <key name="unplug-enabled" type="b">
+      <default>true</default>
+      <summary>Whether to play a sound when a device is unplugged</summary>
+      <description>
+        Whether to play a sound when a device is unplugged.
+      </description>
+    </key> 
+   
+    <key name="unplug-file" type="s">
+      <default>"/usr/share/mint-artwork-cdos/sounds/unplug.oga"</default>
+      <summary>Which sound to play when a device is plugged</summary>
+      <description>
+        Which sound to play when a device is unplugged.
+      </description>
+    </key>    
+
+    <key name="output-sync-control" type="b">
+      <default>true</default>
+      <summary>Apply output volume settings to all audio output devices</summary>
+      <description>
+        Apply output volume settings to all audio output devices.
+      </description>
+    </key> 
+
+    <key name="input-sync-control" type="b">
+      <default>true</default>
+      <summary>Apply input volume settings to all audio input devices</summary>
+      <description>
+        Apply input volume settings to all audio input devices.
+      </description>
+    </key> 
+
+    <key name="init-volume-percent" type="i">
+      <default>50</default>
+      <summary>Init volume percent</summary>
+      <description>
+        Init volume percent.
+      </description>
+    </key> 
+
+  </schema>
+
+  <schema id="org.cdos.keybindings" path="/org/cdos/keybindings/">
+    <key name="custom-list" type="as">
+      <default>[]</default>
+      <summary>List of gsettings custom keybinding paths to look in</summary>
+      <description>
+      </description>
+    </key>
+  </schema>
+
+  <schema id="org.cdos.keybindings.custom-keybinding">
+    <key name="name" type="s">
+      <default>''</default>
+      <summary>Name</summary>
+      <description>Name of the custom binding</description>
+    </key>
+    <key name="binding" type="s">
+      <default>''</default>
+      <summary>Binding</summary>
+      <description>Binding for the custom binding</description>
+    </key>
+    <key name="command" type="s">
+      <default>''</default>
+      <summary>Command</summary>
+      <description>Command to run when the binding is invoked</description>
+    </key>
+  </schema>
+
+  <schema id="org.cdos.window-list" path="/org/cdos/window-list/">
+    <key name="group-apps" type="b">
+      <default>true</default>
+      <summary>Set whether the app buttons are shown as a group</summary>
+      <description>
+      If true, all the app buttons will be shown only one, otherwise one window bind one button;  
+      </description>
+    </key>
+    <key name="enable-hover-peek" type="b">
+      <default>false</default>
+      <summary>Set whether enable the window's preview, when the mouse over. </summary>
+      <description>
+      If true, you can easyly preview the origin window, when the mouse is over the window thumbnail, otherwise you can't;  
+      </description>
+    </key>
+    <key name="pinned-show-number" type="i">
+      <default>-1</default>
+      <range min="-1" max="100" />
+      <summary>Set the number of shown buttons in the pinned favs.</summary>
+      <description>
+      If -1, show all the buttons, otherwise, the left buttons will be placed in the popup menu;
+      </description>
+    </key>
+    <key name="contextmenu-disabled" type="b">
+      <default>false</default>
+      <summary>App group contextmenu disabled.</summary>
+      <description>
+        Whether the app group contextmenu disabled or not.
+      </description>
+    </key>
+  </schema>
+  <schema id="org.cdos.menu" path="/org/cdos/menu/">
+    <key name="view-mode" type="i">
+      <default>0</default>
+      <range min="0" max="2" />
+      <summary>Set the view mode of menu applications.</summary>
+      <description>
+        Choose a good view mode, which you like, 1 is default view, 2 is simple view.
+      </description>
+    </key>
+    <key name="applications-category-type" type="i">
+      <default>1</default>
+      <range min="1" max="2" />
+      <summary>Set the group mode of all applications.</summary>
+      <description>
+      If you want to change the group mode of all applications in menu, you can change this value.1 is grouped by first letter, 2 is grouped by the category field in desktop file.
+      </description>
+    </key>
+    <key name="favorites-category-draggable" type="b">
+      <default>true</default>
+      <summary>Set the favorites group draggable.</summary>
+      <description>
+      Whether you can reorder the favorites groups in menu by dragging, if true, the favorites group can be reorder, or you can't.
+      </description>
+    </key>
+    <key name="category-default-show-num" type="i">
+      <default>6</default>
+      <range min="1" max="100" />
+      <summary>Set the default shown number of category appliactions.</summary>
+      <description>
+      If the category appliactions is more than this number, the left applications will be hide, but you can use some mothed to make them come out.
+      </description>
+    </key>
+    <key name="auto-scrolling" type="b">
+      <default>false</default>
+      <summary>Enable or disable the all applications scroll view's auto scroll</summary>
+      <description>
+      Whether the all applicatins scroll view will auto scroll when pointer enter the auto-scroll area.
+      </description>
+    </key>
+  </schema>
+</schemalist>

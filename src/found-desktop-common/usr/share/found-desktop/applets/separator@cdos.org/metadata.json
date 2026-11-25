@@ -1,0 +1,8 @@
+{
+ "uuid": "separator@cdos.org",
+ "name": "Separator",
+ "description": "A separator icon which can be added multiple times",
+ "icon": "gnome-panel-separator",
+ "max-instances": "100",
+ "enable_panel_operation":false
+}

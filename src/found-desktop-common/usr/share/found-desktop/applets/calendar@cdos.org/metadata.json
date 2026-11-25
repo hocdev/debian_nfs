@@ -1,0 +1,7 @@
+{
+ "uuid": "calendar@cdos.org",
+ "name": "Calendar",
+ "description": "The Cinnamon calendar applet",
+ "icon": "stock_calendar",
+"enable_panel_operation":false
+}

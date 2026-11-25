@@ -8,3 +8,5 @@
 *.iso
 *.sha256
 /new
+/src/taskbar/*.o
+/src/taskbar/*.so

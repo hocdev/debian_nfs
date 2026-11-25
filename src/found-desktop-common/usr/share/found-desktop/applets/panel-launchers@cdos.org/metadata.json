@@ -1,0 +1,7 @@
+{
+ "uuid": "panel-launchers@cdos.org",
+ "name": "Panel launchers",
+ "description": "Launch applications from the panel",
+ "icon": "gnome-panel-launcher",
+ "enable_panel_operation":false
+}

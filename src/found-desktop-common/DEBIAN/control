@@ -1,0 +1,20 @@
+Package: found-desktop-common
+Priority: optional
+Section: gnome
+Installed-Size: 4279
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: all
+Source: found-desktop
+Version: 4.0.5-m117+1nfs5
+Depends: dconf-gsettings-backend | gsettings-backend
+Conffiles: 
+ /etc/desktop/blacklist.d/systray 3f338be2894973bbe92d43d3a58fe5b9
+ /etc/pam.d/cdos-screensaver 9dc6aa3519f81c4c7366b0bd20ab4498
+ /etc/pam.d/cdos-screensaver-mix 9cee11d073b3bfaec9ddffebdd8234dc
+ /etc/pam.d/cdos-screensaver-qr c582dca044e80a6b12a621e3463eb63c
+ /etc/xdg/menus/found-applications.menu a4190b32005f5560756eea9c8caec9f7
+Description: Cdos-desktop desktop (Common data files)
+ Cdos-desktop is a modern Linux desktop which provides advanced innovative features and a traditional user experience. It's easy to use, powerful and flexible.
+ .
+ This package contains the architecture independent files needed by Cdos
+Homepage: http://172.30.44.168/Desktop4.0/cdos-desktop-dev
