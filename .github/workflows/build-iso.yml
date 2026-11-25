@@ -29,10 +29,10 @@ jobs:
           df -h
 
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Restore cached Debian 12 base & APT packages
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: .lb-cache
           key: debian-12-lb-cache-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
@@ -85,14 +85,14 @@ jobs:
 
       - name: Upload build log
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-log
           path: out/build.log
           retention-days: 7
 
       - name: Upload ISO artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: debian-12-nfs-desktop-amd64-iso
           path: |
