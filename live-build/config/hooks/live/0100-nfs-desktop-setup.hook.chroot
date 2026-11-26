@@ -18,11 +18,11 @@ if [ -n "$STOCK_PKGS" ]; then
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge
 fi
 
-echo "=== Configuring NFS Found Desktop on Debian 12 ==="
+echo "=== Configuring NFS ==="
 ldconfig
-chmod 0755 /usr/bin/nfs-install-debian
+chmod 0755 /usr/bin/nfs-launch-installer
 
-echo "=== Verifying NFS mutter 3.36 is installed (not Debian 12 mutter 43) ==="
+echo "=== Verifying NFS Mutter 3.36 ==="
 for mp in mutter mutter-common libmutter-6-0 gir1.2-mutter-6; do
     VER="$(dpkg-query -W -f='${Version}\n' "$mp" 2>/dev/null || true)"
     echo "  $mp = $VER"
@@ -145,7 +145,7 @@ rm -f /usr/share/found-desktop/data/feedback \
       /usr/share/found-desktop/data/feedback-service-account.png || true
 
 # Mark desktop installer launcher executable
-chmod 0755 /etc/skel/Desktop/install-debian.desktop /usr/share/applications/install-debian.desktop 2>/dev/null || true
+chmod 0755 /etc/skel/Desktop/nfs-install.desktop /usr/share/applications/nfs-install.desktop
 
 # Configure fcitx5 + fcitx5-lotus as default input method for GTK/Qt/X11 apps
 if command -v im-config >/dev/null 2>&1; then
@@ -159,19 +159,23 @@ export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
 EOF
 
-# Write /etc/os-release directly with NFS OS branding keys expected by found-control-center
-# while preserving Debian 12 ID/VERSION_CODENAME for apt/dpkg compatibility.
+# Identify NFS while recording the upstream family and package suite.
 cat > /etc/os-release <<'EOF'
-PRETTY_NAME="NFS OS Desktop"
-NAME="NFS OS"
-NAME_EN="NFS OS"
+PRETTY_NAME="NFS"
+NAME="NFS"
+NAME_EN="NFS"
 VERSION_ID="12"
 VERSION="Desktop"
 VERSION_CODENAME=bookworm
-ID=debian
-HOME_URL="https://www.debian.org/"
-SUPPORT_URL="https://www.debian.org/support"
-BUG_REPORT_URL="https://bugs.debian.org/"
+ID=nfs
+ID_LIKE=debian
+HOME_URL="https://linux.hocdev.com/"
+EOF
+printf '%s\n' 'NFS \n \l' '' > /etc/issue
+printf '%s\n' 'NFS' > /etc/issue.net
+cat > /etc/motd <<'EOF'
+License terms for installed programs are available in /usr/share/doc/*/copyright.
+NFS comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law.
 EOF
 
 # Enable fcitx5-lotus-server for live user so Lotus uinput mode works out of the box

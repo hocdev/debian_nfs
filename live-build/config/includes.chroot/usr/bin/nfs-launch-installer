@@ -2,7 +2,7 @@
 set -eu
 
 if [ -n "${XDG_RUNTIME_DIR:-}" ]; then
-    exec 9>"$XDG_RUNTIME_DIR/nfs-install-debian.lock"
+    exec 9>"$XDG_RUNTIME_DIR/nfs-launch-installer.lock"
     flock -n 9 || exit 0
 fi
 
@@ -20,7 +20,7 @@ trap 'exit 129' HUP
 trap 'exit 130' INT
 trap 'exit 143' TERM
 
-# Keep the desktop from mounting partitions while Calamares is creating them.
+# Keep the desktop from mounting partitions while the installer is creating them.
 gsettings set "$found_schema" automount false
 gsettings set "$gnome_schema" automount false
 

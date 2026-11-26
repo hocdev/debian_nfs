@@ -15,10 +15,6 @@ strings:
     shortVersionedName:  NFS OS
     bootloaderEntryName: NFS OS
     productUrl:          https://linux.hocdev.com
-    supportUrl:          https://www.debian.org/support
-    knownIssuesUrl:      https://bugs.debian.org
-    releaseNotesUrl:     https://www.debian.org/releases/bookworm/releasenotes
-    donateUrl:           https://www.debian.org
 
 images:
     productLogo:         "debian-logo.png"

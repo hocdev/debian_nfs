@@ -35,8 +35,8 @@ dpkg-scanpackages --multiversion pool/main /tmp/nfs.override > Packages
 rm -f /tmp/nfs.override
 gzip -9c Packages > Packages.gz
 apt-ftparchive \
-  -o APT::FTPArchive::Release::Origin="DebianNFS" \
-  -o APT::FTPArchive::Release::Label="DebianNFS" \
+  -o APT::FTPArchive::Release::Origin="NFS" \
+  -o APT::FTPArchive::Release::Label="NFS" \
   release . > Release
 
 # Serve local APT repo over HTTP so live-build chroot apt-get resolves all dependencies cleanly
@@ -146,9 +146,10 @@ lb config \
   --cache-packages true \
   --cache-stages "bootstrap" \
   --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8,vi_VN.UTF-8" \
-  --iso-application "Debian 12 NFS Desktop" \
-  --iso-publisher "Debian NFS" \
-  --iso-volume "DEBIAN_NFS_12" \
+  --iso-application "NFS" \
+  --iso-preparer "NFS" \
+  --iso-publisher "NFS" \
+  --iso-volume "NFS" \
   --memtest none \
   --checksums sha256 \
   --zsync false

@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+# live-build runs this hook from the ISO tree before computing its checksums.
+printf '%s\n' 'NFS Live amd64' > .disk/info
+
+# The offline package index is generated separately from the build-time APT repo.
+sed -i -e 's/^Origin:.*/Origin: NFS/' -e 's/^Label:.*/Label: NFS/' dists/bookworm/Release

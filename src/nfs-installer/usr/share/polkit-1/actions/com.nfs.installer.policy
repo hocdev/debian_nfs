@@ -4,7 +4,7 @@
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
   <vendor>NFS OS</vendor>
-  <vendor_url>https://www.debian.org/</vendor_url>
+  <vendor_url>https://linux.hocdev.com/</vendor_url>
   <action id="com.nfs.installer.run">
     <description>Run NFS Desktop System Installer</description>
     <message>Authentication is required to install NFS Desktop to disk</message>

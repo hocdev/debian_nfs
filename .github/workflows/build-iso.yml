@@ -1,4 +1,4 @@
-name: Build Debian 12 NFS Desktop ISO
+name: Build NFS ISO
 
 on:
   push:
@@ -32,19 +32,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Restore cached Debian 12 base & APT packages
+      - name: Restore cached NFS base and APT packages
         uses: actions/cache@v5
         with:
           path: .lb-cache
-          key: debian-12-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+          key: nfs-bookworm-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
           restore-keys: |
-            debian-12-lb-cache-v3-
+            nfs-bookworm-lb-cache-v3-
 
       - name: Keep only the latest cache entry
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          KEEP_KEY: debian-12-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+          KEEP_KEY: nfs-bookworm-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
         run: |
           python3 - <<'PY' || true
           import json, os, urllib.request
@@ -81,7 +81,7 @@ jobs:
             echo "Verified ${count} .deb packages successfully."
           '
 
-      - name: Build Debian 12 Live ISO via live-build in Debian Bookworm container
+      - name: Build NFS Live ISO
         run: |
           chmod +x live-build/build.sh
           docker run --privileged --rm \
@@ -149,7 +149,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ inputs.release_tag }}
-          name: "Debian 12 NFS Desktop (${{ inputs.release_tag }})"
+          name: "NFS (${{ inputs.release_tag }})"
           files: |
             out/*.iso
             out/*.sha256

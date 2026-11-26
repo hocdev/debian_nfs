@@ -360,7 +360,7 @@ gboolean nfs_installer_run(const InstallConfig *cfg,
     g_free(q_pass);
 
     run_cmd("chroot " TARGET_MOUNT " sh -c 'DEBIAN_FRONTEND=noninteractive apt-get purge -y live-boot live-config live-config-systemd 2>/dev/null || true; "
-            "rm -f /etc/lightdm/lightdm.conf.d/10-nfs-live.conf /etc/skel/Desktop/install-debian.desktop /home/*/Desktop/install-debian.desktop; "
+            "rm -f /etc/lightdm/lightdm.conf.d/10-nfs-live.conf /etc/skel/Desktop/nfs-install.desktop /home/*/Desktop/nfs-install.desktop; "
             "userdel -r user 2>/dev/null || true'",
             cb, cb_data, 0.87, "Removing live session configuration...");
 
