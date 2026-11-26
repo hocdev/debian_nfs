@@ -19,3 +19,6 @@
 /src/nemo-share/src/*.o
 /src/nemo-share/src/*.so
 /src/nemo-share/usr/lib/x86_64-linux-gnu/nemo/extensions-3.0/*.so
+/src/nfs-installer/src/*.o
+/src/nfs-installer/src/nfs-installer
+/src/nfs-installer/usr/bin/nfs-installer

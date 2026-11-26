@@ -1,0 +1,13 @@
+Package: nfs-installer
+Version: 1.0.0+1nfs5
+Architecture: amd64
+Maintainer: NFS OS Team <maintainers@nfs-os.local>
+Installed-Size: 512
+Section: admin
+Priority: optional
+Depends: libc6 (>= 2.34), libglib2.0-0 (>= 2.74), libgtk-3-0 (>= 3.24), parted, dosfstools, e2fsprogs, squashfs-tools, grub-pc-bin | grub-efi-amd64-bin, efibootmgr, util-linux, policykit-1
+Replaces: calamares, calamares-settings-debian
+Conflicts: calamares
+Description: NFS Desktop System Installer
+ Lightweight GTK3 system installer for NFS Desktop OS, reconstructed in C
+ with UEFI/BIOS partitioning, squashfs deployment, user setup, and GRUB2.

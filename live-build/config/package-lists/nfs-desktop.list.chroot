@@ -11,8 +11,11 @@ grub-pc-bin
 grub-efi-amd64-bin
 plymouth
 plymouth-themes
-calamares
-calamares-settings-debian
+nfs-installer
+parted
+dosfstools
+squashfs-tools
+efibootmgr
 
 # Xorg + Display Manager
 xorg

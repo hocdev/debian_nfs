@@ -27,6 +27,11 @@ strip --strip-unneeded "$SRC_ROOT/nemo-share/src/libnemo-share.so"
 mkdir -p "$SRC_ROOT/nemo-share/usr/lib/x86_64-linux-gnu/nemo/extensions-3.0"
 cp "$SRC_ROOT/nemo-share/src/libnemo-share.so" "$SRC_ROOT/nemo-share/usr/lib/x86_64-linux-gnu/nemo/extensions-3.0/libnemo-share.so"
 
+make -C "$SRC_ROOT/nfs-installer/src" clean all
+strip --strip-unneeded "$SRC_ROOT/nfs-installer/src/nfs-installer"
+mkdir -p "$SRC_ROOT/nfs-installer/usr/bin"
+cp "$SRC_ROOT/nfs-installer/src/nfs-installer" "$SRC_ROOT/nfs-installer/usr/bin/nfs-installer"
+
 build_pkg_from_src() {
   local name="$1"
   local deb_file="$2"
@@ -140,6 +145,7 @@ build_pkg_from_src "found-control-center"       "found-control-center_1_3.38.5-m
 build_pkg_from_src "nemo"                       "nemo_4.8.6-m262+1nfs5_amd64.deb"
 build_pkg_from_src "nfs-compat-libs"            "nfs-compat-libs_1.0+nfs5_amd64.deb"
 build_pkg_from_src "found-icon-theme-dark"      "found-icon-theme-dark_4.0.6-m10+1nfs5_all.deb"
+build_pkg_from_src "nfs-installer"              "nfs-installer_1.0.0+1nfs5_amd64.deb"
 
 echo "=== 3. Built packages in $OUT_DIR ==="
 ls -lh "$OUT_DIR"
