@@ -158,6 +158,12 @@ SUPPORT_URL="https://www.debian.org/support"
 BUG_REPORT_URL="https://bugs.debian.org/"
 EOF
 
+# Enable fcitx5-lotus-server for live user so Lotus uinput mode works out of the box
+if [ -f /usr/lib/systemd/system/fcitx5-lotus-server@.service ]; then
+    mkdir -p /etc/systemd/system/multi-user.target.wants
+    ln -sf /usr/lib/systemd/system/fcitx5-lotus-server@.service /etc/systemd/system/multi-user.target.wants/fcitx5-lotus-server@user.service
+fi
+
 # Rebuild initramfs so Plymouth nfslogo theme is embedded
 if command -v update-initramfs >/dev/null 2>&1; then
     update-initramfs -u -k all || true
