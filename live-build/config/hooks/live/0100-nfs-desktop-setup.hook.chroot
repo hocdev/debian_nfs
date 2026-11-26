@@ -34,9 +34,19 @@ for mp in mutter mutter-common libmutter-6-0 gir1.2-mutter-6; do
     esac
 done
 
+# Remove JingJiaWei-only GPU gschema override in generic ISO build
+rm -f /usr/share/glib-2.0/schemas/10_nfs-custom-jjw.gschema.override || true
+
 if [ -d /usr/share/glib-2.0/schemas ]; then
     glib-compile-schemas --strict /usr/share/glib-2.0/schemas
 fi
+
+# Ensure X11 default cursor theme uses Found (black cursor) instead of Adwaita
+mkdir -p /usr/share/icons/default
+cat > /usr/share/icons/default/index.theme <<'EOF'
+[Icon Theme]
+Inherits=Found
+EOF
 
 if [ -x /usr/bin/cdos-session ]; then
     update-alternatives --install /usr/bin/x-session-manager x-session-manager /usr/bin/cdos-session 100 || true
