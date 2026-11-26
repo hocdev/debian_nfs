@@ -1,0 +1,2 @@
+# Debian's Calamares bootloader job installs this from the ISO APT repository.
+grub-efi-amd64

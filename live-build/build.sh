@@ -150,6 +150,15 @@ lb config \
 
 lb build
 
+# Check the on-media APT index that Debian Calamares uses for offline installs.
+MEDIA_PACKAGES="${WORK_DIR}/binary/dists/bookworm/main/binary-amd64/Packages"
+for package in grub-efi-amd64 grub-pc cryptsetup-initramfs cryptsetup keyutils; do
+    if ! grep -Fxq "Package: ${package}" "${MEDIA_PACKAGES}"; then
+        echo "ERROR: Offline installer package missing from the ISO: ${package}" >&2
+        exit 1
+    fi
+done
+
 ISO_FILE="$(ls -1 "${WORK_DIR}"/*.iso | head -n 1)"
 if [ -z "${ISO_FILE}" ]; then
     echo "ERROR: No ISO produced by live-build"

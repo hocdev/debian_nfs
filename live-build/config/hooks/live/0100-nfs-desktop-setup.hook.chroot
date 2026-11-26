@@ -20,6 +20,7 @@ fi
 
 echo "=== Configuring NFS Found Desktop on Debian 12 ==="
 ldconfig
+chmod 0755 /usr/bin/nfs-install-debian
 
 echo "=== Verifying NFS mutter 3.36 is installed (not Debian 12 mutter 43) ==="
 for mp in mutter mutter-common libmutter-6-0 gir1.2-mutter-6; do

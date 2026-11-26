@@ -1,0 +1,4 @@
+# The same job needs these when installing to an encrypted target.
+cryptsetup-initramfs
+cryptsetup
+keyutils

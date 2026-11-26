@@ -1,0 +1,27 @@
+#!/bin/sh
+set -eu
+
+if [ -n "${XDG_RUNTIME_DIR:-}" ]; then
+    exec 9>"$XDG_RUNTIME_DIR/nfs-install-debian.lock"
+    flock -n 9 || exit 0
+fi
+
+found_schema=org.cdos.desktop.media-handling
+gnome_schema=org.gnome.desktop.media-handling
+found_automount=$(gsettings get "$found_schema" automount)
+gnome_automount=$(gsettings get "$gnome_schema" automount)
+
+restore_automount() {
+    gsettings set "$found_schema" automount "$found_automount"
+    gsettings set "$gnome_schema" automount "$gnome_automount"
+}
+trap restore_automount EXIT
+trap 'exit 129' HUP
+trap 'exit 130' INT
+trap 'exit 143' TERM
+
+# Keep the desktop from mounting partitions while Calamares is creating them.
+gsettings set "$found_schema" automount false
+gsettings set "$gnome_schema" automount false
+
+/usr/bin/install-debian "$@"

@@ -1,0 +1,2 @@
+# Keep BIOS and UEFI in separate lists because these packages conflict.
+grub-pc
