@@ -63,11 +63,28 @@ build_pkg_from_src() {
       find "$stage/$d" -type f -exec chmod 0755 {} +
     fi
   done
-  find "$stage" -type f ! -path "$stage/DEBIAN/*" -exec sh -c '
-    for f do
-      head -c 4 "$f" 2>/dev/null | grep -qE "^(\x7fELF|#!)" && chmod 0755 "$f" || true
-    done
-  ' sh {} +
+  python3 - "$stage" <<'PY'
+import os, sys
+
+stage = sys.argv[1]
+debian_dir = os.path.join(stage, "DEBIAN")
+for root, _, files in os.walk(stage):
+    if root == debian_dir or root.startswith(debian_dir + os.sep):
+        continue
+    for name in files:
+        path = os.path.join(root, name)
+        if os.path.islink(path):
+            continue
+        try:
+            with open(path, "rb") as f:
+                magic = f.read(4)
+        except OSError:
+            continue
+        if magic == b"\x7fELF" or magic.startswith(b"#!"):
+            if name.endswith(".so") or ".so." in name:
+                continue
+            os.chmod(path, 0o755)
+PY
 
   local size_dirs=""
   for d in usr etc lib var opt; do
