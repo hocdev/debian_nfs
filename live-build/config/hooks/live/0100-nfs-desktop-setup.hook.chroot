@@ -144,6 +144,21 @@ rm -f /etc/apt/sources.list.d/nfs.list* || true
 rm -f /usr/share/found-desktop/data/feedback \
       /usr/share/found-desktop/data/feedback-service-account.png || true
 
+# Mark desktop installer launcher executable
+chmod 0755 /etc/skel/Desktop/install-debian.desktop /usr/share/applications/install-debian.desktop 2>/dev/null || true
+
+# Configure fcitx5 + fcitx5-lotus as default input method for GTK/Qt/X11 apps
+if command -v im-config >/dev/null 2>&1; then
+    im-config -n fcitx5 || true
+fi
+cat > /etc/X11/Xsession.d/95-nfs-fcitx5 <<'EOF'
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export INPUT_METHOD=fcitx
+export SDL_IM_MODULE=fcitx
+EOF
+
 # Write /etc/os-release directly with NFS OS branding keys expected by found-control-center
 # while preserving Debian 12 ID/VERSION_CODENAME for apt/dpkg compatibility.
 cat > /etc/os-release <<'EOF'
