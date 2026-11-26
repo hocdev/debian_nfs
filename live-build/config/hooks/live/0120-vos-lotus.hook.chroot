@@ -1,0 +1,19 @@
+#!/bin/sh
+set -eu
+
+# Classic UI resolves its X11 tray icon using the daemon's XDG data path.
+# Give it an English indicator without altering the desktop keyboard icon.
+icons=/usr/lib/vos/fcitx-icons/icons/Found/status/scalable
+mkdir -p "$icons"
+ln -sfn /usr/share/icons/Found/status/scalable/fcitx-lotus-off-default.svg "$icons/input-keyboard.svg"
+
+for executable in fcitx5 fcitx5-lotus-settings; do
+    path="/usr/bin/$executable"
+    dpkg-divert --local --rename --divert "$path.vos-original" --add "$path"
+    install -m 0755 "/usr/lib/vos/$executable" "$path"
+done
+
+# Start the input method with the desktop, including sessions where im-launch
+# defers startup until an application requests Fcitx over D-Bus.
+install -Dm 0644 /usr/share/applications/org.fcitx.Fcitx5.desktop \
+    /etc/xdg/autostart/org.fcitx.Fcitx5.desktop

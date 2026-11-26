@@ -2,7 +2,7 @@
 <data>
   <group name="0" section="1">
     <label translatable="yes">Internet &amp; Files</label>
-    <item>firefox-esr.desktop</item>
+    <item>google-chrome.desktop</item>
     <item>nemo.desktop</item>
     <item>org.gnome.FileRoller.desktop</item>
   </group>

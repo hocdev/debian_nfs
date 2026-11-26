@@ -115,6 +115,8 @@ jobs:
                 patchelf \
                 pkg-config \
                 python3 \
+                curl \
+                gnupg \
                 ca-certificates
               mkdir -p out
               chmod +x src/build.sh

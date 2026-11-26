@@ -1,6 +1,6 @@
 # Phục dựng Taskbar (`found-desktop`)
 
-Thư mục này chứa mã C phục dựng cho taskbar của `found-desktop` (`4.0.5-m117+1nfs5`). Khi đóng gói `found-desktop`, `src/build.sh` biên dịch `applet_panel_launchers_get_dirname` và thêm thư viện chứa hàm này vào danh sách phụ thuộc ELF của `cdos-desktop`. Phần panel, applet và khay hệ thống còn lại vẫn lấy từ `libcdos-desktop.so` vì mã phục dựng đang thiếu các kiểu và hành vi cần cho ABI của shell.
+Thư mục này chứa mã C phục dựng cho taskbar của `found-desktop` (`4.0.5-m117+1nfs5`). Khi đóng gói `found-desktop`, `src/build.sh` biên dịch phần tra thư mục launcher và phần tính kích thước icon nút ứng dụng vào thư viện được nạp trước `libcdos-desktop.so`. Kích thước icon được tính từ vùng nhìn thấy để căn chiều cao của các icon có viền trong suốt khác nhau. Các nút ứng dụng vẫn dùng hàm khởi tạo của shell để giữ hành vi ghim và quản lý cửa sổ.
 
 ## Nguồn `.deb`
 - `found-desktop_4.0.5-m117+1nfs5_amd64.deb`:

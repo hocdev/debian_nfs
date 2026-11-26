@@ -22,6 +22,9 @@ if ! compgen -G "${REPO_DIR}/pool/main/*.deb" > /dev/null; then
     exit 1
 fi
 
+# Fetch the vendor browser for this build without committing its binary package.
+bash "${ROOT_DIR}/live-build/download-chrome.sh" "${REPO_DIR}/pool/main"
+
 # Build APT repository metadata for local VOS packages
 cd "${REPO_DIR}"
 : > /tmp/nfs.override
@@ -80,6 +83,7 @@ if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; t
         -o -name "gir1.2-mutter-6*" -o -name "nemo*" -o -name "libnemo-*" -o -name "gir1.2-nemo-*" \
         -o -name "libxapp1*" -o -name "xapps-common*" -o -name "gir1.2-xapp-1.0*" \
         -o -name "nfs-*" -o -name "cdos-*" \
+        -o -name "google-chrome-stable*" \
     \) -delete || true
     mv "${CACHE_DIR}" "${WORK_DIR}/cache"
     if [ -f "${WORK_DIR}/cache/bootstrap.tar.zst" ]; then
@@ -96,7 +100,7 @@ chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 # Protect only the packages supplied by VOS from replacement by Debian updates.
 APT_PREFS_DIR="${WORK_DIR}/config/includes.chroot/etc/apt/preferences.d"
 mkdir -p "${APT_PREFS_DIR}"
-VOS_PACKAGES="$(awk '/^Package: / { print $2 }' "${REPO_DIR}/Packages" | sort -u | paste -sd ' ' -)"
+VOS_PACKAGES="$(awk '/^Package: / && $2 != "google-chrome-stable" { print $2 }' "${REPO_DIR}/Packages" | sort -u | paste -sd ' ' -)"
 printf 'Package: %s\nPin: release o=Debian\nPin-Priority: -1\n' "${VOS_PACKAGES}" \
     > "${APT_PREFS_DIR}/nfs-protected-packages.pref"
 

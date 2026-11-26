@@ -42,8 +42,9 @@ build_pkg_from_src() {
       local desktop_libdir="$stage/usr/lib/x86_64-linux-gnu/found-desktop"
       # Put the source implementation first in the shell's ELF lookup order.
       gcc -O2 -fPIC -shared -Wl,-z,defs -Wl,-soname,"$launcher_lib" \
-        $(pkg-config --cflags gio-unix-2.0) "$TASKBAR_DIR/panel-launchers-directory.c" \
-        $(pkg-config --libs glib-2.0) -o "$desktop_libdir/$launcher_lib"
+        $(pkg-config --cflags gio-unix-2.0 gtk+-3.0) \
+        "$TASKBAR_DIR/panel-launchers-directory.c" "$TASKBAR_DIR/app-button-style.c" \
+        $(pkg-config --libs gtk+-3.0) -ldl -o "$desktop_libdir/$launcher_lib"
       chmod 0644 "$desktop_libdir/$launcher_lib"
       patchelf --add-needed "$launcher_lib" "$stage/usr/bin/cdos-desktop"
       local first_needed

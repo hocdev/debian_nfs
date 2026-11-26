@@ -92,7 +92,7 @@ fonts-noto-cjk
 fonts-dejavu-core
 fonts-droid-fallback
 gnome-terminal
-firefox-esr
+google-chrome-stable
 evince
 file-roller
 gnome-calculator
