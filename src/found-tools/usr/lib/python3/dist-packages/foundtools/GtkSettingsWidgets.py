@@ -578,7 +578,7 @@ class GScaleSpinButton(Gtk.HBox):
             the_file.write(str(float(value)/100))
         self._value_changed_timer = None
 
-        os.system("notify-send 缩放设置 您已设置缩放，注销登录生效")
+        os.system('notify-send "Scaling Settings" "Scaling updated. Log out and back in to take effect."')
         return False
     
 

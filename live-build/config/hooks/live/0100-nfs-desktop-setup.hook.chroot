@@ -139,12 +139,8 @@ fi
 # Ensure temporary local build repo list is never left in target rootfs
 rm -f /etc/apt/sources.list.d/nfs.list* || true
 
-# Remove original China NFS contact/privacy/protocol/online-accounts panels and feedback data
-rm -f /usr/share/applications/found-info-contact-panel.desktop \
-      /usr/share/applications/found-info-privacy-panel.desktop \
-      /usr/share/applications/found-info-protocol-panel.desktop \
-      /usr/share/applications/found-online-accounts-panel.desktop \
-      /usr/share/found-desktop/data/feedback \
+# Remove remaining feedback data if present
+rm -f /usr/share/found-desktop/data/feedback \
       /usr/share/found-desktop/data/feedback-service-account.png || true
 
 # Write /etc/os-release directly with NFS OS branding keys expected by found-control-center

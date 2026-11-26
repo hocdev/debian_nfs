@@ -275,7 +275,7 @@
       <default>false</default>
       <summary>Whether the date of the clock use long format. </summary>
       <description>
-        If true, date is displayed in long format. Long format is such as 2021年10月26日.
+        If true, date is displayed in long format. Long format is such as October 26, 2021.
       </description>
     </key>
     <key name="date-use-short-format" type="b">
