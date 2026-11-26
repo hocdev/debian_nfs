@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+rm -f /usr/share/gnome-background-properties/debian-*.xml
+
+# Keep the paths registered by desktop-base's alternatives pointing at VOS art.
+find /usr/share/desktop-base -type f \( \
+    -path '*/wallpaper*/contents/images/*.svg' -o \
+    -path '*/lockscreen/contents/images/*.svg' -o \
+    -path '*/login/background*.svg' \
+    \) -exec ln -sfT /usr/share/backgrounds/found/default.svg '{}' \;
+find /usr/share/desktop-base -type f -path '*/grub/grub-*.png' \
+    -exec ln -sfT /usr/share/backgrounds/bg-unregistered.png '{}' \;
+
+# This package owns the redirected paths. Keep ordinary upgrades from restoring
+# its artwork or replacing the paths that its maintainer scripts require.
+apt-mark hold desktop-base

@@ -14,7 +14,7 @@
     </linearGradient>
   </defs>
   <rect x="3" y="3" width="58" height="58" rx="15" fill="url(#tile)" stroke="#57939a" stroke-width="1"/>
-  <path d="M12 22 17 15l8 3 11 25-6 8-5-4Z" fill="url(#groove)"/>
-  <path d="m30 51 1-10 12-24 9-4-2 10-11 23-6 5Z" fill="url(#crest)"/>
-  <path d="M11 51c8-4 13-2 20 1s13 4 22-1" fill="none" stroke="#82e6d2" stroke-width="1.4" stroke-linecap="round" opacity=".62"/>
+  <path d="M13.5 21 17.8 16l6.5 2.7L35 43l-5.5 7.4-4.4-3.6Z" fill="url(#groove)"/>
+  <path d="M29.5 50.5 31.7 41.3 43.4 17.7 51 14.4 49.2 22.8 38.1 46 32.7 50.5Z" fill="url(#crest)"/>
+  <path d="M11 51c8-4 13-2 20 1s13 4 22-1" fill="none" stroke="#82e6d2" stroke-width="1.2" stroke-linecap="round" opacity=".62"/>
 </svg>

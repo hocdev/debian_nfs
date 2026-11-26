@@ -187,19 +187,10 @@ if [ -f /usr/lib/systemd/system/fcitx5-lotus-server@.service ]; then
     ln -sf /usr/lib/systemd/system/fcitx5-lotus-server@.service /etc/systemd/system/multi-user.target.wants/fcitx5-lotus-server@user.service
 fi
 
-# Keep the Fcitx tray icons available when it falls back to hicolor.
-for name in fcitx-lotus.svg fcitx-lotus-default.svg fcitx-lotus-default-black.svg fcitx-lotus-default-symbolic.svg org.fcitx.Fcitx5.fcitx-lotus.svg \
-            fcitx-lotus-off.svg fcitx-lotus-off-default.svg fcitx-lotus-off-default-black.svg fcitx-lotus-off-default-symbolic.svg org.fcitx.Fcitx5.fcitx-lotus-off.svg \
-            input-keyboard.svg input-keyboard-symbolic.svg; do
-    if [ -f "/usr/share/icons/Found/status/scalable/$name" ]; then
-        mkdir -p /usr/share/icons/hicolor/scalable/status /usr/share/icons/hicolor/scalable/apps
-        cp -f "/usr/share/icons/Found/status/scalable/$name" "/usr/share/icons/hicolor/scalable/status/$name"
-        cp -f "/usr/share/icons/Found/status/scalable/$name" "/usr/share/icons/hicolor/scalable/apps/$name"
-    fi
-done
+# The Found theme provides only the Lotus status variants. Keep the icons
+# installed by the Lotus package in hicolor for Settings and other themes.
 if command -v gtk-update-icon-cache >/dev/null 2>&1; then
     gtk-update-icon-cache -f /usr/share/icons/Found || true
-    gtk-update-icon-cache -f /usr/share/icons/hicolor || true
 fi
 
 # Rebuild initramfs so Plymouth nfslogo theme is embedded

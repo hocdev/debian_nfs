@@ -2,8 +2,8 @@
 <!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
 <wallpapers>
   <wallpaper deleted="false">
-    <name>Vịnh Hạ Long</name>
-    <filename>/usr/share/backgrounds/found/default.svg</filename>
+    <name>Đèo Mã Pí Lèng</name>
+    <filename>/usr/share/backgrounds/found/vos-ma-pi-leng.svg</filename>
     <options>zoom</options>
     <shade_type>solid</shade_type>
     <pcolor>#000000</pcolor>
@@ -11,8 +11,17 @@
     <artist>VOS</artist>
   </wallpaper>
   <wallpaper deleted="false">
-    <name>Đèo Mã Pí Lèng</name>
-    <filename>/usr/share/backgrounds/found/vos-ma-pi-leng.svg</filename>
+    <name>Mù Cang Chải</name>
+    <filename>/usr/share/backgrounds/found/vos-mu-cang-chai.svg</filename>
+    <options>zoom</options>
+    <shade_type>solid</shade_type>
+    <pcolor>#000000</pcolor>
+    <scolor>#000000</scolor>
+    <artist>VOS</artist>
+  </wallpaper>
+  <wallpaper deleted="false">
+    <name>Phố cổ Hội An</name>
+    <filename>/usr/share/backgrounds/found/vos-hoi-an.svg</filename>
     <options>zoom</options>
     <shade_type>solid</shade_type>
     <pcolor>#000000</pcolor>
