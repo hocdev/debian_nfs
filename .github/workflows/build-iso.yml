@@ -109,9 +109,11 @@ jobs:
                 dpkg-dev \
                 apt-utils \
                 gcc \
+                g++ \
                 make \
                 libglib2.0-dev \
                 libgtk-3-dev \
+                libfcitx5core-dev \
                 patchelf \
                 pkg-config \
                 python3 \

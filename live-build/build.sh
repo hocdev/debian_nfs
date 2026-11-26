@@ -97,6 +97,11 @@ fi
 cp -a "${ROOT_DIR}/live-build/config" "${WORK_DIR}/config"
 chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 
+g++ -std=c++17 -O2 -fPIC -shared -Wl,-z,defs \
+    $(pkg-config --cflags Fcitx5Core) "${ROOT_DIR}/live-build/fcitx-tray-language.cpp" \
+    $(pkg-config --libs Fcitx5Core) -ldl \
+    -o "${WORK_DIR}/config/includes.chroot/usr/lib/vos/libfcitx-tray-language.so"
+
 # Protect only the packages supplied by VOS from replacement by Debian updates.
 APT_PREFS_DIR="${WORK_DIR}/config/includes.chroot/etc/apt/preferences.d"
 mkdir -p "${APT_PREFS_DIR}"

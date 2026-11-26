@@ -1,6 +1,3 @@
 #!/bin/sh
-case "${XDG_DATA_DIRS-}" in
-    /usr/lib/vos/fcitx-icons:*) export XDG_DATA_DIRS="${XDG_DATA_DIRS#*:}" ;;
-esac
-export LANGUAGE=vi LC_MESSAGES=vi_VN.UTF-8
+. /usr/lib/vos/fcitx-config-language
 exec /usr/bin/fcitx5-lotus-settings.vos-original "$@"

@@ -7,7 +7,7 @@ icons=/usr/lib/vos/fcitx-icons/icons/Found/status/scalable
 mkdir -p "$icons"
 ln -sfn /usr/share/icons/Found/status/scalable/fcitx-lotus-off-default.svg "$icons/input-keyboard.svg"
 
-for executable in fcitx5 fcitx5-lotus-settings; do
+for executable in fcitx5 fcitx5-configtool fcitx5-lotus-settings; do
     path="/usr/bin/$executable"
     dpkg-divert --local --rename --divert "$path.vos-original" --add "$path"
     install -m 0755 "/usr/lib/vos/$executable" "$path"

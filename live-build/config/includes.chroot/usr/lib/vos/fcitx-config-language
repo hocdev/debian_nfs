@@ -1,0 +1,33 @@
+# Select the locale before the configuration window can change input focus.
+language=$(timeout 2 /usr/bin/python3 - <<'PY'
+import re
+
+import dbus
+
+try:
+    controller = dbus.Interface(
+        dbus.SessionBus().get_object(
+            "org.fcitx.Fcitx5", "/controller", introspect=False
+        ),
+        "org.fcitx.Fcitx.Controller1",
+    )
+    current = controller.CurrentInputMethod(timeout=1)
+    if current:
+        entries = controller.AvailableInputMethods(timeout=1)
+        for identifier, _, _, _, _, code, _ in entries:
+            if identifier == current:
+                print(re.split(r"[_\-.@]", str(code), maxsplit=1)[0])
+                break
+except dbus.DBusException:
+    pass
+PY
+) || language=
+case "$language" in
+    vi|vie) export LANGUAGE=vi LC_MESSAGES=vi_VN.UTF-8 ;;
+    *) export LANGUAGE=en LC_MESSAGES=en_US.UTF-8 ;;
+esac
+unset LC_ALL
+export LANG="$LC_MESSAGES"
+case "${XDG_DATA_DIRS-}" in
+    /usr/lib/vos/fcitx-icons:*) export XDG_DATA_DIRS="${XDG_DATA_DIRS#*:}" ;;
+esac

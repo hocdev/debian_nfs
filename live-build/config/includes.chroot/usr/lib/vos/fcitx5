@@ -3,5 +3,7 @@ case "${XDG_DATA_DIRS-}" in
     /usr/lib/vos/fcitx-icons:*) ;;
     *) export XDG_DATA_DIRS="/usr/lib/vos/fcitx-icons:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}" ;;
 esac
-export LANGUAGE=vi LC_MESSAGES=vi_VN.UTF-8
-exec /usr/bin/fcitx5.vos-original "$@"
+unset LC_ALL LANGUAGE
+export LC_MESSAGES=en_US.UTF-8
+exec /lib64/ld-linux-x86-64.so.2 --preload /usr/lib/vos/libfcitx-tray-language.so \
+    --argv0 /usr/bin/fcitx5 /usr/bin/fcitx5.vos-original "$@"
