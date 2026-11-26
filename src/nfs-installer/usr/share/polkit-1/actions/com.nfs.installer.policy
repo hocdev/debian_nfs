@@ -3,11 +3,11 @@
  "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
  "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
-  <vendor>NFS OS</vendor>
+  <vendor>VOS OS</vendor>
   <vendor_url>https://linux.hocdev.com/</vendor_url>
   <action id="com.nfs.installer.run">
-    <description>Run NFS Desktop System Installer</description>
-    <message>Authentication is required to install NFS Desktop to disk</message>
+    <description>Run VOS Desktop System Installer</description>
+    <message>Authentication is required to install VOS Desktop to disk</message>
     <defaults>
       <allow_any>auth_admin</allow_any>
       <allow_inactive>auth_admin</allow_inactive>

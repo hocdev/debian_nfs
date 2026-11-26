@@ -234,7 +234,7 @@ gboolean nfs_installer_run(const InstallConfig *cfg,
         g_free(cmd);
     }
 
-    cmd = g_strdup_printf("mkfs.ext4 -F -L NFS_OS '%s'", p_root);
+    cmd = g_strdup_printf("mkfs.ext4 -F -L VOS_OS '%s'", p_root);
     if (!run_cmd(cmd, cb, cb_data, 0.18, "Formatting root (ext4) partition...")) {
         g_free(cmd);
         *error_out = g_strdup("Failed to format root partition.");
@@ -367,7 +367,7 @@ gboolean nfs_installer_run(const InstallConfig *cfg,
     /* 9. Install GRUB2 bootloader */
     if (uefi) {
         cmd = g_strdup(
-            "chroot " TARGET_MOUNT " grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=NFS --recheck --removable && "
+            "chroot " TARGET_MOUNT " grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=VOS --recheck --removable && "
             "chroot " TARGET_MOUNT " grub-mkconfig -o /boot/grub/grub.cfg");
     } else {
         cmd = g_strdup_printf(

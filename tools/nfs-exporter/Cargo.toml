@@ -2,7 +2,7 @@
 name = "nfs-exporter"
 version = "0.1.0"
 edition = "2021"
-description = "Export NFS SquashFS packages and branding into a .deb repository"
+description = "Export VOS SquashFS packages and branding into a .deb repository"
 
 [profile.release]
 opt-level = 3

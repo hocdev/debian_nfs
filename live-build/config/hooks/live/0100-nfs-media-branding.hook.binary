@@ -2,7 +2,9 @@
 set -eu
 
 # live-build runs this hook from the ISO tree before computing its checksums.
-printf '%s\n' 'NFS Live amd64' > .disk/info
+printf '%s\n' 'VOS Live amd64' > .disk/info
+sed -i 's/^menuentry "Live system (/menuentry "VOS Live (/' boot/grub/grub.cfg
+sed -i 's/\(menu label \^\?\)Live system (/\1VOS Live (/' isolinux/live.cfg
 
 # The offline package index is generated separately from the build-time APT repo.
-sed -i -e 's/^Origin:.*/Origin: NFS/' -e 's/^Label:.*/Label: NFS/' dists/bookworm/Release
+sed -i -e 's/^Origin:.*/Origin: VOS/' -e 's/^Label:.*/Label: VOS/' dists/bookworm/Release

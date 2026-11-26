@@ -7,13 +7,13 @@ windowSize: 800px,520px
 windowPlacement: center
 
 strings:
-    productName:         NFS Desktop
-    shortProductName:    NFS
+    productName:         VOS Desktop
+    shortProductName:    VOS
     version:             12
     shortVersion:        12
-    versionedName:       NFS OS
-    shortVersionedName:  NFS OS
-    bootloaderEntryName: NFS OS
+    versionedName:       VOS OS
+    shortVersionedName:  VOS OS
+    bootloaderEntryName: VOS OS
     productUrl:          https://linux.hocdev.com
 
 images:

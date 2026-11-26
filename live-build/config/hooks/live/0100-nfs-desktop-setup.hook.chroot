@@ -18,18 +18,18 @@ if [ -n "$STOCK_PKGS" ]; then
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y --purge
 fi
 
-echo "=== Configuring NFS ==="
+echo "=== Configuring VOS ==="
 ldconfig
 chmod 0755 /usr/bin/nfs-launch-installer
 
-echo "=== Verifying NFS Mutter 3.36 ==="
+echo "=== Verifying VOS Mutter 3.36 ==="
 for mp in mutter mutter-common libmutter-6-0 gir1.2-mutter-6; do
     VER="$(dpkg-query -W -f='${Version}\n' "$mp" 2>/dev/null || true)"
     echo "  $mp = $VER"
     case "$VER" in
         *nfs*) ;;
         *)
-            echo "ERROR: Expected NFS version of $mp, got '$VER'"
+            echo "ERROR: Expected VOS version of $mp, got '$VER'"
             exit 1
             ;;
     esac
@@ -99,7 +99,7 @@ EOF
     chmod 0755 /usr/bin/found-control-center
 fi
 
-# Verify all core NFS Found binaries have zero missing shared libraries
+# Verify all core VOS Found binaries have zero missing shared libraries
 echo "=== Verifying ELF shared library resolution (ldd) ==="
 MISSING=0
 for bin in \
@@ -159,23 +159,26 @@ export INPUT_METHOD=fcitx
 export SDL_IM_MODULE=fcitx
 EOF
 
-# Identify NFS while recording the upstream family and package suite.
+# Write the VOS identity to /etc so updates to base-files can replace /usr/lib/os-release.
+if [ -L /etc/os-release ]; then
+    rm /etc/os-release
+fi
 cat > /etc/os-release <<'EOF'
-PRETTY_NAME="NFS"
-NAME="NFS"
-NAME_EN="NFS"
+PRETTY_NAME="VOS"
+NAME="VOS"
+NAME_EN="VOS"
 VERSION_ID="12"
 VERSION="Desktop"
 VERSION_CODENAME=bookworm
-ID=nfs
+ID=vos
 ID_LIKE=debian
 HOME_URL="https://linux.hocdev.com/"
 EOF
-printf '%s\n' 'NFS \n \l' '' > /etc/issue
-printf '%s\n' 'NFS' > /etc/issue.net
+printf '%s\n' 'VOS \n \l' '' > /etc/issue
+printf '%s\n' 'VOS' > /etc/issue.net
 cat > /etc/motd <<'EOF'
 License terms for installed programs are available in /usr/share/doc/*/copyright.
-NFS comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law.
+VOS comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law.
 EOF
 
 # Enable fcitx5-lotus-server for live user so Lotus uinput mode works out of the box

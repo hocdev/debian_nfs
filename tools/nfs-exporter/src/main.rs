@@ -712,12 +712,12 @@ fn export_compat_libs(
         "Package: nfs-compat-libs\n\
 Version: 1.0+nfs5\n\
 Architecture: amd64\n\
-Maintainer: NFS Builder <builder@localhost>\n\
+Maintainer: VOS Builder <builder@localhost>\n\
 Section: libs\n\
 Priority: optional\n\
 Installed-Size: {}\n\
 Depends: libc6 (>= 2.30), libglib2.0-0, libgtk-3-0, libgudev-1.0-0, libjson-glib-1.0-0, libsoup2.4-1, libxml2, libstdc++6, libsystemd0, libudev1, libseccomp2, libxkbregistry0, libwacom-common, gnome-desktop3-data\n\
-Description: Legacy runtime compatibility libraries for NFS\n \
+Description: Legacy runtime compatibility libraries for VOS\n \
 Provides legacy SONAME shared libraries (libcroco-0.6, libgnome-desktop-3-19,\n \
 libtracker-sparql-2.0, libwacom2, libssl1.1, libbfd-2.35.2, libicu67,\n \
 libgeocode-glib0, libsm_devctl) alongside the standard system packages.\n",

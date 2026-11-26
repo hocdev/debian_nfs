@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+# GRUB clears gfxterm before running a boot entry. Give the full-screen
+# terminal the same background as the menu so that clear has no black box.
+sed -i -e '/^terminal-\(left\|top\|width\|height\):/d' -e '/^terminal-font:/a\
+terminal-left: "0"\
+terminal-top: "0"\
+terminal-width: "100%"\
+terminal-height: "100%"' boot/grub/live-theme/theme.txt
+
+sed -i -e '\|^background_image -m stretch /isolinux/splash800x600\.png$|d' -e '/^terminal_output gfxterm$/a\
+background_image -m stretch /isolinux/splash800x600.png' boot/grub/config.cfg

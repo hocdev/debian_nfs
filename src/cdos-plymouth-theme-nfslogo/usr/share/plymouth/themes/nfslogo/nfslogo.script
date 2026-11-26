@@ -1,10 +1,10 @@
-# CDOS-Basic bootsplash teme
-Window.SetBackgroundTopColor (9/256, 4/256, 18/256);           
-Window.SetBackgroundBottomColor (9/256, 4/256, 18/256);
+# VOS bootsplash
+Window.SetBackgroundTopColor (11/256, 27/256, 41/256);
+Window.SetBackgroundBottomColor (11/256, 27/256, 41/256);
 
-text.image = Image("nfslogo/NFS.png");
+text.image = Image("nfslogo/VOS.png");
 text.sprite = Sprite(text.image);
-text.sprite.SetOpacity (0.0);
+text.sprite.SetOpacity (1.0);
 text.sprite.SetX(Window.GetX() + Window.GetWidth()/2 - text.image.GetWidth()/2);
 text.sprite.SetY(Window.GetY() + Window.GetHeight()/2 - text.image.GetHeight()/2);
 text.sprite.SetZ(20);
@@ -940,76 +940,30 @@ Plymouth.SetDisplayQuestionFunction (display_question_callback);
 # NOTE: if a refresh function is not set, Plymouth doesn't seem to be able to update
 #       the screen correctly
 #
-NUMSOFPIC = 49;
-NUMSTAGE1 = 20;
-NUMSTAGE2 = 29;
-SOFSTAGE2 = 21;
+# Animate three dots beneath the VOS wordmark.
+dot_image = Image.Text ("•", 0.71, 0.90, 0.88);
+for (i = 0; i < 3; i++)
+    dots[i].sprite = Sprite (dot_image);
 
-
-GROWSPEED = 2;
-FLYSPEED = 3;
-
-#nfslogo
-for (i = 0; i < NUMSOFPIC; i++)
-{
-    n = i + 1;
-    nfslogo[i].image = Image("nfslogo/nfslogo_" + n + ".png");
-}
-
-#nfslogos
-nfslogos.sprite = Sprite();
-
-#stage1
-count1 = 0;
-
-#stage2
-count2 = 0;
-
-#shutdown
-count3 = 1;
-
-num = 0;
+tick = 0;
 fun refresh_callback ()
 {
-    if (Plymouth.GetMode() != "shutdown")
-    {
-        if (num < NUMSTAGE1)
-        {
-            basenum = Math.Int (count1 / GROWSPEED);
-            num = basenum % NUMSOFPIC;
-            nfslogos.sprite.SetImage(nfslogo[num].image);
-            nfslogos.sprite.SetX(Window.GetX() + Window.GetWidth() / 2  - nfslogo[num].image.GetWidth() / 2);
-            nfslogos.sprite.SetY(Window.GetY() + Window.GetHeight() / 2 - nfslogo[num].image.GetHeight() / 2);
-            nfslogos.sprite.SetZ(200);
-            nfslogos.sprite.SetOpacity(1);
-            count1++;
-        }
-        else
-        {
-            basenum = Math.Int (count2 / FLYSPEED);
-            num = basenum % NUMSTAGE2 + SOFSTAGE2 - 1;
-            
-            nfslogos.sprite.SetImage(nfslogo[num].image);
-            nfslogos.sprite.SetX(Window.GetX() + Window.GetWidth() / 2  - nfslogo[num].image.GetWidth() / 2);
-            nfslogos.sprite.SetY(Window.GetY() + Window.GetHeight() / 2 - nfslogo[num].image.GetHeight() / 2);
-            nfslogos.sprite.SetZ(200);
-            nfslogos.sprite.SetOpacity(1);
-            text.sprite.SetOpacity(0);
-            count2++;
-        }
-    }
-    else
-    {
-        basenum = Math.Int (count3 / 3);
-        num = basenum % NUMSTAGE2 + SOFSTAGE2 - 1;
-        nfslogos.sprite.SetImage(nfslogo[num].image);
-        nfslogos.sprite.SetX(Window.GetX() + Window.GetWidth() / 2  - nfslogo[num].image.GetWidth() / 2);
-        nfslogos.sprite.SetY(Window.GetY() + Window.GetHeight() / 2 - nfslogo[num].image.GetHeight() / 2);
+    center_x = Window.GetX () + Window.GetWidth () / 2;
+    center_y = Window.GetY () + Window.GetHeight () / 2;
+    text.sprite.SetX (center_x - text.image.GetWidth () / 2);
+    text.sprite.SetY (center_y - text.image.GetHeight () / 2);
 
-        nfslogos.sprite.SetZ(200);
-        nfslogos.sprite.SetOpacity(1);
-        count3++;
+    active_dot = Math.Int (tick / 8) % 3;
+    for (i = 0; i < 3; i++)
+    {
+        dots[i].sprite.SetPosition (center_x + (i - 1) * 15 - dot_image.GetWidth () / 2,
+                                    center_y + text.image.GetHeight () / 2 + 14, 20);
+        if (i == active_dot)
+            dots[i].sprite.SetOpacity (1);
+        else
+            dots[i].sprite.SetOpacity (0.35);
     }
+    tick = (tick + 1) % 24;
 }
 
 Plymouth.SetRefreshFunction (refresh_callback);

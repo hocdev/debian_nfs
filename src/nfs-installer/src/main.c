@@ -1,4 +1,5 @@
 #include "installer.h"
+#define INSTALLER_ICON "/usr/share/icons/hicolor/scalable/apps/vos-installer.svg"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -93,7 +94,7 @@ static gboolean on_idle_done(gpointer data) {
     if (d->success) {
         gtk_label_set_text(GTK_LABEL(d->app->lbl_done_title), "Installation Complete");
         gtk_label_set_text(GTK_LABEL(d->app->lbl_done_desc),
-                           "NFS Desktop has been installed on your computer.\nYou can restart now or continue testing the live environment.");
+                           "VOS Desktop has been installed on your computer.\nYou can restart now or continue testing the live environment.");
     } else {
         gtk_label_set_text(GTK_LABEL(d->app->lbl_done_title), "Installation Failed");
         gtk_label_set_text(GTK_LABEL(d->app->lbl_done_desc),
@@ -226,10 +227,11 @@ static GtkWidget *build_sidebar(AppState *app) {
     gtk_style_context_add_class(gtk_widget_get_style_context(side), "nfs-sidebar");
     gtk_container_set_border_width(GTK_CONTAINER(side), 18);
 
-    GtkWidget *logo = load_scaled_image("nfs-logo.png", 64, 64);
+    GtkWidget *logo = gtk_image_new_from_icon_name("vos-installer", GTK_ICON_SIZE_DIALOG);
+    gtk_image_set_pixel_size(GTK_IMAGE(logo), 64);
     gtk_box_pack_start(GTK_BOX(side), logo, FALSE, FALSE, 4);
 
-    GtkWidget *title = gtk_label_new("NFS Desktop");
+    GtkWidget *title = gtk_label_new("VOS Desktop");
     gtk_style_context_add_class(gtk_widget_get_style_context(title), "sidebar-title");
     gtk_box_pack_start(GTK_BOX(side), title, FALSE, FALSE, 8);
 
@@ -252,7 +254,7 @@ static GtkWidget *build_welcome_page(AppState *app) {
     GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 14);
     gtk_container_set_border_width(GTK_CONTAINER(box), 24);
 
-    GtkWidget *hdr = gtk_label_new("Welcome to NFS Desktop Installer");
+    GtkWidget *hdr = gtk_label_new("Welcome to VOS Desktop Installer");
     gtk_style_context_add_class(gtk_widget_get_style_context(hdr), "page-title");
     gtk_widget_set_halign(hdr, GTK_ALIGN_START);
     gtk_box_pack_start(GTK_BOX(box), hdr, FALSE, FALSE, 0);
@@ -321,9 +323,9 @@ static GtkWidget *build_setup_page(AppState *app) {
     gtk_widget_set_halign(app->lbl_boot_mode, GTK_ALIGN_START);
 
     app->entry_fullname = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(app->entry_fullname), "NFS User");
+    gtk_entry_set_text(GTK_ENTRY(app->entry_fullname), "VOS User");
     app->entry_username = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(app->entry_username), "nfs");
+    gtk_entry_set_text(GTK_ENTRY(app->entry_username), "vos");
     app->entry_password = gtk_entry_new();
     gtk_entry_set_visibility(GTK_ENTRY(app->entry_password), FALSE);
     gtk_entry_set_text(GTK_ENTRY(app->entry_password), "123456");
@@ -331,7 +333,7 @@ static GtkWidget *build_setup_page(AppState *app) {
     gtk_entry_set_visibility(GTK_ENTRY(app->entry_confirm), FALSE);
     gtk_entry_set_text(GTK_ENTRY(app->entry_confirm), "123456");
     app->entry_hostname = gtk_entry_new();
-    gtk_entry_set_text(GTK_ENTRY(app->entry_hostname), "nfs-desktop");
+    gtk_entry_set_text(GTK_ENTRY(app->entry_hostname), "vos-desktop");
 
     app->combo_timezone = gtk_combo_box_text_new();
     const char *tzs[] = { "Asia/Ho_Chi_Minh", "UTC", "Asia/Shanghai", "Asia/Tokyo", "America/New_York", "Europe/London" };
@@ -380,7 +382,7 @@ static GtkWidget *build_install_page(AppState *app) {
     GtkWidget *box = gtk_box_new(GTK_ORIENTATION_VERTICAL, 12);
     gtk_container_set_border_width(GTK_CONTAINER(box), 24);
 
-    GtkWidget *hdr = gtk_label_new("Installing NFS Desktop...");
+    GtkWidget *hdr = gtk_label_new("Installing VOS Desktop...");
     gtk_style_context_add_class(gtk_widget_get_style_context(hdr), "page-title");
     gtk_widget_set_halign(hdr, GTK_ALIGN_START);
     gtk_box_pack_start(GTK_BOX(box), hdr, FALSE, FALSE, 0);
@@ -453,7 +455,8 @@ int main(int argc, char **argv) {
     app.disks = nfs_installer_list_disks();
 
     app.window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    gtk_window_set_title(GTK_WINDOW(app.window), "NFS Desktop Installer");
+    gtk_window_set_title(GTK_WINDOW(app.window), "VOS Desktop Installer");
+    gtk_window_set_icon_from_file(GTK_WINDOW(app.window), INSTALLER_ICON, NULL);
     gtk_window_set_default_size(GTK_WINDOW(app.window), 860, 560);
     gtk_window_set_position(GTK_WINDOW(app.window), GTK_WIN_POS_CENTER);
     g_signal_connect(app.window, "destroy", G_CALLBACK(gtk_main_quit), NULL);

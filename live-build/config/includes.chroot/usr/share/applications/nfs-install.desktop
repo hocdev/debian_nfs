@@ -1,11 +1,12 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
-Name=NFS Install
+Name=VOS Install
 GenericName=System Installer
-Comment=Install NFS OS on your computer
+Comment=Install VOS OS on your computer
 Exec=nfs-launch-installer
-Icon=/usr/share/nfs-installer/assets/nfs-logo.png
+Icon=vos-installer
 Terminal=false
 Categories=GTK;System;
 StartupNotify=true
+StartupWMClass=Nfs-installer

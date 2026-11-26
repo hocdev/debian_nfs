@@ -8,5 +8,5 @@ Source: cdos-plymouth-themes
 Version: 2.11-m13+1nfs5
 Depends: plymouth, fonts-droid-fallback
 Conflicts: mint-artwork-common (<< 1.8.1+2cdos1)
-Description: NFS logo plymouth theme
+Description: VOS logo plymouth theme
 Homepage: http://cpu-os.ac.cn

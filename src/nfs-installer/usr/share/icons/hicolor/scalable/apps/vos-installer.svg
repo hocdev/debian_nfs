@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="tile" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop stop-color="#174e63"/>
+      <stop offset="1" stop-color="#081b32"/>
+    </linearGradient>
+    <linearGradient id="groove" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop stop-color="#b9fff0"/>
+      <stop offset="1" stop-color="#33bbba"/>
+    </linearGradient>
+    <linearGradient id="crest" x1="0%" y1="10%" x2="90%" y2="100%">
+      <stop stop-color="#fff9da"/>
+      <stop offset="1" stop-color="#83e5ce"/>
+    </linearGradient>
+  </defs>
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="url(#tile)" stroke="#57939a" stroke-width="1"/>
+  <path d="M12 22 17 15l8 3 11 25-6 8-5-4Z" fill="url(#groove)"/>
+  <path d="m30 51 1-10 12-24 9-4-2 10-11 23-6 5Z" fill="url(#crest)"/>
+  <path d="M11 51c8-4 13-2 20 1s13 4 22-1" fill="none" stroke="#82e6d2" stroke-width="1.4" stroke-linecap="round" opacity=".62"/>
+  <g id="installer-badge">
+    <circle cx="50" cy="49" r="10.5" fill="#0d3144" stroke="#9af1d8" stroke-width="1.3"/>
+    <path d="M50 43v9m-3.5-3.5L50 52l3.5-3.5M46.5 55h7" fill="none" stroke="#eaffef" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

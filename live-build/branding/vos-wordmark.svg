@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="222" height="60" viewBox="0 0 222 60">
+  <title>VOS</title>
+  <g fill="currentColor">
+    <path d="M2 5h16l14 34L46 5h16L40 55H24Z"/>
+    <path d="M88 5h20c16 0 25 9 25 25s-9 25-25 25H88c-16 0-25-9-25-25S72 5 88 5Zm1 12c-8 0-12 4-12 13s4 13 12 13h18c8 0 12-4 12-13s-4-13-12-13Z" fill-rule="evenodd"/>
+    <path d="M164 5h45l-5 12h-40c-4 0-6 1-6 4 0 2 2 3 5 3h29c13 0 20 5 20 15 0 11-8 16-22 16h-47l5-12h42c5 0 7-1 7-4 0-2-2-3-6-3h-28c-13 0-20-5-20-15 0-11 8-16 21-16Z"/>
+  </g>
+</svg>

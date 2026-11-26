@@ -2,7 +2,7 @@ Package: found-icon-theme
 Priority: optional
 Section: found
 Installed-Size: 47372
-Maintainer: NFS Support Team <support_os@hocdev.com>
+Maintainer: VOS Support Team <support_os@hocdev.com>
 Architecture: all
 Version: 4.0.6-m10+1nfs5
 Depends: gnome-icon-theme, found-icon-theme-dark

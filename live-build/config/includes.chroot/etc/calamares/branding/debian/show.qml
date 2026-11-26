@@ -40,7 +40,7 @@ Presentation
         Text {
             anchors.horizontalCenter: background1.horizontalCenter
             anchors.top: background1.bottom
-            text: qsTr("Welcome using NFS Desktop.<br/>"+
+            text: qsTr("Welcome using VOS Desktop.<br/>"+
                   "Left installation will complete soon.")
             wrapMode: Text.WordWrap
             width: 600

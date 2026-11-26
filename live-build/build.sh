@@ -22,7 +22,7 @@ if ! compgen -G "${REPO_DIR}/pool/main/*.deb" > /dev/null; then
     exit 1
 fi
 
-# Build APT repository metadata for local NFS packages
+# Build APT repository metadata for local VOS packages
 cd "${REPO_DIR}"
 : > /tmp/nfs.override
 for deb in pool/main/*.deb; do
@@ -35,8 +35,8 @@ dpkg-scanpackages --multiversion pool/main /tmp/nfs.override > Packages
 rm -f /tmp/nfs.override
 gzip -9c Packages > Packages.gz
 apt-ftparchive \
-  -o APT::FTPArchive::Release::Origin="NFS" \
-  -o APT::FTPArchive::Release::Label="NFS" \
+  -o APT::FTPArchive::Release::Origin="VOS" \
+  -o APT::FTPArchive::Release::Label="VOS" \
   release . > Release
 
 # Serve local APT repo over HTTP so live-build chroot apt-get resolves all dependencies cleanly
@@ -73,7 +73,7 @@ done
 rm -rf "${WORK_DIR}"
 mkdir -p "${WORK_DIR}"
 if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; then
-    # Purge local NFS packages and local repo indices from cache so updated .deb files & hashes are always used
+    # Purge local VOS packages and local repo indices from cache so updated .deb files & hashes are always used
     find "${CACHE_DIR}" -type f \( \
         -name "*127.0.0.1*" \
         -o -name "found-*" -o -name "libfound-*" -o -name "mutter*" -o -name "libmutter-6-0*" \
@@ -93,10 +93,12 @@ fi
 cp -a "${ROOT_DIR}/live-build/config" "${WORK_DIR}/config"
 chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 
-# Bookworm's GRUB theme points at this image when ISOLINUX is also present.
-# Use the same branded background for the BIOS and UEFI boot menus.
-BOOT_IMAGES="${WORK_DIR}/config/includes.binary/isolinux"
-install -m 0644 "${BOOT_IMAGES}/splash.png" "${BOOT_IMAGES}/splash800x600.png"
+# Protect only the packages supplied by VOS from replacement by Debian updates.
+APT_PREFS_DIR="${WORK_DIR}/config/includes.chroot/etc/apt/preferences.d"
+mkdir -p "${APT_PREFS_DIR}"
+VOS_PACKAGES="$(awk '/^Package: / { print $2 }' "${REPO_DIR}/Packages" | sort -u | paste -sd ' ' -)"
+printf 'Package: %s\nPin: release o=Debian\nPin-Priority: -1\n' "${VOS_PACKAGES}" \
+    > "${APT_PREFS_DIR}/nfs-protected-packages.pref"
 
 # Build isolated libgoa stubs so found-control-center (libsoup-2.4) does not pull Debian 12 libsoup-3.0
 COMPAT_GOA_DIR="${WORK_DIR}/config/includes.chroot/usr/lib/found-control-center-compat"
@@ -146,10 +148,10 @@ lb config \
   --cache-packages true \
   --cache-stages "bootstrap" \
   --bootappend-live "boot=live components quiet splash locales=en_US.UTF-8,vi_VN.UTF-8" \
-  --iso-application "NFS" \
-  --iso-preparer "NFS" \
-  --iso-publisher "NFS" \
-  --iso-volume "NFS" \
+  --iso-application "VOS" \
+  --iso-preparer "VOS" \
+  --iso-publisher "VOS" \
+  --iso-volume "VOS" \
   --memtest none \
   --checksums sha256 \
   --zsync false
@@ -171,7 +173,7 @@ if [ -z "${ISO_FILE}" ]; then
     exit 1
 fi
 
-OUT_ISO="${OUT_DIR}/nfs-desktop-amd64.iso"
+OUT_ISO="${OUT_DIR}/vos-desktop-amd64.iso"
 mv -f "${ISO_FILE}" "${OUT_ISO}"
 (cd "${OUT_DIR}" && sha256sum "$(basename "${OUT_ISO}")" > "$(basename "${OUT_ISO}").sha256")
 ls -lh "${OUT_DIR}"

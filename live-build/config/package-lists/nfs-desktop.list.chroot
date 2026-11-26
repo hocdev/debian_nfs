@@ -45,7 +45,7 @@ policykit-1-gnome
 gnome-keyring
 libpam-gnome-keyring
 
-# NFS Found Desktop, Taskbar, Session, WM, File Manager & Branding
+# VOS Found Desktop, Taskbar, Session, WM, File Manager & Branding
 nfs-compat-libs
 libfound-desktop-data
 libfound-desktop-4
