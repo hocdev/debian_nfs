@@ -164,9 +164,10 @@ if [ -f /usr/lib/systemd/system/fcitx5-lotus-server@.service ]; then
     ln -sf /usr/lib/systemd/system/fcitx5-lotus-server@.service /etc/systemd/system/multi-user.target.wants/fcitx5-lotus-server@user.service
 fi
 
-# Override hicolor fcitx-lotus icons with Found red V / blue E so tray icon matches regardless of theme fallback
+# Keep the Fcitx tray icons available when it falls back to hicolor.
 for name in fcitx-lotus.svg fcitx-lotus-default.svg fcitx-lotus-default-black.svg fcitx-lotus-default-symbolic.svg org.fcitx.Fcitx5.fcitx-lotus.svg \
-            fcitx-lotus-off.svg fcitx-lotus-off-default.svg fcitx-lotus-off-default-black.svg fcitx-lotus-off-default-symbolic.svg org.fcitx.Fcitx5.fcitx-lotus-off.svg; do
+            fcitx-lotus-off.svg fcitx-lotus-off-default.svg fcitx-lotus-off-default-black.svg fcitx-lotus-off-default-symbolic.svg org.fcitx.Fcitx5.fcitx-lotus-off.svg \
+            input-keyboard.svg input-keyboard-symbolic.svg; do
     if [ -f "/usr/share/icons/Found/status/scalable/$name" ]; then
         mkdir -p /usr/share/icons/hicolor/scalable/status /usr/share/icons/hicolor/scalable/apps
         cp -f "/usr/share/icons/Found/status/scalable/$name" "/usr/share/icons/hicolor/scalable/status/$name"

@@ -65,3 +65,5 @@ usr/share/icons/Found/cursors/top_left_arrow	left_ptr
 usr/share/icons/Found/cursors/v_double_arrow	sb_v_double_arrow
 usr/share/icons/Found/cursors/w-resize	left_side
 usr/share/icons/Found/cursors/wait	watch
+usr/share/icons/Found/status/scalable/input-keyboard.svg	fcitx-lotus-off.svg
+usr/share/icons/Found/status/scalable/input-keyboard-symbolic.svg	fcitx-lotus-off.svg
