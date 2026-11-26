@@ -10,10 +10,16 @@ CACHE_DIR="${ROOT_DIR}/.lb-cache"
 rm -rf "${REPO_DIR}"
 mkdir -p "${OUT_DIR}" "${CACHE_DIR}" "${REPO_DIR}/pool/main"
 
-# Stage local APT repository from repo/pool/main + build/debs (built from src/)
-cp -f "${ROOT_DIR}/repo/pool/main/"*.deb "${REPO_DIR}/pool/main/"
+# Stage local APT repository from repo/pool/main (if present) + build/debs (built from src/)
+if compgen -G "${ROOT_DIR}/repo/pool/main/*.deb" > /dev/null; then
+    cp -f "${ROOT_DIR}/repo/pool/main/"*.deb "${REPO_DIR}/pool/main/"
+fi
 if compgen -G "${ROOT_DIR}/build/debs/*.deb" > /dev/null; then
     cp -f "${ROOT_DIR}/build/debs/"*.deb "${REPO_DIR}/pool/main/"
+fi
+if ! compgen -G "${REPO_DIR}/pool/main/*.deb" > /dev/null; then
+    echo "ERROR: No .deb packages found in repo/pool/main or build/debs" >&2
+    exit 1
 fi
 
 # Build APT repository metadata for local NFS packages
