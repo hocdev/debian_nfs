@@ -1,0 +1,12 @@
+#!/bin/bash
+
+		BASEPATH="/usr/share/found-monitors-switcher"
+		modefile=$BASEPATH"/mode.config"
+		pysh=$BASEPATH"/main.py"
+		#文件不存在,默认为复制模式
+		[ -e  $modefile ] || mode=2
+		#文件存在，读取文件配置
+		[ -e  $modefile ] && mode=`cat $modefile` 
+		[[ "x$mode" == "x" ]] && mode=2
+		#调用python切屏脚本
+		python $pysh $mode

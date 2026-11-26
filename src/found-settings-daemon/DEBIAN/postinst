@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if [ -f /etc/xdg/autostart/gnome-settings-daemon.desktop ]; then
+	rm -f /etc/xdg/autostart/gnome-settings-daemon.desktop
+fi
+
+if [ -f /usr/lib/found-settings-daemon/privacy.sh ]; then
+	chmod +x /usr/lib/found-settings-daemon/privacy.sh
+fi
+
+if [ -f /usr/lib/found-settings-daemon/privacy-close-camera.sh ]; then
+	chmod +x /usr/lib/found-settings-daemon/privacy-close-camera.sh
+fi
+
+global_settings=/etc/desktop/global-settings
+if [ ! -f "${global_settings}" ]; then
+	mkdir -p /etc/desktop/
+	cp -f /usr/share/cdos-settings-daemon/global-settings "${global_settings}"
+	chmod 0666 "${global_settings}"
+fi
+
+chmod +x /usr/share/lightdm/greeter/pre-scripts/10update-screen-display.sh
+
+WHAT_ARCH=`/usr/bin/arch`
+if [ $WHAT_ARCH = "loongarch64" -o $WHAT_ARCH = "sw_64" ];then
+	IAGE_NUM=`sed -n '/IAge=/=' /usr/lib/cdos-settings-daemon-3.0/rfkill.cdos-settings-plugin`
+	IAGE_STR="IAge=10"
+	sed -i "${IAGE_NUM}c${IAGE_STR}" /usr/lib/cdos-settings-daemon-3.0/rfkill.cdos-settings-plugin
+fi
+
+chmod +x /usr/lib/found-settings-daemon/set_power_policy.sh
+
+

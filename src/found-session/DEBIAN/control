@@ -1,0 +1,21 @@
+Package: found-session
+Priority: optional
+Section: gnome
+Installed-Size: 713
+Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Architecture: amd64
+Version: 3.22.7-m5+1nfs5
+Replaces: gnome-session
+Provides: x-session-manager
+Depends: dconf-gsettings-backend | gsettings-backend, found-settings-daemon, found-session-common (= 3.22.7-m5+1nfs5), found-gsettings-schemas
+Suggests: gnome-keyring
+Conflicts: gnome-session
+Description: CDOS Session Manager - CDOS session
+ The CDOS Session Manager is in charge of starting the core components
+ of the CDOS desktop, and applications that should be launched at
+ login time. It also features a way to save and restore currently
+ running applications.
+ .
+ This package contains the required components for the standard CDOS
+ session. It can be started from a display manager such as GDM,
+ and requires 3D acceleration to work properly.

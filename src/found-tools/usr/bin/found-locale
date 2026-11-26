@@ -1,0 +1,4 @@
+#!/usr/bin/python3
+import os
+
+os.system("pkexec /usr/share/found-locale/main.py")

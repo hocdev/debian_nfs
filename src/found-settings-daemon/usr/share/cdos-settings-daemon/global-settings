@@ -1,0 +1,6 @@
+[org.cdos.settings-daemon.plugins.color]
+brightness-percentage=100
+night-light-enabled=false
+night-light-temperature=2700
+night-light-schedule-from=20.00
+night-light-schedule-to=6.00

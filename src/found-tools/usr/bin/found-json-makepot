@@ -1,0 +1,5 @@
+#!/usr/bin/env python3
+
+import os, sys
+
+os.execvp("/usr/share/found-json-makepot/main.py", ("",) + tuple(sys.argv[1:]))

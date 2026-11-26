@@ -1,0 +1,5 @@
+usr/lib/x86_64-linux-gnu/libmutter-6.so.0	libmutter-6.so.0.0.0
+usr/lib/x86_64-linux-gnu/mutter-6/libmutter-clutter-6.so.0	libmutter-clutter-6.so.0.0.0
+usr/lib/x86_64-linux-gnu/mutter-6/libmutter-cogl-6.so.0	libmutter-cogl-6.so.0.0.0
+usr/lib/x86_64-linux-gnu/mutter-6/libmutter-cogl-pango-6.so.0	libmutter-cogl-pango-6.so.0.0.0
+usr/lib/x86_64-linux-gnu/mutter-6/libmutter-cogl-path-6.so.0	libmutter-cogl-path-6.so.0.0.0

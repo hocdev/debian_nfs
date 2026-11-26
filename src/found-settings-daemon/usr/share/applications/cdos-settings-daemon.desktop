@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Cdos Settings Daemon
+Exec=/usr/bin/cdos-settings-daemon
+NoDisplay=true
+X-GNOME-Autostart-Phase=Initialization
+X-GNOME-Autostart-Notify=true
+X-GNOME-AutoRestart=true

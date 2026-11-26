@@ -1,0 +1,19 @@
+Package: libnemo-extension1
+Priority: optional
+Section: libs
+Installed-Size: 328
+Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
+Architecture: amd64
+Multi-Arch: same
+Source: nemo
+Version: 4.8.6-m262+1nfs5
+Depends: libc6 (>= 2.4), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.45.7), libgtk-3-0 (>= 3.10.0)
+Breaks: nemo-fileroller (<< 4.6~), nemo-python (<< 4.6~)
+Description: Nemo component system facilities
+ Nemo is the official file manager for the Cinnamon desktop. It allows one
+ to browse directories, preview files and launch applications associated
+ with them. It is also responsible for handling the icons on the Cinnamon
+ desktop. It works on local and remote filesystems.
+ .
+ This package contains the shared library needed by the nemo extensions.
+Homepage: http://cinnamon.linuxmint.com/

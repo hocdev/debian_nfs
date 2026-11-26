@@ -37,6 +37,14 @@ build_pkg_from_src() {
   rm -rf "$stage"
   cp -a "$src_dir" "$stage"
   rm -rf "$stage/src" "$stage/taskbar"
+  if [ -f "$stage/case_collisions.list" ]; then
+    while IFS=$'\t' read -r orig_rel stored_rel; do
+      [ -z "$orig_rel" ] && continue
+      mkdir -p "$stage/$(dirname "$orig_rel")"
+      mv "$stage/$stored_rel" "$stage/$orig_rel"
+    done < "$stage/case_collisions.list"
+    rm -rf "$stage/_case_collisions" "$stage/case_collisions.list"
+  fi
   if [ -f "$stage/symlinks.list" ]; then
     while IFS=$'\t' read -r link_rel link_target; do
       [ -z "$link_rel" ] && continue
@@ -105,6 +113,16 @@ build_pkg_from_src "gir1.2-nemo-3.0"            "gir1.2-nemo-3.0_4.8.6-m262+1nfs
 build_pkg_from_src "nemo-share"                 "nemo-share_3.2.0+2-m11+1nfs5_amd64.deb"
 build_pkg_from_src "libxapp1"                   "libxapp1_2.0.7-1+nfs5_amd64.deb"
 build_pkg_from_src "nemo-print"                 "nemo-print_1.0.5-m2+1nfs5_amd64.deb"
+build_pkg_from_src "mutter"                     "mutter_3.36.11-m38+1nfs5_amd64.deb"
+build_pkg_from_src "libnemo-extension1"         "libnemo-extension1_4.8.6-m262+1nfs5_amd64.deb"
+build_pkg_from_src "found-session"              "found-session_3.22.7-m5+1nfs5_amd64.deb"
+build_pkg_from_src "found-tools"                "found-tools_4.0.0-m18+1nfs5_amd64.deb"
+build_pkg_from_src "found-settings-daemon"      "found-settings-daemon_4.0.4-m19+1nfs5_amd64.deb"
+build_pkg_from_src "libmutter-6-0"              "libmutter-6-0_3.36.11-m38+1nfs5_amd64.deb"
+build_pkg_from_src "found-control-center"       "found-control-center_1_3.38.5-m120+1nfs5_amd64.deb"
+build_pkg_from_src "nemo"                       "nemo_4.8.6-m262+1nfs5_amd64.deb"
+build_pkg_from_src "nfs-compat-libs"            "nfs-compat-libs_1.0+nfs5_amd64.deb"
+build_pkg_from_src "found-icon-theme-dark"      "found-icon-theme-dark_4.0.6-m10+1nfs5_all.deb"
 
 echo "=== 3. Built packages in $OUT_DIR ==="
 ls -lh "$OUT_DIR"

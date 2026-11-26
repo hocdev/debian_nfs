@@ -1,0 +1,10 @@
+Package: found-tools
+Priority: optional
+Section: python
+Installed-Size: 812
+Maintainer: OS Support Team <support@hocdev.com>
+Architecture: amd64
+Version: 4.0.0-m18+1nfs5
+Depends: imwheel, gir1.2-glib-2.0, gir1.2-gtk-3.0, gir1.2-accountsservice-1.0, gir1.2-gdkpixbuf-2.0, gir1.2-wnck-3.0, gir1.2-gmenu-3.0, gir1.2-pango-1.0, python3-pil, python3-dbus, python3-pwquality, python3-future, python3-lxml
+Description: Tools and scripts of found desktop.
+Homepage: http://www.hocdev.com

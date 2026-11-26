@@ -1,0 +1,15 @@
+#items_grid {
+	margin-top: 12px;
+	margin-left: 12px;
+	margin-bottom: 12px;
+}
+
+#main_window {
+	background: #ffffff;
+	background-color: #ffffff;
+}
+
+#avatar_preview_label,
+#system_avatar_label {
+	font-size: 16px;
+}

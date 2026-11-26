@@ -1,0 +1,21 @@
+[Desktop Entry]
+Name[zh_CN]=远程桌面
+Name=Remote Desktop
+Comment[zh_CN]=远程桌面
+Comment=Remote Desktop
+Exec=found-control-center remote
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=computer-symbolic
+Terminal=false
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=GNOME;GTK;Settings;DesktopSettings;X-GNOME-Settings-Panel;X-GNOME-PersonalizationSettings;X-FOUND-SystemSettings;
+OnlyShowIn=GNOME;Unity;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-control-center
+X-GNOME-Bugzilla-Component=search
+X-GNOME-Bugzilla-Version=3.38.4
+# Translators: Search terms to find the Search panel. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
+Keywords[zh_CN]=Remote;Desktop;远程;桌面;
+Keywords=Remote;Desktop;

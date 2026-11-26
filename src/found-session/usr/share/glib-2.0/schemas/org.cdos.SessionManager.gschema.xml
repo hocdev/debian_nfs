@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="cdos-session-3.0">
+  <schema path="/org/cdos/cdos-session/" id="org.cdos.SessionManager">
+    <key type="b" name="auto-save-session">
+      <default>false</default>
+      <summary>Save sessions</summary>
+      <description>If enabled, cdos-session will save the session automatically.</description>
+    </key>
+    <key type="b" name="auto-save-session-one-shot">
+      <default>false</default>
+      <summary>Save this session</summary>
+      <description>When enabled, cdos-session will automatically save the next session at log out even if auto saving is disabled.</description>
+    </key>
+    <key type="b" name="logout-prompt">
+      <default>true</default>
+      <summary>Logout prompt</summary>
+      <description>If enabled, cdos-session will prompt the user before ending a session.</description>
+    </key>
+    <key type="b" name="show-fallback-warning">
+      <default>true</default>
+      <summary>Show the fallback warning</summary>
+      <description>If enabled, cdos-session will display a warning dialog after login if the session was automatically fallen back.</description>
+    </key>
+    <key type="u" name="start-phase-timeout">
+      <default>300</default>
+      <summary>Timeout for startup application</summary>
+      <description>The number of seconds is timeout for startup application.</description>
+    </key>
+  </schema>
+</schemalist>

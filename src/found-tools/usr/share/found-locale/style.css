@@ -1,0 +1,19 @@
+/*use for cdos-settings language*/
+#main_window {
+    background-color: #ffffff;
+    background: #ffffff;
+}
+
+#lang_label {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#lang_tip {
+    font-size: 1.0em;
+}
+
+#apply_label {
+    font-weight: bold;
+    font-size: 1.2em;
+}

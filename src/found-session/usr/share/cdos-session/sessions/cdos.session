@@ -1,0 +1,3 @@
+[GNOME Session]
+Name=Cdos-desktop
+RequiredComponents=cdos-desktop;cdos-settings-daemon;nemo-autostart;

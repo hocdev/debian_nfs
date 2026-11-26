@@ -1,0 +1,8 @@
+[Cdos Settings Plugin]
+Module=timezone
+IAge=0
+Name=Timezone
+Description=Timezone plugin
+Authors=
+Copyright=Copyright © 2007 
+Website=

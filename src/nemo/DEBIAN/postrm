@@ -1,0 +1,22 @@
+#! /bin/bash
+
+#以root运行systemctl --user
+
+loginctl enable-linger $(logname)
+
+su $(logname) << 'EOF'
+
+export XDG_RUNTIME_DIR=/run/user/$(id -u $(logname))
+export DBUS_SESSION_BUS_ADDRESS=/run/user/$(id -u $(logname))/bus
+
+systemctl --user unmask tracker-store tracker-writeback tracker-extract tracker-miner-fs
+
+EOF
+
+if [ -f '/etc/xdg/autostart/tracker-extract.desktop.bak' ]; then
+    sudo mv /etc/xdg/autostart/tracker-extract.desktop.bak /etc/xdg/autostart/tracker-extract.desktop
+fi
+
+if [ -f '/etc/xdg/autostart/tracker-miner-fs.desktop.bak' ]; then
+    sudo mv /etc/xdg/autostart/tracker-miner-fs.desktop.bak /etc/xdg/autostart/tracker-miner-fs.desktop
+fi

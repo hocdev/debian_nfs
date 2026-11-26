@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.freedesktop.SettingsDaemon.Privacy
+Exec=/usr/lib/found-settings-daemon/system-privacy
+User=root

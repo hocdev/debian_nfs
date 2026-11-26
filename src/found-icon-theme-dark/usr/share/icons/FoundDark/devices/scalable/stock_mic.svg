@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="48px" height="48px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" xml:space="preserve">
+<g>
+	<path id="path2677" fill="#BDC4C9" d="M40.756,15.698c-0.078,4.232-3.655,7.599-7.989,7.52s-7.784-3.573-7.706-7.805
+		c0.078-4.232,3.655-7.599,7.989-7.52C37.383,7.971,40.834,11.466,40.756,15.698z"/>
+	
+		<radialGradient id="path3320_1_" cx="-652.8649" cy="1171.792" r="11.6144" gradientTransform="matrix(-0.7662 1.7164 0.701 0.3129 -1297.8093 773.1539)" gradientUnits="userSpaceOnUse">
+		<stop  offset="0" style="stop-color:#3C3C3C"/>
+		<stop  offset="1" style="stop-color:#1E1E1E"/>
+	</radialGradient>
+	<path id="path3320" fill="url(#path3320_1_)" d="M24.107,17.361L8.73,35.442c0.785,4.281,5.235,4.472,5.235,4.472l17.994-15.909
+		L24.107,17.361z"/>
+	<path id="path3322" fill="#BDC4C9" d="M26.651,21.051c-15.117,16.81-15.778,17.15-15.778,17.15S9.365,36.84,9.3,35.881
+		l14.919-17.506C24.219,18.375,25.346,19.874,26.651,21.051z"/>
+	<path id="path3177" opacity="0.5" fill="#32342F" d="M27.665,9.868c0,0,3.107,4.113,11.585,10.308c0.346,0.253-0.656,1.311-1,1.014
+		c0,0-5.249-2.512-11.665-10.088C26.267,10.726,26.824,10.443,27.665,9.868z"/>
+	<path id="path3302" fill="#3B3D37" d="M31.665,24.171c0.625-0.076,2.109-0.953,2.109-0.953c-2.148-1.068-8.67-7.474-8.67-7.474
+		s-1.133,1.449-1.015,1.868C24.088,17.613,27.837,21.96,31.665,24.171z"/>
+</g>
+</svg>

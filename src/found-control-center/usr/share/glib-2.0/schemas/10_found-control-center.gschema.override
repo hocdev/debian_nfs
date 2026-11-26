@@ -1,0 +1,5 @@
+[org.gnome.Vino]
+vnc-password='MTIzNDU2Nzg='
+
+[org.cdos.settings-daemon.plugins.power]
+button-power='interactive'

@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+import os
+
+os.system("exec /usr/share/found-accounts-manager/main.py")
+

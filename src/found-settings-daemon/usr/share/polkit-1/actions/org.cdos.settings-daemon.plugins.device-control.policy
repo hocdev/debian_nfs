@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1.0/policyconfig.dtd">
+<policyconfig>
+
+  
+
+  <vendor>Cdos Settings Daemon</vendor>
+  <vendor_url>http://git.gnome.org/browse/cdos-settings-daemon</vendor_url>
+  <icon_name>battery</icon_name>
+
+  <action id="org.cdos.settings-daemon.plugins.device-control.camera-helper">
+    
+    <description>Control camera state</description>
+    <message>Authentication is required to control the camera state</message>
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>yes</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/lib/found-settings-daemon/csd-camera-helper</annotate>
+  </action>
+
+</policyconfig>

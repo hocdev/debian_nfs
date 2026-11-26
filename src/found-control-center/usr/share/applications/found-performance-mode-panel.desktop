@@ -1,0 +1,78 @@
+[Desktop Entry]
+Name[zh_CN]=性能模式
+Name=Performance mode
+Comment=change desktop components for speed up
+Exec=found-control-center performance-mode
+# Translators: Do NOT translate or transliterate this text (this is an icon file name)!
+Icon=performance-symbolic
+Terminal=false
+Type=Application
+NoDisplay=true
+StartupNotify=true
+Categories=GNOME;GTK;Settings;X-GNOME-Settings-Panel;X-GNOME-DetailsSettings;X-FOUND-SystemSettings;
+OnlyShowIn=GNOME;Unity;
+X-GNOME-Bugzilla-Bugzilla=GNOME
+X-GNOME-Bugzilla-Product=gnome-control-center
+X-GNOME-Bugzilla-Component=performance
+X-GNOME-Bugzilla-Version=3.38.4
+# Translators: Search terms to find the About panel.
+# Do NOT translate or localize the semicolons!
+# The list MUST also end with a semicolon!
+# "Preferred Applications" is the old name for the preference, so make
+# sure that you use the same "translation" for those keywords
+Keywords[af]=verstek;toepassing;voorkeur;media;
+Keywords[ar]=مبدئي;تطبيق;مفضل;وسائط;
+Keywords[be]=прадвызначаны;праграма;перавагі;медыя;
+Keywords[bg]=стандартни;предпочитани;приложения;програми;носители;default;application;preferred;media;
+Keywords[bn_IN]=ডিফল্ট;অ্যাপ্লিকেশান;পছন্দসই;মিডিয়া;
+Keywords[ca]=per defecte; aplicació; preferida;multimèdia;
+Keywords[ca@valencia]=per defecte; aplicació; preferida;multimèdia;
+Keywords[ckb]=بنەڕەت;نەرمەواڵا;پەسەندکراو;ڕەنگاڵە;
+Keywords[cs]=výchozí;aplikace;preferovaný;preferovaná;preferované;upřednostňovaný;upřednostňovaná;upřednostňované;média;médium;multimédia;
+Keywords[da]=standard;program;applikation;foretrukne;foretrukken;medie;medier;
+Keywords[de]=Vorgabe;Voreinstellung;Anwendung;bevorzugt;Medien;Medium;
+Keywords[el]=προεπιλογή;εφαρμογή;προτιμώμενη;μέσα;default;application;preferred;media;
+Keywords[en_GB]=default;application;preferred;media;
+Keywords[eo]=implicita;aplikaĵo;preferita;datumportilo;
+Keywords[es]=predeterminado;aplicación;preferida;medios;
+Keywords[eu]=lehenetsia;aplikazioa;hobetsia;euskarria;
+Keywords[fa]=default;application;preferred;media;پیش‌گزیده;پیش‌گزیده;ترجیح;رسانه;
+Keywords[fi]=default;application;preferred;media;oletussovellus;ensisijainen;
+Keywords[fr]=défaut;par défaut;application;préférée;média;
+Keywords[fur]=predefinît;aplicazion;preferît;multimedia;
+Keywords[gd]=default;application;preferred;media;tùsail;bun-roghainn;bunaiteach;aplacaid;nas fheass;as fhearr;meadhan;meadhanan;
+Keywords[gl]=predeterminado;aplicación;prefirido;media;
+Keywords[he]=ברירת מחדל;בררת מחדל;דפאולט;יישום;יישומים;מאפיינים;הגדרות;הגדרה;מדיה;
+Keywords[hr]=zadano;aplikacija;poželjno;medij;
+Keywords[hu]=alap;alapértelmezett;alkalmazás;előnyben részesített;média;
+Keywords[id]=bawaan;aplikasi;disukai;media;
+Keywords[is]=sjálfgefið;forrit;gagnamiðill;
+Keywords[it]=predefinito;applicazione;preferite;dispositivo;media;multimedia;
+Keywords[ja]=default;application;preferred;media;デフォルト;既定;アプリケーション;メディア;
+Keywords[kk]=default;application;preferred;media;үнсіз келісім;қолданба;таңдамалы;тасушы;
+Keywords[ko]=default;기본;기본값;application;프로그램;앱;애플리케이션;preferred;media;미디어;
+Keywords[lt]=numatytoji;programa;pageidaujama;laikmena;
+Keywords[lv]=noklusējuma;lietotne;vēlamais;mediji;defaulta;aplikācija;mēdiji;
+Keywords[mjw]=default;application;preferred;media;
+Keywords[ml]=default;application;preferred;media;
+Keywords[ms]=lalai;aplikasi;dikehendaki;media;
+Keywords[nb]=forvalgt;program;foretrukket;medie;
+Keywords[nl]=default;application;preferred;media;standaard;toepassing;voorkeur;
+Keywords[oc]=defaut;per defaut;aplicacion;preferida;mèdia;
+Keywords[pa]=ਡਿਫਾਲਟ;ਮੂਲ;ਐਪਲੀਕੇਸ਼ਨ;ਤਰਜੀਹੀ;ਮੀਡੀਆ;ਪਸੰਦ;
+Keywords[pl]=domyślne;programy;aplikacje;preferowane;nośnik;
+Keywords[pt]=predefinição;aplicação;preferida;média;
+Keywords[pt_BR]=padrão;aplicativo;preferido;mídia;
+Keywords[ro]=default;application;preferred;media;implicit;implicită;implicite;aplicație;preferată;preferate;
+Keywords[ru]=по умолчанию;приложение;предпочтительное;носитель;
+Keywords[sk]=predvolená;predvolený;predvolené;aplikácia;uprednostňovaná;uprednostňovaný;uprednostňované;médium;médiá;nosič,nosiče;
+Keywords[sl]=privzeto;program;prednostno;priljubljeno;media;predstavnost;sistem;podrobnosti;info;informacije;različica;
+Keywords[sr]=основни;програм;омиљени;медиј;
+Keywords[sr@latin]=osnovni;program;omiljeni;medij;
+Keywords[sv]=standard;program;föredragen;media;
+Keywords[tr]=öntanımlı;uygulama;tercihen;yeğlenen;ortam;
+Keywords[uk]=типове;програма;бажане;носій;default;application;preferred;media;
+Keywords[vi]=default;application;preferred;media;mặc định;mac dinh;ứng dụng;ung dung;ưa dùng;uu dung;
+Keywords[zh_CN]=default;application;preferred;media;默认;应用程序;首选;偏好;媒体;介质;
+Keywords[zh_TW]=default;application;preferred;media;預設;應用程式;偏好;首選;媒體;
+Keywords=default;application;preferred;media;

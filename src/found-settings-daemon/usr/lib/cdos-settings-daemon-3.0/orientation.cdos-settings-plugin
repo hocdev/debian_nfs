@@ -1,0 +1,8 @@
+[Cdos Settings Plugin]
+Module=orientation
+IAge=0
+Name=Orientation
+Description=Orientation plugin
+Authors=Peter Hutterer
+Copyright=Copyright © 2010
+Website=

@@ -1,0 +1,6 @@
+#!/usr/bin/python3
+
+import os
+
+os.system("python3 /usr/share/found-user-face/main.py")
+

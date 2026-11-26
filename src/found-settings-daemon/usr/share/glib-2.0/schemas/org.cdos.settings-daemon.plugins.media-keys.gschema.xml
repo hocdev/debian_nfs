@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema path="/org/cdos/settings-daemon/plugins/media-keys/" id="org.cdos.settings-daemon.plugins.media-keys" gettext-domain="cdos-settings-daemon">
+     <key type="b" name="active">
+      <default>true</default>
+      <summary>Activation of this plugin</summary>
+      <description>Whether this plugin would be activated by cdos-settings-daemon or not</description>
+    </key>
+    <key type="i" name="priority">
+      <default>98</default>
+      <summary>Priority to use for this plugin</summary>
+      <description>Priority to use for this plugin in cdos-settings-daemon startup queue</description>
+    </key>
+    <key type="as" name="calculator">
+      <default>['XF86Calculator']</default>
+      <summary>Launch calculator</summary>
+      <description>Binding to launch the calculator.</description>
+    </key>
+    <key type="as" name="system-monitor">
+      <default>['XF86Tools']</default>
+      <summary>Launch system monitor</summary>
+      <description>Binding to launch system monitor.</description>
+    </key>
+    <key type="as" name="device-manager">
+      <default>['']</default>
+      <summary>Launch device manager</summary>
+      <description>Binding to launch device manager.</description>
+    </key>
+    <key type="as" name="key-ai">
+      <default>['']</default>
+      <summary>Launch AI</summary>
+      <description>Binding to launch AI.</description>
+    </key>
+    <key type="as" name="show-notifications">
+      <default>['&lt;Super&gt;a']</default>
+      <summary>Show notifications</summary>
+      <description>Binding to show notifications.</description>
+    </key>
+    <key type="as" name="powermode-changed">
+      <default>['']</default>
+      <summary>Cycle powermode</summary>
+      <description>Binding to cycle powermode.</description>
+    </key>
+    <key type="as" name="email">
+      <default>['XF86Mail']</default>
+      <summary>Launch email client</summary>
+      <description>Binding to launch the email client.</description>
+    </key>
+    <key type="as" name="eject">
+      <default>['XF86Eject']</default>
+      <summary>Eject</summary>
+      <description>Binding to eject an optical disc.</description>
+    </key>
+    <key type="as" name="help">
+      <default>['', '&lt;Super&gt;F1']</default>
+      <summary>Launch help browser</summary>
+      <description>Binding to launch the help browser.</description>
+    </key>
+    <key type="as" name="media">
+      <default>['XF86AudioMedia']</default>
+      <summary>Launch media player</summary>
+      <description>Binding to launch the media player.</description>
+    </key>
+    <key type="as" name="next">
+      <default>['XF86AudioNext']</default>
+      <summary>Next track</summary>
+      <description>Binding to skip to next track.</description>
+    </key>
+    <key type="as" name="pause">
+      <default>['XF86AudioPause']</default>
+      <summary>Pause playback</summary>
+      <description>Binding to pause playback.</description>
+    </key>
+    <key type="as" name="play">
+      <default>['XF86AudioPlay']</default>
+      <summary>Play (or play/pause)</summary>
+      <description>Binding to start playback (or toggle play/pause).</description>
+    </key>
+    <key type="as" name="logout">
+      <default>['&lt;Control&gt;&lt;Alt&gt;Delete']</default>
+      <summary>Log out</summary>
+      <description>Binding to log out.</description>
+    </key>
+    <key type="as" name="capslock">
+      <default>['Caps_Lock']</default>
+      <summary>Caps lock</summary>
+      <description>Binding to caps Lock.</description>
+    </key>
+    <key type="as" name="numlock">
+      <default>['Num_Lock']</default>
+      <summary>num lock</summary>
+      <description>Binding to num Lock.</description>
+    </key>
+    <key type="as" name="shutdown">
+      <default>['&lt;Control&gt;&lt;Alt&gt;End']</default>
+      <summary>Shut down the computer</summary>
+      <description>Binding to shut down.</description>
+    </key>
+    <key type="as" name="previous">
+      <default>['XF86AudioPrev']</default>
+      <summary>Previous track</summary>
+      <description>Binding to skip to previous track.</description>
+    </key>
+    <key type="as" name="screensaver">
+      <default>['&lt;Super&gt;l','&lt;Primary&gt;&lt;Alt&gt;l']</default>
+      <summary>Lock screen</summary>
+      <description>Binding to lock the screen.</description>
+    </key>
+    <key type="as" name="search">
+      <default>['&lt;Super&gt;s','XF86Search']</default>
+      <summary>Search</summary>
+      <description>Binding to launch the search tool.</description>
+    </key>
+    <key type="as" name="display">
+      <default>['&lt;Super&gt;p']</default>
+      <summary>Display</summary>
+      <description>Binding to launch the cdos-multimonitor-switcher.</description>
+    </key>
+    <key type="as" name="stop">
+      <default>['XF86AudioStop']</default>
+      <summary>Stop playback</summary>
+      <description>Binding to stop playback.</description>
+    </key>
+    <key type="as" name="volume-down">
+      <default>['XF86AudioLowerVolume']</default>
+      <summary>Volume down</summary>
+      <description>Binding to lower the system volume.</description>
+    </key>
+    <key type="as" name="volume-mute">
+      <default>['XF86AudioMute']</default>
+      <summary>Volume mute</summary>
+      <description>Binding to mute the system volume.</description>
+    </key>
+    <key type="as" name="volume-up">
+      <default>['XF86AudioRaiseVolume']</default>
+      <summary>Volume up</summary>
+      <description>Binding to raise the system volume.</description>
+    </key>
+    <key type="as" name="mic-mute">
+      <default>['XF86AudioMicMute']</default>
+      <summary>Microphone mute/unmute</summary>
+      <description>Binding to mute/unmute the microphone.</description>
+    </key>
+
+    
+     <key type="as" name="volume-down-quiet">
+       <default>['&lt;Alt&gt;XF86AudioLowerVolume', '&lt;Alt&gt;&lt;Ctrl&gt;XF86AudioLowerVolume']</default>
+       <summary>Quiet volume down</summary>
+       <description>Static binding to lower the volume without emitting a sound effect.</description>
+     </key>
+     <key type="as" name="volume-mute-quiet">
+       <default>['&lt;Alt&gt;XF86AudioMute']</default>
+       <summary>Quiet volume mute/unmute</summary>
+       <description>Static binding to mute/unmute the volume.</description>
+     </key>
+     <key type="as" name="volume-up-quiet">
+       <default>['&lt;Alt&gt;XF86AudioRaiseVolume', '&lt;Alt&gt;&lt;Ctrl&gt;XF86AudioRaiseVolume']</default>
+       <summary>Quiet volume up</summary>
+       <description>Static binding to raise the volume without emitting a sound effect.</description>
+     </key>
+
+    
+    <key type="as" name="volume-down-precise">
+        <default>['&lt;Shift&gt;XF86AudioLowerVolume']</default>
+        <summary>Precise volume down</summary>
+        <description>Static binding to lower the volume with higher precision.</description>
+    </key>
+    <key type="as" name="volume-up-precise">
+        <default>['&lt;Shift&gt;XF86AudioRaiseVolume']</default>
+        <summary>Precise volume up</summary>
+        <description>Static binding to raise the volume with higher precision.</description>
+    </key>
+    <key type="as" name="screenshot">
+      <default>['Print']</default>
+      <summary>Take a screenshot</summary>
+      <description>Binding to take a screenshot.</description>
+    </key>
+    <key type="as" name="window-screenshot">
+      <default>['&lt;Alt&gt;Print']</default>
+      <summary>Take a screenshot of a window</summary>
+      <description>Binding to take a screenshot of a window.</description>
+    </key>
+    <key type="as" name="area-screenshot">
+      <default>['&lt;Shift&gt;Print']</default>
+      <summary>Take a screenshot of an area</summary>
+      <description>Binding to take a screenshot of an area.</description>
+    </key>
+    <key type="as" name="screenshot-clip">
+      <default>['&lt;Control&gt;Print']</default>
+      <summary>Copy a screenshot to clipboard</summary>
+      <description>Binding to copy a screenshot to clipboard.</description>
+    </key>
+    <key type="as" name="window-screenshot-clip">
+      <default>['&lt;Control&gt;&lt;Alt&gt;Print']</default>
+      <summary>Copy a screenshot of a window to clipboard</summary>
+      <description>Binding to copy a screenshot of a window to clipboard.</description>
+    </key>
+    <key type="as" name="area-screenshot-clip">
+      <default>['&lt;Control&gt;&lt;Shift&gt;Print']</default>
+      <summary>Copy a screenshot of an area to clipboard</summary>
+      <description>Binding to copy a screenshot of an area to clipboard.</description>
+    </key>
+    <key type="as" name="terminal">
+      <default>['&lt;Primary&gt;&lt;Alt&gt;t']</default>
+      <summary>Launch terminal</summary>
+      <description>Binding to launch the terminal.</description>
+    </key>
+    <key type="as" name="www">
+      <default>['XF86WWW']</default>
+      <summary>Launch web browser</summary>
+      <description>Binding to launch the web browser.</description>
+    </key>
+    <key type="as" name="magnifier">
+      <default>['&lt;Alt&gt;&lt;Super&gt;8']</default>
+      <summary>Toggle magnifier</summary>
+      <description>Binding to show the screen magnifier</description>
+    </key>
+    <key type="as" name="screenreader">
+      <default>['']</default>
+      <summary>Toggle screen reader</summary>
+      <description>Binding to start the screen reader</description>
+    </key>
+    <key type="as" name="on-screen-keyboard">
+      <default>['']</default>
+      <summary>Toggle on-screen keyboard</summary>
+      <description>Binding to show the on-screen keyboard</description>
+    </key>
+    <key type="as" name="increase-text-size">
+      <default>['']</default>
+      <summary>Increase text size</summary>
+      <description>Binding to increase the text size</description>
+    </key>
+    <key type="as" name="decrease-text-size">
+      <default>['']</default>
+      <summary>Decrease text size</summary>
+      <description>Binding to decrease the text size</description>
+    </key>
+    <key type="as" name="toggle-contrast">
+      <default>['']</default>
+      <summary>Toggle contrast</summary>
+      <description>Binding to toggle the interface contrast</description>
+    </key>
+    <key type="as" name="magnifier-zoom-in">
+      <default>['&lt;Alt&gt;&lt;Super&gt;equal']</default>
+      <summary>Magnifier zoom in</summary>
+      <description>Binding for the magnifier to zoom in</description>
+    </key>
+    <key type="as" name="magnifier-zoom-out">
+      <default>['&lt;Alt&gt;&lt;Super&gt;minus']</default>
+      <summary>Magnifier zoom out</summary>
+      <description>Binding for the magnifier to zoom out</description>
+    </key>
+    <key type="as" name="home">
+      <default>['&lt;Super&gt;e']</default>
+      <summary>Home folder</summary>
+      <description>Binding to open the Home folder.</description>
+    </key>
+    <key type="as" name="computer">
+      <default>['']</default>
+      <summary>Computer folder</summary>
+      <description>Binding to open the Computer folder.</description>
+    </key>
+    <key type="as" name="custom-keybindings">
+      <default>[]</default>
+      <summary>Custom keybindings</summary>
+      <description>List of custom keybindings</description>
+    </key>
+    <key type="as" name="touchpad-toggle">
+      <default>['']</default>
+      <summary>Toggle touchpad on/off</summary>
+      <description>Binding to toggle the touchpad on/off.</description>
+    </key>
+    <key type="as" name="touchpad-on">
+      <default>['']</default>
+      <summary>Switch touchpad on</summary>
+      <description>Binding to switch the touchpad on.</description>
+    </key>
+    <key type="as" name="touchpad-off">
+      <default>['']</default>
+      <summary>Switch touchpad off</summary>
+      <description>Binding to switch the touchpad off.</description>
+    </key>
+    <key type="as" name="playback-rewind">
+      <default>['']</default>
+      <summary>Skip backward in current track</summary>
+      <description>Binding to skip backward in current track.</description>
+    </key>
+    <key type="as" name="playback-forward">
+      <default>['']</default>
+      <summary>Skip forward in current track</summary>
+      <description>Binding to skip forward in current track.</description>
+    </key>
+    <key type="as" name="playback-repeat">
+      <default>['']</default>
+      <summary>Toggle repeat playback mode</summary>
+      <description>Binding to toggle repeat mode in media player.</description>
+    </key>
+    <key type="as" name="playback-random">
+       <default>['']</default>
+       <summary>Toggle random playback mode</summary>
+       <description>Binding to toggle random playback mode in media player.</description>
+    </key>
+
+    <key type="as" name="rotate-video-lock">
+      <default>['&lt;Super&gt;o']</default>
+      <summary>Toggle automatic screen orientation</summary>
+      <description>Binding to toggle automatic screen orientation.</description>
+    </key>
+
+    <key type="as" name="power">
+       <default>['']</default>
+       <summary>Power button</summary>
+       <description>Binding for power button.</description>
+     </key>
+     <key type="as" name="sleep">
+       <default>['']</default>
+       <summary>Sleep button</summary>
+       <description>Binding to sleep the machine.</description>
+     </key>
+     <key type="as" name="hibernate">
+       <default>['']</default>
+       <summary>Hibernate button</summary>
+       <description>Binding to hibernate the machine.</description>
+     </key>
+     <key type="as" name="suspend">
+       <default>['']</default>
+       <summary>Suspend button</summary>
+       <description>Binding to suspend the machine.</description>
+     </key>
+
+     <key type="as" name="screen-brightness-up">
+       <default>['']</default>
+       <summary>Screen brightness up</summary>
+       <description>Binding to increase the screen brightness.</description>
+     </key>
+     <key type="as" name="screen-brightness-down">
+       <default>['']</default>
+       <summary>Screen brightness down</summary>
+       <description>Binding to decrease the screen brightness.</description>
+     </key>
+     <key type="as" name="screen-brightness-cycle">
+       <default>['']</default>
+       <summary>Screen brightness cycle</summary>
+       <description>Binding to cycle the screen brightness.</description>
+     </key>
+
+     <key type="as" name="keyboard-brightness-up">
+       <default>['']</default>
+       <summary>Keyboard brightness up</summary>
+       <description>Binding to increase the keyboard brightness.</description>
+     </key>
+     <key type="as" name="keyboard-brightness-down">
+       <default>['']</default>
+       <summary>Keyboard brightness down</summary>
+       <description>Binding to decrease the keyboard brightness.</description>
+     </key>
+     <key type="as" name="keyboard-brightness-toggle">
+       <default>['']</default>
+       <summary>Keyboard brightness toggle</summary>
+       <description>Binding to toggle the keyboard brightness.</description>
+     </key>
+
+     <key type="as" name="battery-status">
+       <default>['']</default>
+       <summary>Show battery status</summary>
+       <description>Binding to show current battery status.</description>
+     </key>
+
+     <key type="as" name="rfkill">
+       <default>['XF86UWB', 'XF86RFKill', 'XF86WLAN']</default>
+       <summary>RF kill</summary>
+       <description>Binding to toggle airplane mode.</description>
+     </key>
+     <key type="as" name="webcam">
+       <default>['']</default>
+       <summary>Webcam toggle</summary>
+       <description>Binding to toggle webcam status.</description>
+     </key>
+     <key type="as" name="webcam-block">
+       <default>['']</default>
+       <summary>Webcam block</summary>
+       <description>Binding to block webcam.</description>
+     </key>
+     <key type="as" name="webcam-unblock">
+       <default>['']</default>
+       <summary>Webcam unblock</summary>
+       <description>Binding to unblock webcam.</description>
+     </key>
+     <key type="as" name="fn-on">
+       <default>['']</default>
+       <summary>Fn on</summary>
+       <description>Binding to turn on Fn status.</description>
+     </key>
+     <key type="as" name="fn-off">
+       <default>['']</default>
+       <summary>Fn off</summary>
+       <description>Binding to turn off Fn status.</description>
+     </key>
+     <key type="as" name="setup">
+       <default>['XF86Setup']</default>
+       <summary>Startup control center</summary>
+       <description>Binding to startup control center.</description>
+     </key>
+     <key type="as" name="cycle-windows">
+       <default>['XF86CycleWindows']</default>
+       <summary>Cycle windows toggle</summary>
+       <description>Binding to toggle cycle windows status.</description>
+     </key>
+     <key type="as" name="desktop-panel-toggle">
+       <default>['&lt;Ctrl&gt;&lt;Alt&gt;p']</default>
+       <summary>Desktop panel visible toggle</summary>
+       <description>Binding to toggle desktop panel visible.</description>
+     </key>
+  </schema>
+
+  <schema id="org.cdos.settings-daemon.plugins.media-keys.custom-keybinding" gettext-domain="cdos-settings-daemon">
+    <key type="s" name="name">
+      <default>''</default>
+      <summary>Name</summary>
+      <description>Name of the custom binding</description>
+    </key>
+    <key type="s" name="binding">
+      <default>''</default>
+      <summary>Binding</summary>
+      <description>Binding for the custom binding</description>
+    </key>
+    <key type="s" name="command">
+      <default>''</default>
+      <summary>Command</summary>
+      <description>Command to run when the binding is invoked</description>
+    </key>
+  </schema>
+</schemalist>

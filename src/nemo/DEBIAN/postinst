@@ -1,0 +1,23 @@
+#! /bin/bash
+
+#定义全局变量
+export RES=`su - $(logname) -c "gsettings list-schemas | grep org.nemo.search"`
+if [ -n "$RES" ]; then
+    export ENABLED=`su - $(logname) -c "gsettings get org.nemo.search enable-file-content-search"`
+fi
+
+#不存在org.nemo.search或者enable-file-content-search值为false时禁用tracker
+if [ -z "$RES" -o "$ENABLED" = "false" ]; then
+    systemctl --global mask tracker-store tracker-writeback tracker-extract tracker-miner-fs
+    echo "systemctl mask done"
+
+    if [ -f '/etc/xdg/autostart/tracker-extract.desktop' ]; then
+        sudo mv /etc/xdg/autostart/tracker-extract.desktop /etc/xdg/autostart/tracker-extract.desktop.bak
+        echo "mv tracker-extract.desktop to tracker-extract.desktop.bak"
+    fi
+
+    if [ -f '/etc/xdg/autostart/tracker-miner-fs.desktop' ]; then
+        sudo mv /etc/xdg/autostart/tracker-miner-fs.desktop /etc/xdg/autostart/tracker-miner-fs.desktop.bak
+        echo "mv tracker-miner-fs.desktop to tracker-miner-fs.desktop.bak"
+    fi
+fi

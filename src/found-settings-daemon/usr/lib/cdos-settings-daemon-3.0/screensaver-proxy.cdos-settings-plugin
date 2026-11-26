@@ -1,0 +1,8 @@
+[Cdos Settings Plugin]
+Module=screensaver-proxy
+IAge=1
+Name=Screensaver Proxy
+Description=Proxy FreeDesktop screensaver inhibition to cdos-session
+Authors=AUTHOR
+Copyright=Copyright © 2012 Bastien Nocera
+Website=

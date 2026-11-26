@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.freedesktop.SettingsDaemon.DateTimeMechanism
+Exec=/usr/lib/found-settings-daemon/csd-datetime-mechanism
+User=root

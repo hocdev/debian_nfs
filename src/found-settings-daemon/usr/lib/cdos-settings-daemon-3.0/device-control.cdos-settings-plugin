@@ -1,0 +1,8 @@
+[Cdos Settings Plugin]
+Module=device-control
+IAge=0
+Name=Device Control
+Description=Device control plugin
+Authors=
+Copyright=Copyright © 2007 
+Website=

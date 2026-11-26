@@ -1,0 +1,5 @@
+libmutter-6 0 libmutter-6-0 (>= 3.36.11)
+libmutter-clutter-6 0 libmutter-6-0 (>= 3.36.11)
+libmutter-cogl-6 0 libmutter-6-0 (>= 3.36.11)
+libmutter-cogl-pango-6 0 libmutter-6-0 (>= 3.36.11)
+libmutter-cogl-path-6 0 libmutter-6-0 (>= 3.36.11)

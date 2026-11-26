@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="32px" height="32px" viewBox="0 0 32 32" enable-background="new 0 0 32 32" xml:space="preserve">
+<g>
+	<g>
+		<defs>
+			<path id="SVGID_1_" d="M16,0C7.2,0,0,7.2,0,16s7.2,16,16,16s16-7.2,16-16S24.8,0,16,0z M16,19c-1.7,0-3-1.3-3-3s1.3-3,3-3
+				c1.7,0,3,1.3,3,3S17.7,19,16,19z"/>
+		</defs>
+		<clipPath id="SVGID_2_">
+			<use xlink:href="#SVGID_1_"  overflow="visible"/>
+		</clipPath>
+		<g clip-path="url(#SVGID_2_)">
+			<g>
+				<path fill-rule="evenodd" clip-rule="evenodd" fill="#E5E5E5" d="M16,0C7.2,0,0,7.2,0,16s7.2,16,16,16s16-7.2,16-16S24.8,0,16,0
+					z M16,19c-1.7,0-3-1.3-3-3s1.3-3,3-3c1.7,0,3,1.3,3,3S17.7,19,16,19z"/>
+				<g>
+					<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="23.1679" y1="3.5849" x2="8.8321" y2="28.4151">
+						<stop  offset="0" style="stop-color:#C9C9C9"/>
+						<stop  offset="1" style="stop-color:#ACACAC"/>
+					</linearGradient>
+					<path fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_3_)" d="M16,1.7C8.1,1.7,1.7,8.1,1.7,16
+						c0,7.9,6.4,14.3,14.3,14.3c7.9,0,14.3-6.4,14.3-14.3C30.3,8.1,23.9,1.7,16,1.7z M16,19c-1.7,0-3-1.3-3-3s1.3-3,3-3
+						c1.7,0,3,1.3,3,3S17.7,19,16,19z"/>
+				</g>
+				<path fill-rule="evenodd" clip-rule="evenodd" fill="none" d="M16,0c8.8,0,16,7.2,16,16s-7.2,16-16,16S0,24.8,0,16S7.2,0,16,0z"
+					/>
+				<g>
+					<path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M6.4,30l3.3,0.9c-1-0.4-1.9-1-2.8-1.6L6.4,30z"
+						/>
+					<path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M15.1,32.2l-0.4,0.1l1.7,0.5l0-0.5
+						c-0.1,0-0.3,0-0.4,0C15.7,32.2,15.4,32.2,15.1,32.2z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M23.1,30.9L23,30.6c-0.4,0.2-0.7,0.3-1.1,0.5
+						L23.1,30.9z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M13,31.9l-0.1,0.6l1.7-0.3l-0.5-0.1
+						C13.8,32,13.4,32,13,31.9z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M14.1,32.1l0.5,0.1l0.4-0.1
+						C14.8,32.1,14.4,32.1,14.1,32.1z"/>
+					<polygon opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="15.6,-0.7 15.6,0 17.3,-0.2 					"/>
+					<path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M25,2.9l0.7-1L19,0.2l0,0.3
+						C21.1,0.9,23.2,1.7,25,2.9z"/>
+					<polygon opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" points="19.1,-0.5 17.3,-0.2 19,0.2 					"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M8.9,1.1l0.3,0.6c1.2-0.6,2.6-1,4-1.3L8.9,1.1z
+						"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M15.6,0l-1.8,0.3c0.6-0.1,1.2-0.1,1.8-0.1
+						L15.6,0z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M16,0.2c1,0,2,0.1,2.9,0.3l0-0.3l-1.6-0.4
+						L15.6,0l0,0.2C15.8,0.2,15.9,0.2,16,0.2z"/>
+					<path fill="none" d="M9.7,30.9c1.1,0.4,2.2,0.8,3.3,1l0-0.1L9.7,30.9z"/>
+					<path fill="none" d="M16.4,32.2c1.9,0,3.8-0.4,5.5-1.1L16.4,32L16.4,32.2z"/>
+					<path fill="none" d="M13.1,0.5l0.7-0.1C13.6,0.4,13.4,0.4,13.1,0.5z"/>
+					<path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M15.4,19.1c-0.4-0.1-0.8-0.3-1.2-0.5L6.9,29.4
+						c0.9,0.6,1.8,1.1,2.8,1.6l3.3,0.9L15.4,19.1z"/>
+					<path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M15.1,32.2c0.3,0,0.6,0,0.9,0
+						c0.1,0,0.3,0,0.4,0l0-0.2L15.1,32.2z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M16.1,19.2L16.4,32l5.5-0.9
+						c0.4-0.1,0.7-0.3,1.1-0.5l-5.6-11.8C17,19.1,16.5,19.2,16.1,19.2z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M13.1,31.8l0,0.1c0.4,0.1,0.7,0.1,1.1,0.2
+						L13.1,31.8z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M15.4,19.1l-2.3,12.7l1.1,0.3
+						c0.3,0,0.6,0.1,0.9,0.1l1.3-0.2l-0.3-12.8c0,0,0,0-0.1,0C15.8,19.2,15.6,19.2,15.4,19.1z"/>
+					<path opacity="0.4" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M16.6,13.2c0.4,0.1,0.7,0.2,1.1,0.4L25,2.9
+						c-1.8-1.2-3.8-2.1-6-2.5L16.6,13.2z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M16,13.2l-0.3-13c-0.6,0-1.2,0.1-1.8,0.1
+						l-0.7,0.1c-1.4,0.3-2.7,0.7-4,1.3l5.6,11.7C15.1,13.3,15.5,13.2,16,13.2z"/>
+					<path opacity="0.6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M16.6,13.2l2.3-12.8C18,0.3,17,0.2,16,0.2
+						c-0.1,0-0.2,0-0.4,0l0.3,13c0,0,0,0,0,0C16.2,13.2,16.4,13.2,16.6,13.2z"/>
+				</g>
+				<path fill-rule="evenodd" clip-rule="evenodd" fill="none" d="M16,13c1.7,0,3,1.3,3,3s-1.3,3-3,3s-3-1.3-3-3S14.3,13,16,13z"/>
+				<path fill-rule="evenodd" clip-rule="evenodd" fill="#E5E5E5" d="M16,10.6c-3,0-5.4,2.4-5.4,5.4c0,3,2.4,5.4,5.4,5.4
+					s5.4-2.4,5.4-5.4C21.4,13,19,10.6,16,10.6z M16,19c-1.7,0-3-1.3-3-3s1.3-3,3-3c1.7,0,3,1.3,3,3S17.7,19,16,19z"/>
+			</g>
+			
+				<circle fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#949494" stroke-width="2" stroke-miterlimit="10" cx="16" cy="16" r="5.4"/>
+		</g>
+	</g>
+</g>
+</svg>

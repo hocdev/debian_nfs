@@ -1,0 +1,44 @@
+#!/bin/sh
+
+set -e
+
+action="$1"
+
+if [ "$action" = configure ]; then
+    # register the alternatives of x-window-manager manually
+    # because dh_installwm doesn't register manpage as slave yet.
+    update-alternatives --install /usr/bin/x-window-manager \
+        x-window-manager /usr/bin/mutter 60 \
+        --slave /usr/share/man/man1/x-window-manager.1.gz \
+        x-window-manager.1.gz /usr/share/man/man1/mutter.1.gz
+fi
+
+# save current scale to a file;
+mkdir -p /etc/desktop
+scale_file=/etc/desktop/scale
+if [ ! -f $scale_file ];then
+    touch $scale_file
+fi
+chmod 0666 $scale_file
+
+config_file=/etc/desktop/monitors.xml
+if [ ! -f $config_file ];then
+    touch $config_file
+fi
+chmod 0666 $config_file
+
+# save current screen size to a file;
+screen_size_file=/etc/desktop/screen-size
+if [ ! -f $screen_size_file ];then
+    touch $screen_size_file
+fi
+chmod 0666 $screen_size_file
+
+# save current crtc to a file;
+crtc_file=/etc/desktop/crtc.ini
+if [ ! -f $crtc_file ];then
+    touch $crtc_file
+fi
+chmod 0666 $crtc_file
+
+
