@@ -1,3 +1,6 @@
 #!/bin/sh
-. /usr/lib/vos/fcitx-config-language
+# Let the configuration tool inherit the desktop locale and icon search path.
+case "${XDG_DATA_DIRS-}" in
+    /usr/lib/vos/fcitx-icons:*) export XDG_DATA_DIRS="${XDG_DATA_DIRS#*:}" ;;
+esac
 exec /usr/bin/fcitx5-configtool.vos-original "$@"
