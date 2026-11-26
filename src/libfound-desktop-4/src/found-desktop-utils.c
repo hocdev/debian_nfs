@@ -9,31 +9,6 @@
 #undef G_LOG_DOMAIN
 #define G_LOG_DOMAIN "FoundDesktop"
 
-static gint cached_boot_is_live = -1;
-
-gboolean
-fd_env_lang_is_en(void)
-{
-    const gchar *lang = g_getenv("LANG");
-    if (lang != NULL) {
-        return g_str_has_prefix(lang, "en");
-    }
-    return FALSE;
-}
-
-gboolean
-fd_boot_is_live(void)
-{
-    if (cached_boot_is_live == -1) {
-        gchar *cmdline = NULL;
-        g_spawn_command_line_sync("cat /proc/cmdline", &cmdline, NULL, NULL, NULL);
-        gboolean is_live = (cmdline != NULL && g_strrstr(cmdline, "boot=live") != NULL);
-        g_free(cmdline);
-        cached_boot_is_live = is_live ? 1 : 0;
-    }
-    return cached_boot_is_live == 1;
-}
-
 gchar **
 fd_strv_del_by_nth(gchar **strv, gint nth)
 {

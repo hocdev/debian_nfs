@@ -93,6 +93,11 @@ fi
 cp -a "${ROOT_DIR}/live-build/config" "${WORK_DIR}/config"
 chmod +x "${WORK_DIR}/config/hooks/live/"*.hook.chroot
 
+# Bookworm's GRUB theme points at this image when ISOLINUX is also present.
+# Use the same branded background for the BIOS and UEFI boot menus.
+BOOT_IMAGES="${WORK_DIR}/config/includes.binary/isolinux"
+install -m 0644 "${BOOT_IMAGES}/splash.png" "${BOOT_IMAGES}/splash800x600.png"
+
 # Build isolated libgoa stubs so found-control-center (libsoup-2.4) does not pull Debian 12 libsoup-3.0
 COMPAT_GOA_DIR="${WORK_DIR}/config/includes.chroot/usr/lib/found-control-center-compat"
 mkdir -p "${COMPAT_GOA_DIR}"

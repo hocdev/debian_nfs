@@ -4,7 +4,7 @@ LDFLAGS ?= -shared -Wl,-soname,libfound-desktop-4-reconstructed.so.0
 LIBS ?= $(shell pkg-config --libs glib-2.0 gobject-2.0 gio-2.0)
 
 TARGET = libfound-desktop-4-reconstructed.so
-SRCS = found-desktop-utils.c
+SRCS = found-desktop-utils.c found-desktop-environment.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(TARGET)

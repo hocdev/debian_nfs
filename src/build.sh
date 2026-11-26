@@ -11,16 +11,10 @@ source "$SCRIPT_DIR/branding.env"
 mkdir -p "$OUT_DIR"
 
 echo "=== 1. Compiling reconstructed C sources ==="
-make -C "$TASKBAR_DIR" clean all
-strip --strip-unneeded "$TASKBAR_DIR/libcdos-desktop-taskbar.so"
-
 make -C "$SRC_ROOT/libfound-gtk3/src" clean all
 strip --strip-unneeded "$SRC_ROOT/libfound-gtk3/src/libfound-gtk3.so.0.0.0"
 mkdir -p "$SRC_ROOT/libfound-gtk3/usr/lib/x86_64-linux-gnu"
 cp "$SRC_ROOT/libfound-gtk3/src/libfound-gtk3.so.0.0.0" "$SRC_ROOT/libfound-gtk3/usr/lib/x86_64-linux-gnu/libfound-gtk3.so.0.0.0"
-
-make -C "$SRC_ROOT/libfound-desktop-4/src" clean all
-strip --strip-unneeded "$SRC_ROOT/libfound-desktop-4/src/libfound-desktop-4-reconstructed.so"
 
 make -C "$SRC_ROOT/nemo-share/src" clean all
 strip --strip-unneeded "$SRC_ROOT/nemo-share/src/libnemo-share.so"
@@ -42,6 +36,37 @@ build_pkg_from_src() {
   rm -rf "$stage"
   cp -a "$src_dir" "$stage"
   rm -rf "$stage/src" "$stage/taskbar"
+  case "$name" in
+    found-desktop)
+      local launcher_lib="libcdos-panel-launchers.so.0"
+      local desktop_libdir="$stage/usr/lib/x86_64-linux-gnu/found-desktop"
+      # Put the source implementation first in the shell's ELF lookup order.
+      gcc -O2 -fPIC -shared -Wl,-z,defs -Wl,-soname,"$launcher_lib" \
+        $(pkg-config --cflags gio-unix-2.0) "$TASKBAR_DIR/panel-launchers-directory.c" \
+        $(pkg-config --libs glib-2.0) -o "$desktop_libdir/$launcher_lib"
+      chmod 0644 "$desktop_libdir/$launcher_lib"
+      patchelf --add-needed "$launcher_lib" "$stage/usr/bin/cdos-desktop"
+      local first_needed
+      first_needed=$(patchelf --print-needed "$stage/usr/bin/cdos-desktop")
+      if [ "${first_needed%%$'\n'*}" != "$launcher_lib" ]; then
+        echo "ERROR: $launcher_lib must be the first dependency of cdos-desktop" >&2
+        return 1
+      fi
+      ;;
+    libfound-desktop-4)
+      local libdir="$stage/usr/lib/x86_64-linux-gnu"
+      local library="libfound-desktop-4.so.0.0.0"
+      local legacy="libfound-desktop-4-legacy.so.0"
+      # Keep unresolved API calls available through the original implementation.
+      mv "$libdir/$library" "$libdir/$legacy"
+      patchelf --set-soname "$legacy" "$libdir/$legacy"
+      gcc -O2 -fPIC -shared -Wl,-z,defs -Wl,-soname,libfound-desktop-4.so.0 \
+        -Wl,-rpath,'$ORIGIN' $(pkg-config --cflags gio-2.0) \
+        "$src_dir/src/found-desktop-environment.c" $(pkg-config --libs glib-2.0) \
+        -L"$libdir" -Wl,--no-as-needed -l:"$legacy" -Wl,--as-needed -o "$libdir/$library"
+      chmod 0644 "$libdir/$library" "$libdir/$legacy"
+      ;;
+  esac
   if [ -f "$stage/case_collisions.list" ]; then
     while IFS=$'\t' read -r orig_rel stored_rel; do
       [ -z "$orig_rel" ] && continue

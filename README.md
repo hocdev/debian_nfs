@@ -14,7 +14,7 @@ Bản dựng **Debian 12 (Bookworm) Live + Installable ISO (amd64)** sử dụng
 ## Cấu trúc thư mục
 
 - [repo/pool/main/](repo/pool/main/): Các gói `.deb` đã điều chỉnh phụ thuộc cho Debian 12 Bookworm.
-- [src/](src/): Mã nguồn phục dựng (`src/taskbar/`) và cây gói `src/found-desktop/`, `src/found-desktop-common/` để build trực tiếp trong CI.
+- [src/](src/): Cây gói Debian và mã C phục dựng. Build tích hợp hàm lấy thư mục launcher vào `cdos-desktop` và hai hàm kiểm tra môi trường vào `libfound-desktop-4`. Các phần còn lại của hai thư viện vẫn cần binary Found hiện có để cung cấp đủ ABI.
 - [tools/nfs-exporter/](tools/nfs-exporter/): Công cụ Rust + Python hỗ trợ đóng gói và trích xuất tài nguyên hệ thống.
 - [live-build/](live-build/): Cấu hình `live-build` (`bookworm`, `amd64`, LightDM mặc định phiên `cdos-xorg`, Calamares, hook `ldd` kiểm tra liên kết động).
 - [.github/workflows/build-iso.yml](.github/workflows/build-iso.yml): Workflow GitHub Actions tự động build ISO trong container `debian:bookworm` và tải artifact `debian-12-nfs-desktop-amd64.iso`.
