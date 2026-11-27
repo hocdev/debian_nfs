@@ -11,12 +11,12 @@ _gnome_control_center()
 	*)
 		if [ $prev = "gnome-control-center" ] ; then
 			command_list="--verbose --version"
-			command_list="$command_list background font theme camera datetime default-apps performance-mode diagnostics display display-mate info-contact info-overview info-privacy info-protocol keyboard lock microphone mouse notifications online-accounts power printers region remote removable-media search sharing sound universal-access usage user-accounts network wifi wacom"
+			command_list="$command_list background font theme camera datetime default-apps performance-mode diagnostics display display-mate info-overview info-privacy info-protocol keyboard lock microphone mouse notifications online-accounts power printers region remote removable-media search sharing sound universal-access usage user-accounts network wifi wacom"
 		elif [ $prev = "--verbose" ]; then
-			command_list="background font theme camera datetime default-apps performance-mode diagnostics display display-mate info-contact info-overview info-privacy info-protocol keyboard lock microphone mouse notifications online-accounts power printers region remote removable-media search sharing sound universal-access usage user-accounts network wifi wacom"
+			command_list="background font theme camera datetime default-apps performance-mode diagnostics display display-mate info-overview info-privacy info-protocol keyboard lock microphone mouse notifications online-accounts power printers region remote removable-media search sharing sound universal-access usage user-accounts network wifi wacom"
 		fi
 
-		for i in --version background font theme camera datetime default-apps performance-mode diagnostics display display-mate info-contact info-overview info-privacy info-protocol keyboard lock microphone mouse notifications online-accounts power printers region remote removable-media search sharing sound universal-access usage user-accounts network wifi wacom; do
+		for i in --version background font theme camera datetime default-apps performance-mode diagnostics display display-mate info-overview info-privacy info-protocol keyboard lock microphone mouse notifications online-accounts power printers region remote removable-media search sharing sound universal-access usage user-accounts network wifi wacom; do
 			if [ $i = $prev ]; then
 				case $i in
 				keyboard)
