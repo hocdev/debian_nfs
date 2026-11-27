@@ -14,7 +14,8 @@ ISO **VOS** (amd64) hỗ trợ chạy Live và cài đặt. VOS dùng nền Book
 ## Cấu trúc thư mục
 
 - [repo/pool/main/](repo/pool/main/): Các gói `.deb` tương thích với Bookworm.
-- [src/](src/): Cây gói `.deb` và mã C phục dựng. Build tích hợp hàm lấy thư mục launcher vào `cdos-desktop` và hai hàm kiểm tra môi trường vào `libfound-desktop-4`. Các phần còn lại của hai thư viện vẫn cần binary Found hiện có để cung cấp đủ ABI.
+- [src/](src/): Cây gói `.deb` và mã C phục dựng. Build tích hợp hàm lấy thư mục launcher vào `cdos-desktop` và hai hàm kiểm tra môi trường vào `libfound-desktop-4`. Các phần còn lại của hai thư viện vẫn cần binary Found hiện có để cung cấp đủ ABI. [Công cụ ELF của Found Control Center](src/found-control-center/src/found-control-center-elf.c) tái tạo bản VOS từ ELF gốc trong commit `dd4e1c4`. Trên WSL có thể dùng gói Found gốc đã giải nén bằng cách đặt `FOUND_CONTROL_CENTER_ORIGINAL_DIR` khi chạy `bash src/build.sh`.
+- Mã C của các helper lấy từ [GNOME Control Center 3.38.5](https://download.gnome.org/sources/gnome-control-center/3.38/), [GNOME Session 3.22.2](https://download.gnome.org/sources/gnome-session/3.22/) và [Mutter 3.36.9](https://download.gnome.org/sources/mutter/3.36/). Giấy phép chung của các mã nguồn này nằm trong [COPYING](COPYING). `mem-usage` được phục dựng theo hành vi của bản Found.
 - [tools/vos-exporter/](tools/vos-exporter/): Công cụ Rust + Python hỗ trợ đóng gói và trích xuất tài nguyên hệ thống.
 - [live-build/](live-build/): Cấu hình `live-build` (`bookworm`, `amd64`, LightDM mặc định phiên `cdos-xorg`, Calamares, hook `ldd` kiểm tra liên kết động).
 - [.github/workflows/build-iso.yml](.github/workflows/build-iso.yml): Workflow GitHub Actions tự động build ISO trong container `debian:bookworm` và tải artifact chứa `vos-desktop-amd64.iso`.

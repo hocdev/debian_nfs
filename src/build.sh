@@ -26,6 +26,52 @@ strip --strip-unneeded "$SRC_ROOT/vos-installer/src/vos-installer"
 mkdir -p "$SRC_ROOT/vos-installer/usr/bin"
 cp "$SRC_ROOT/vos-installer/src/vos-installer" "$SRC_ROOT/vos-installer/usr/bin/vos-installer"
 
+build_found_control_center() (
+  local source_dir="$1/src"
+  local stage="$2"
+  local work
+  work=$(mktemp -d)
+  trap 'rm -rf -- "$work"' EXIT
+
+  local original="${FOUND_CONTROL_CENTER_ORIGINAL_DIR:-$work/original}"
+  if [ -z "${FOUND_CONTROL_CENTER_ORIGINAL_DIR:-}" ]; then
+    local original_commit="dd4e1c4872700537959d2bd7cf46f6de57e84e96"
+    local relative
+    for relative in usr/bin/found-control-center usr/libexec/gnome-control-center-search-provider; do
+      mkdir -p "$original/$(dirname "$relative")"
+      if ! git -c safe.directory="$REPO_ROOT" -C "$REPO_ROOT" cat-file blob \
+        "$original_commit:src/found-control-center/$relative" > "$original/$relative"; then
+        echo "Found Control Center requires Git commit $original_commit or FOUND_CONTROL_CENTER_ORIGINAL_DIR." >&2
+        exit 1
+      fi
+    done
+  fi
+
+  gcc -std=c11 -O2 -Wall -Wextra -Werror \
+    $(pkg-config --cflags glib-2.0) "$source_dir/found-control-center-elf.c" \
+    $(pkg-config --libs glib-2.0) -o "$work/found-control-center-elf" || exit 1
+  "$work/found-control-center-elf" "$original" "$stage" "$source_dir"
+)
+
+build_c_executable() {
+  local source_file="$1"
+  local executable="$2"
+  shift 2
+
+  local cflags=() libs=()
+  if [ "$#" -gt 0 ]; then
+    local flags
+    flags=$(pkg-config --cflags "$@")
+    read -r -a cflags <<< "$flags"
+    flags=$(pkg-config --libs "$@")
+    read -r -a libs <<< "$flags"
+  fi
+
+  mkdir -p "$(dirname "$executable")"
+  gcc -std=gnu11 -O2 -Wall -Wextra -fstack-protector-strong -D_FORTIFY_SOURCE=2 \
+    "${cflags[@]}" "$source_file" "${libs[@]}" -o "$executable"
+}
+
 build_pkg_from_src() {
   local name="$1"
   local deb_file="$2"
@@ -39,6 +85,26 @@ build_pkg_from_src() {
   # Preserve upstream catalogs in src, while installed UI uses the VOS locale.
   rm -f "$stage"/usr/share/locale/zh{,_*}/LC_MESSAGES/*.mo
   case "$name" in
+    found-control-center)
+      build_found_control_center "$src_dir" "$stage"
+      build_c_executable "$src_dir/src/cc-remote-login-helper.c" \
+        "$stage/usr/libexec/cc-remote-login-helper" gio-2.0
+      build_c_executable "$src_dir/src/gnome-control-center-print-renderer.c" \
+        "$stage/usr/libexec/gnome-control-center-print-renderer" gtk+-3.0 epoxy
+      ;;
+    found-session)
+      build_c_executable "$src_dir/src/cdos-session-inhibit.c" \
+        "$stage/usr/bin/cdos-session-inhibit" gio-2.0
+      build_c_executable "$src_dir/src/cdos-session-quit.c" \
+        "$stage/usr/bin/cdos-session-quit" gio-2.0
+      ;;
+    found-settings-daemon)
+      build_c_executable "$src_dir/src/mem-usage.c" "$stage/usr/bin/mem-usage"
+      ;;
+    mutter)
+      build_c_executable "$src_dir/src/mutter-restart-helper.c" \
+        "$stage/usr/libexec/mutter-restart-helper" x11 xcomposite
+      ;;
     found-desktop)
       local launcher_lib="libcdos-panel-launchers.so.0"
       local desktop_libdir="$stage/usr/lib/x86_64-linux-gnu/found-desktop"

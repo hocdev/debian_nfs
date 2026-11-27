@@ -32,6 +32,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
+      - name: Fetch original Found Control Center package revision
+        run: git fetch --no-tags --depth=1 origin dd4e1c4872700537959d2bd7cf46f6de57e84e96
+
       - name: Restore cached VOS base and APT packages
         uses: actions/cache@v5
         with:
@@ -68,7 +71,7 @@ jobs:
             set -euo pipefail
             export DEBIAN_FRONTEND=noninteractive
             apt-get update
-            apt-get install -y --no-install-recommends gcc make libglib2.0-dev libgtk-3-dev pkg-config dpkg-dev binutils patchelf python3
+            apt-get install -y --no-install-recommends gcc git make libglib2.0-dev libgtk-3-dev pkg-config dpkg-dev binutils patchelf python3
             chmod +x src/build.sh
             ./src/build.sh
             count=0
@@ -109,6 +112,7 @@ jobs:
                 dpkg-dev \
                 apt-utils \
                 gcc \
+                git \
                 g++ \
                 make \
                 libglib2.0-dev \
