@@ -40,7 +40,7 @@ packages=("found-session"
           "libnma"
           "nemo"
           "mutter"
-          "nfs-custom-")
+          "vos-custom-")
 
 # print version info.
 print_version()

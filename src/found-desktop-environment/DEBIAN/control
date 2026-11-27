@@ -4,7 +4,7 @@ Section: misc
 Installed-Size: 6
 Maintainer: OS Support Team <support@hocdev.com>
 Architecture: all
-Version: 4.0.6-m1+1nfs5
+Version: 4.0.6-m1+1vos5
 Depends: found-desktop (>= 4.0.5), found-session (>= 3.22.7), found-icon-theme (>= 4.0.6), found-themes (>= 4.0.6), found-gsettings-schemas (>= 4.0.1), found-backgrounds (>= 4.0.2), found-control-center (>= 3.38.5), found-settings-daemon (>= 4.0.4), found-tools (>= 4.0.0), nemo (>= 4.8.6), nemo-share, mutter (>= 3.36.11), gsettings-desktop-schemas (>= 3.38.0)
 Conffiles: 
  /etc/desktop/packages d41d8cd98f00b204e9800998ecf8427e

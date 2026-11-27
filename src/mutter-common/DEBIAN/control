@@ -6,7 +6,7 @@ Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Architecture: all
 Multi-Arch: foreign
 Source: mutter
-Version: 3.36.11-m38+1nfs5
+Version: 3.36.11-m38+1vos5
 Depends: dconf-gsettings-backend | gsettings-backend
 Description: shared files for the Mutter window manager
  Mutter is a Wayland display server and X11 window manager and

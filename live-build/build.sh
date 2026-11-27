@@ -27,15 +27,15 @@ bash "${ROOT_DIR}/live-build/download-chrome.sh" "${REPO_DIR}/pool/main"
 
 # Build APT repository metadata for local VOS packages
 cd "${REPO_DIR}"
-: > /tmp/nfs.override
+: > /tmp/vos.override
 for deb in pool/main/*.deb; do
     pkg="$(dpkg-deb -f "$deb" Package)"
     prio="$(dpkg-deb -f "$deb" Priority)"
     sect="$(dpkg-deb -f "$deb" Section)"
-    printf "%s\t%s\t%s\n" "${pkg}" "${prio:-optional}" "${sect:-misc}" >> /tmp/nfs.override
+    printf "%s\t%s\t%s\n" "${pkg}" "${prio:-optional}" "${sect:-misc}" >> /tmp/vos.override
 done
-dpkg-scanpackages --multiversion pool/main /tmp/nfs.override > Packages
-rm -f /tmp/nfs.override
+dpkg-scanpackages --multiversion pool/main /tmp/vos.override > Packages
+rm -f /tmp/vos.override
 gzip -9c Packages > Packages.gz
 apt-ftparchive \
   -o APT::FTPArchive::Release::Origin="VOS" \
@@ -43,7 +43,7 @@ apt-ftparchive \
   release . > Release
 
 # Serve local APT repo over HTTP so live-build chroot apt-get resolves all dependencies cleanly
-python3 -m http.server 18123 --bind 127.0.0.1 --directory "${REPO_DIR}" >/tmp/nfs-apt-http.log 2>&1 &
+python3 -m http.server 18123 --bind 127.0.0.1 --directory "${REPO_DIR}" >/tmp/vos-apt-http.log 2>&1 &
 HTTP_PID=$!
 cleanup() {
     kill "${HTTP_PID}" >/dev/null 2>&1 || true
@@ -82,7 +82,7 @@ if [ -d "${CACHE_DIR}" ] && [ "$(ls -A "${CACHE_DIR}" 2>/dev/null || true)" ]; t
         -o -name "found-*" -o -name "libfound-*" -o -name "mutter*" -o -name "libmutter-6-0*" \
         -o -name "gir1.2-mutter-6*" -o -name "nemo*" -o -name "libnemo-*" -o -name "gir1.2-nemo-*" \
         -o -name "libxapp1*" -o -name "xapps-common*" -o -name "gir1.2-xapp-1.0*" \
-        -o -name "nfs-*" -o -name "cdos-*" \
+        -o -name "vos-*" -o -name "cdos-*" \
         -o -name "google-chrome-stable*" \
     \) -delete || true
     mv "${CACHE_DIR}" "${WORK_DIR}/cache"
@@ -107,7 +107,7 @@ APT_PREFS_DIR="${WORK_DIR}/config/includes.chroot/etc/apt/preferences.d"
 mkdir -p "${APT_PREFS_DIR}"
 VOS_PACKAGES="$(awk '/^Package: / && $2 != "google-chrome-stable" { print $2 }' "${REPO_DIR}/Packages" | sort -u | paste -sd ' ' -)"
 printf 'Package: %s\nPin: release o=Debian\nPin-Priority: -1\n' "${VOS_PACKAGES}" \
-    > "${APT_PREFS_DIR}/nfs-protected-packages.pref"
+    > "${APT_PREFS_DIR}/vos-protected-packages.pref"
 
 # Build isolated libgoa stubs so found-control-center (libsoup-2.4) does not pull Debian 12 libsoup-3.0
 COMPAT_GOA_DIR="${WORK_DIR}/config/includes.chroot/usr/lib/found-control-center-compat"

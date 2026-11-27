@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v5
         with:
           path: .lb-cache
-          key: vos-bookworm-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+          key: vos-bookworm-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/vos-desktop.list.chroot') }}
           restore-keys: |
             vos-bookworm-lb-cache-v3-
 
@@ -44,7 +44,7 @@ jobs:
         if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          KEEP_KEY: vos-bookworm-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/nfs-desktop.list.chroot') }}
+          KEEP_KEY: vos-bookworm-lb-cache-v3-${{ hashFiles('live-build/config/package-lists/vos-desktop.list.chroot') }}
         run: |
           python3 - <<'PY' || true
           import json, os, urllib.request

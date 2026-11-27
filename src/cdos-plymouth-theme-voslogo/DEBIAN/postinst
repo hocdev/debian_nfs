@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+case "$1" in
+    configure|upgrade|update|reconfigure)
+        mkdir -p /usr/share/initramfs-tools/hooks
+        cp -f /usr/share/plymouth/themes/voslogo/chinese /usr/share/initramfs-tools/hooks/ || true
+        if command -v plymouth-set-default-theme >/dev/null 2>&1; then
+            plymouth-set-default-theme voslogo || true
+        fi
+        update-alternatives --install \
+            /usr/share/desktop-base/active-theme \
+            desktop-theme \
+            /usr/share/plymouth/themes/voslogo 60 || true
+    ;;
+esac
+exit 0

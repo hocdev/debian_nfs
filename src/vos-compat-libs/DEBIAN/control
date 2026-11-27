@@ -1,0 +1,12 @@
+Package: vos-compat-libs
+Version: 1.0+vos5
+Architecture: amd64
+Maintainer: VOS Builder <builder@localhost>
+Section: libs
+Priority: optional
+Installed-Size: 39411
+Depends: libc6 (>= 2.30), libglib2.0-0, libgtk-3-0, libgudev-1.0-0, libjson-glib-1.0-0, libsoup2.4-1, libxml2, libstdc++6, libsystemd0, libudev1, libseccomp2, libxkbregistry0, libwacom-common, gnome-desktop3-data
+Description: Legacy runtime compatibility libraries for VOS
+ Provides legacy SONAME shared libraries (libcroco-0.6, libgnome-desktop-3-19,
+ libtracker-sparql-2.0, libwacom2, libssl1.1, libbfd-2.35.2, libicu67,
+ libgeocode-glib0, libsm_devctl) alongside the standard system packages.

@@ -4,6 +4,6 @@ Section: found
 Installed-Size: 3037
 Maintainer: OS Support Team <os_support@hocdev.com>
 Architecture: all
-Version: 4.0.6-m4+1nfs5
+Version: 4.0.6-m4+1vos5
 Depends: dconf-gsettings-backend | gsettings-backend
 Description: Found DE themes.

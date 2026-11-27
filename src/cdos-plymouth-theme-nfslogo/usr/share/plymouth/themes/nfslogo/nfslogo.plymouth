@@ -1,8 +1,0 @@
-[Plymouth Theme]
-Name=VOS nfslogo theme
-Description=VOS nfslogo plymounth theme
-ModuleName=script
-
-[script]
-ImageDir=/usr/share/plymouth/themes/nfslogo
-ScriptFile=/usr/share/plymouth/themes/nfslogo/nfslogo.script

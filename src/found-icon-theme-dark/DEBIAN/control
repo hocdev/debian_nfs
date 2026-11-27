@@ -4,5 +4,5 @@ Section: found
 Installed-Size: 190650
 Maintainer: VOS Support Team <support_os@hocdev.com>
 Architecture: all
-Version: 4.0.6-m10+1nfs5
+Version: 4.0.6-m10+1vos5
 Description: FoundDark icon theme split from found-icon-theme

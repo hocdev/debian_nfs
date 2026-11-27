@@ -4,10 +4,10 @@ Section: gnome
 Installed-Size: 713
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Architecture: amd64
-Version: 3.22.7-m5+1nfs5
+Version: 3.22.7-m5+1vos5
 Replaces: gnome-session
 Provides: x-session-manager
-Depends: dconf-gsettings-backend | gsettings-backend, found-settings-daemon, found-session-common (= 3.22.7-m5+1nfs5), found-gsettings-schemas
+Depends: dconf-gsettings-backend | gsettings-backend, found-settings-daemon, found-session-common (= 3.22.7-m5+1vos5), found-gsettings-schemas
 Suggests: gnome-keyring
 Conflicts: gnome-session
 Description: CDOS Session Manager - CDOS session

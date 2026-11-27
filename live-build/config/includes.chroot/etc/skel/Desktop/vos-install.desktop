@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=VOS Install
+GenericName=System Installer
+Comment=Install VOS OS on your computer
+Exec=vos-launch-installer
+Icon=vos-installer
+Terminal=false
+Categories=GTK;System;
+StartupNotify=true
+StartupWMClass=Vos-installer

@@ -4,7 +4,7 @@ Section: gnome
 Installed-Size: 250
 Maintainer: Clement Lefebvre <root@linuxmint.com>
 Architecture: amd64
-Version: 1.0.5-m2+1nfs5
+Version: 1.0.5-m2+1vos5
 Depends: nemo, libc6 (>= 2.2.5), libcairo2 (>= 1.2.4), libglib2.0-0 (>= 2.37.3), libgtk-3-0 (>= 3.13.7), libpango-1.0-0 (>= 1.14.0), libpangocairo-1.0-0 (>= 1.14.0), libpoppler-glib8 (>= 0.33.0)
 Enhances: nemo
 Description: Nemo print is used to print images and text files in contextmenu.

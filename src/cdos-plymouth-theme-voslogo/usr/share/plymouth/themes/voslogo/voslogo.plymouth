@@ -1,0 +1,8 @@
+[Plymouth Theme]
+Name=VOS voslogo theme
+Description=VOS voslogo plymounth theme
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/voslogo
+ScriptFile=/usr/share/plymouth/themes/voslogo/voslogo.script

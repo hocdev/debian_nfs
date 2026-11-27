@@ -8,8 +8,8 @@ ISO **VOS** (amd64) hỗ trợ chạy Live và cài đặt. VOS dùng nền Book
 - **Window Manager & Session**: `mutter` (3.36), `mutter-common`, `libmutter-6-0`, `gir1.2-mutter-6`, `found-session`, `found-session-common` (`cdos-session`, `cdos-xorg.desktop`)
 - **Settings & Control Center**: `found-settings-daemon`, `found-control-center`, `found-control-center-data`, `found-gsettings-schemas`, `found-tools`, `found-ui-scaling`, `found-livecd-customization`
 - **File Manager & Desktop Icons**: `nemo`, `nemo-data`, `libnemo-extension1`, `gir1.2-nemo-3.0`, `nemo-print` (`nemo-desktop`)
-- **Themes, Icons, Backgrounds, Boot Splash & Branding**: `found-themes`, `found-icon-theme`, `found-icon-theme-dark`, `found-backgrounds`, `cdos-plymouth-theme-nfslogo`, `nfs-custom-jjw`, cùng ảnh nền, logo và watermark VOS.
-- **Tương thích Bullseye và Bookworm**: `nfs-compat-libs` bổ sung các thư viện SONAME cũ (`libcroco-0.6.so.3`, `libgnome-desktop-3.so.19`, `libtracker-sparql-2.0.so.0` + `tracker-2.0`, `libwacom.so.2`, `libssl.so.1.1`/`libcrypto.so.1.1`, `libbfd-2.35.2-system.so`, `libicudata/icui18n/icuuc.so.67`, `libgeocode-glib.so.0`, `libsm_devctl.so.1`) để chạy các thành phần VOS trên Bookworm.
+- **Themes, Icons, Backgrounds, Boot Splash & Branding**: `found-themes`, `found-icon-theme`, `found-icon-theme-dark`, `found-backgrounds`, `cdos-plymouth-theme-voslogo`, `vos-custom-jjw`, cùng ảnh nền, logo và watermark VOS.
+- **Tương thích Bullseye và Bookworm**: `vos-compat-libs` bổ sung các thư viện SONAME cũ (`libcroco-0.6.so.3`, `libgnome-desktop-3.so.19`, `libtracker-sparql-2.0.so.0` + `tracker-2.0`, `libwacom.so.2`, `libssl.so.1.1`/`libcrypto.so.1.1`, `libbfd-2.35.2-system.so`, `libicudata/icui18n/icuuc.so.67`, `libgeocode-glib.so.0`, `libsm_devctl.so.1`) để chạy các thành phần VOS trên Bookworm.
 
 ## Cấu trúc thư mục
 

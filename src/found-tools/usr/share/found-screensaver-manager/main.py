@@ -54,7 +54,7 @@ SUPPORTED_FILE_TYPE = [
 
 def get_field_value():
     try:
-        with open("/etc/nfs/info", 'r', encoding='utf-8') as file:
+        with open("/etc/vos/info", 'r', encoding='utf-8') as file:
             for line in file:
                 line = line.strip()
                 if line.startswith("CUSTOM_INFO" + "="):

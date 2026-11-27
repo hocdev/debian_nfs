@@ -6,7 +6,7 @@ Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
 Architecture: amd64
 Multi-Arch: same
 Source: nemo
-Version: 4.8.6-m262+1nfs5
+Version: 4.8.6-m262+1vos5
 Depends: libc6 (>= 2.4), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.45.7), libgtk-3-0 (>= 3.10.0)
 Breaks: nemo-fileroller (<< 4.6~), nemo-python (<< 4.6~)
 Description: Nemo component system facilities

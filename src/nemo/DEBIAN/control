@@ -4,9 +4,9 @@ Section: misc
 Installed-Size: 13376
 Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
 Architecture: amd64
-Version: 4.8.6-m262+1nfs5
-Depends: desktop-file-utils (>= 0.7), gsettings-desktop-schemas, gvfs (>= 1.3.2), nfs-compat-libs, libglib2.0-data, libnemo-extension1 (= 4.8.6-m262+1nfs5), libxapp1 (>= 2.0.0), udftools, nemo-data (= 4.8.6-m262+1nfs5), shared-mime-info (>= 0.50), found-themes (>= 4.0.5), tracker, tracker-miner-fs, libatk1.0-0 (>= 1.32.0), libc6 (>= 2.14), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libexempi8 (>= 2.5.0), libexif12 (>= 0.6.21-1~), libffmpegthumbnailer4v5 (>= 2.2.2+git20220218+dfsg), libfound-gtk3, libgail-3-0 (>= 3.0.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.51.0), libgtk-3-0 (>= 3.21.6), libnotify4 (>= 0.7.0), libpango-1.0-0 (>= 1.44.6), libpangocairo-1.0-0 (>= 1.14.0), libselinux1 (>= 3.1~), libx11-6, libxml2 (>= 2.7.8)
-Recommends: gvfs-backends, gvfs-fuse, librsvg2-common, nemo-fileroller (>= 4.6~), nfs-compat-libs
+Version: 4.8.6-m262+1vos5
+Depends: desktop-file-utils (>= 0.7), gsettings-desktop-schemas, gvfs (>= 1.3.2), vos-compat-libs, libglib2.0-data, libnemo-extension1 (= 4.8.6-m262+1vos5), libxapp1 (>= 2.0.0), udftools, nemo-data (= 4.8.6-m262+1vos5), shared-mime-info (>= 0.50), found-themes (>= 4.0.5), tracker, tracker-miner-fs, libatk1.0-0 (>= 1.32.0), libc6 (>= 2.14), libcairo-gobject2 (>= 1.10.0), libcairo2 (>= 1.10.0), libexempi8 (>= 2.5.0), libexif12 (>= 0.6.21-1~), libffmpegthumbnailer4v5 (>= 2.2.2+git20220218+dfsg), libfound-gtk3, libgail-3-0 (>= 3.0.0), libgdk-pixbuf-2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.51.0), libgtk-3-0 (>= 3.21.6), libnotify4 (>= 0.7.0), libpango-1.0-0 (>= 1.44.6), libpangocairo-1.0-0 (>= 1.14.0), libselinux1 (>= 3.1~), libx11-6, libxml2 (>= 2.7.8)
+Recommends: gvfs-backends, gvfs-fuse, librsvg2-common, nemo-fileroller (>= 4.6~), vos-compat-libs
 Suggests: eog, evince | pdf-viewer, totem | mp3-decoder, xdg-user-dirs
 Breaks: cinnamon (<< 4.8~), cinnamon-core (<< 4.8~), nemo-fileroller (<< 4.6~)
 Description: File manager and graphical shell for Cinnamon

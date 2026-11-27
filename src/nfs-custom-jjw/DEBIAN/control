@@ -1,9 +1,0 @@
-Package: nfs-custom-jjw
-Priority: optional
-Section: gnome
-Installed-Size: 6
-Maintainer: OS Support Team <support@hocdev.com>
-Architecture: all
-Version: 1.0.1-m5+1nfs5
-Depends: mutter, found-themes (>= 4.0.6)
-Description: Found desktop custom make for JJW GPU.

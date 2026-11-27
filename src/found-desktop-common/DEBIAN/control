@@ -5,7 +5,7 @@ Installed-Size: 4279
 Maintainer: OS Support Team <support@hocdev.com>
 Architecture: all
 Source: found-desktop
-Version: 4.0.5-m117+1nfs5
+Version: 4.0.5-m117+1vos5
 Depends: dconf-gsettings-backend | gsettings-backend
 Conffiles: 
  /etc/desktop/blacklist.d/systray 3f338be2894973bbe92d43d3a58fe5b9

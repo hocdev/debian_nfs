@@ -4,10 +4,10 @@ Section: gnome
 Installed-Size: 3022
 Maintainer: OS Support Team <support@hocdev.com>
 Architecture: amd64
-Version: 4.0.5-m117+1nfs5
+Version: 4.0.5-m117+1vos5
 Provides: cdos-screensaver, notification-daemon, x-window-manager
-Depends: found-desktop-common (= 4.0.5-m117+1nfs5), found-gsettings-schemas, found-settings-daemon, found-session (>= 3.22.6), network-manager-gnome, gnome-icon-theme, found-icon-theme (>= 4.0.6-m8), found-themes (>= 4.0.4), gir1.2-gtk-3.0, gir1.2-glib-2.0, gkbd-capplet, libaccountsservice0, libasound2, libatk-bridge2.0-0, libatk1.0-0, libcanberra-gtk3-0, libcanberra0, nfs-compat-libs, libgnome-menu-3-0, libmutter-6-0 (>= 3.36.10), libnm0, libpulse0, libpulse-mainloop-glib0, libpam0g, libupower-glib3, libxml2, libsystemd0, plocate, libcaribou0, libfound-desktop-4 (>= 4.0.6), libcap2-bin
-Recommends: gnome-themes-extra, gnome-terminal, nfs-compat-libs
+Depends: found-desktop-common (= 4.0.5-m117+1vos5), found-gsettings-schemas, found-settings-daemon, found-session (>= 3.22.6), network-manager-gnome, gnome-icon-theme, found-icon-theme (>= 4.0.6-m8), found-themes (>= 4.0.4), gir1.2-gtk-3.0, gir1.2-glib-2.0, gkbd-capplet, libaccountsservice0, libasound2, libatk-bridge2.0-0, libatk1.0-0, libcanberra-gtk3-0, libcanberra0, vos-compat-libs, libgnome-menu-3-0, libmutter-6-0 (>= 3.36.10), libnm0, libpulse0, libpulse-mainloop-glib0, libpam0g, libupower-glib3, libxml2, libsystemd0, plocate, libcaribou0, libfound-desktop-4 (>= 4.0.6), libcap2-bin
+Recommends: gnome-themes-extra, gnome-terminal, vos-compat-libs
 Description: found-desktop desktop
  Cdos is a modern Linux desktop which provides advanced innovative features and a traditional user experience. It's easy to use, powerful and flexible.
 Homepage: http://172.30.44.168/Desktop4.0/cdos-desktop-dev

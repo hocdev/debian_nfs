@@ -9,7 +9,7 @@ gsettings set org.cdos.settings-daemon.plugins.power lock-on-screensaver true
 gsettings set org.cdos.desktop.session idle-delay 0
 xset -dpms s off
 
-if [ -f "$HOME/Desktop/nfs-install.desktop" ]; then
-    chmod +x "$HOME/Desktop/nfs-install.desktop" 2>/dev/null || true
-    gio set "$HOME/Desktop/nfs-install.desktop" metadata::trusted true 2>/dev/null || true
+if [ -f "$HOME/Desktop/vos-install.desktop" ]; then
+    chmod +x "$HOME/Desktop/vos-install.desktop" 2>/dev/null || true
+    gio set "$HOME/Desktop/vos-install.desktop" metadata::trusted true 2>/dev/null || true
 fi

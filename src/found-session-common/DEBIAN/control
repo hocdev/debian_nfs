@@ -5,7 +5,7 @@ Installed-Size: 1077
 Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Architecture: all
 Source: found-session
-Version: 3.22.7-m5+1nfs5
+Version: 3.22.7-m5+1vos5
 Replaces: gnome-session-common
 Conflicts: gnome-session-common
 Description: CDOS Session Manager - common files

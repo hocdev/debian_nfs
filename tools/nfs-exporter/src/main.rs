@@ -293,14 +293,16 @@ fn rewrite_dep_list(raw: &str, pkg: &str) -> String {
 
         let mapped: Option<String> = match base_name.as_str() {
             "pam-nfs-faillock" | "pam-nfs-auth" | "pam-nfs-qr" | "aptdaemon" | "bioauth" => None,
-            "libcroco3"
+            "nfs-compat-libs"
+            | "vos-compat-libs"
+            | "libcroco3"
             | "libgnome-desktop-3-19"
             | "libtracker-sparql-2.0-0"
             | "libwacom2"
             | "libssl1.1"
             | "libbinutils"
             | "libicu67"
-            | "libgeocode-glib0" => Some("nfs-compat-libs".to_string()),
+            | "libgeocode-glib0" => Some("vos-compat-libs".to_string()),
             "tracker-extract" => Some("tracker-miner-fs".to_string()),
             "gnome-themes-standard" => Some("gnome-themes-extra".to_string()),
             _ => Some(t.to_string()),
@@ -321,9 +323,9 @@ fn rewrite_dep_list(raw: &str, pkg: &str) -> String {
         || pkg == "found-control-center"
         || pkg == "nemo"
         || pkg == "libmutter-6-0")
-        && seen.insert("nfs-compat-libs".to_string())
+        && seen.insert("vos-compat-libs".to_string())
     {
-        out.push("nfs-compat-libs".to_string());
+        out.push("vos-compat-libs".to_string());
     }
 
     out.join(", ")
@@ -696,7 +698,7 @@ fn export_compat_libs(
     }
 
     // Add ld.so.conf.d entry for tracker-2.0 private libdir
-    let ldconf_rel = "etc/ld.so.conf.d/nfs-compat-libs.conf";
+    let ldconf_rel = "etc/ld.so.conf.d/vos-compat-libs.conf";
     ensure_parent_dirs(&mut data_items, ldconf_rel, paths);
     data_items.insert(
         format!("./{ldconf_rel}"),
@@ -709,8 +711,8 @@ fn export_compat_libs(
     let mut ctrl_items: BTreeMap<String, TarItem> = BTreeMap::new();
     ctrl_items.insert("./".to_string(), TarItem::Dir { mode: 0o755 });
     let control_txt = format!(
-        "Package: nfs-compat-libs\n\
-Version: 1.0+nfs5\n\
+        "Package: vos-compat-libs\n\
+Version: 1.0+vos5\n\
 Architecture: amd64\n\
 Maintainer: VOS Builder <builder@localhost>\n\
 Section: libs\n\
@@ -745,7 +747,7 @@ libgeocode-glib0, libsm_devctl) alongside the standard system packages.\n",
         },
     );
 
-    let deb_base = "nfs-compat-libs_1.0+nfs5_amd64".to_string();
+    let deb_base = "vos-compat-libs_1.0+vos5_amd64".to_string();
     let pkg_stage = staging_dir.join(&deb_base);
     fs::create_dir_all(&pkg_stage).map_err(|e| e.to_string())?;
     write_tar_from_items(&ctrl_items, &pkg_stage.join("control.tar"))?;

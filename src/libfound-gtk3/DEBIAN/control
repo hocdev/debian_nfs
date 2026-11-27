@@ -6,7 +6,7 @@ Maintainer: OS Support Team <support@hocdev.com>
 Architecture: amd64
 Multi-Arch: same
 Source: libfound-gtk
-Version: 4.0.0-m3+1nfs5
-Depends: libfound-gtk-data (= 4.0.0-m3+1nfs5), libgtk-3-0 (>= 3.16.2), libglib2.0-0 (>= 2.53.0)
+Version: 4.0.0-m3+1vos5
+Depends: libfound-gtk-data (= 4.0.0-m3+1vos5), libgtk-3-0 (>= 3.16.2), libglib2.0-0 (>= 2.53.0)
 Description: Utility library for loading - runtime files
  This library is used by runtime.

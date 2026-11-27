@@ -5,7 +5,7 @@ Installed-Size: 239
 Maintainer: Debian Cinnamon Team <debian-cinnamon@lists.debian.org>
 Architecture: amd64
 Source: nemo
-Version: 4.8.6-m262+1nfs5
+Version: 4.8.6-m262+1vos5
 Depends: gir1.2-glib-2.0 (>= 0.9.12), gir1.2-gtk-3.0 (>= 3.10.0), libnemo-extension1 (>= 4.0.6)
 Breaks: nemo-python (<< 4.6~)
 Description: libraries for nemo components - gir bindings

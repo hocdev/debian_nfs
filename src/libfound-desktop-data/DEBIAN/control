@@ -6,7 +6,7 @@ Maintainer: OS Support Team <support@hocdev.com>
 Architecture: all
 Multi-Arch: foreign
 Source: libfound-desktop
-Version: 4.0.10-m1+2nfs5
+Version: 4.0.10-m1+2vos5
 Conffiles: 
  /etc/desktop/found-actions b6101a8c44d58d1055e3e101dc598348
  /etc/security/accounts.conf a8b3c150ed3265b54f86e5aff6774e01

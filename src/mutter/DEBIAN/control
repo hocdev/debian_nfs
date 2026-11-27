@@ -4,9 +4,9 @@ Section: x11
 Installed-Size: 241
 Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
 Architecture: amd64
-Version: 3.36.11-m38+1nfs5
+Version: 3.36.11-m38+1vos5
 Provides: x-window-manager
-Depends: adwaita-icon-theme, gsettings-desktop-schemas (>= 3.22.0), mutter-common (>= 3.36.11-m38+1nfs5), zenity, libc6 (>= 2.4), libgles2, libglib2.0-0 (>= 2.58.1), libmutter-6-0 (>= 3.29.4), libx11-6, libxcomposite1 (>= 1:0.4.5)
+Depends: adwaita-icon-theme, gsettings-desktop-schemas (>= 3.22.0), mutter-common (>= 3.36.11-m38+1vos5), zenity, libc6 (>= 2.4), libgles2, libglib2.0-0 (>= 2.58.1), libmutter-6-0 (>= 3.29.4), libx11-6, libxcomposite1 (>= 1:0.4.5)
 Suggests: cdos-control-center (>= 2.3.21), xdg-user-dirs
 Description: Example window manager using GNOME's window manager library
  Mutter is a Wayland display server and X11 window manager and

@@ -1,0 +1,29 @@
+#!/bin/sh
+
+isJM=`lspci | grep "VGA" | grep -i "jingjia"`
+installed=/usr/share/vos-custom-jjw/installed
+themes=/usr/share/themes
+
+if [ "$isJM" != "" ];then
+    echo "Find jingjia GPU."
+    if [ -f "${installed}" ];then
+        exit 0;
+    fi
+
+    # 已经在found-themes内做了默认修改，此处不必替换修改。
+    #for file in "$themes"/*; do
+    #    if [ -d "${file}" ]; then
+    #            theme="${file}/gtk-3.0/window-headbar.css"
+    #            if [ -f "${theme}" ];then 
+    #                echo "${theme}"
+    #                cp -f /usr/share/vos-custom-jjw/window-headbar.css "${theme}"
+    #            fi
+    #    fi
+    #done
+
+    echo `date` > "${installed}"
+else
+    echo "Can't find jingjia GPU."
+    rm -f /usr/share/glib-2.0/schemas/10_vos-custom-jjw.gschema.override
+    glib-compile-schemas /usr/share/glib-2.0/schemas/
+fi
