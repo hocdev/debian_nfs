@@ -1,5 +1,4 @@
 [Desktop Entry]
-Name[zh_CN]=有线网络
 Name=Wired network
 Comment[af]=Bepaal hoe om te koppel aan die internet
 Comment[an]=Controlar cómo se connecta ta Internet
@@ -67,9 +66,6 @@ Comment[th]=ควบคุมวิธีการเชื่อมต่อ�
 Comment[tr]=İnternete nasıl bağlandığınızı denetleyin
 Comment[uk]=Вказати яким способом з'єднуватись з інтернетом
 Comment[vi]=Điều khiển cách kết nối Internet
-Comment[zh_CN]=控制连接到互联网的方式
-Comment[zh_HK]=控制你如何連線至網際網絡
-Comment[zh_TW]=控制您如何連線至網際網絡
 Comment=Control how you connect to the Internet
 Exec=found-control-center network
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
@@ -127,6 +123,4 @@ Keywords[sr]=мрежа;ИП;ЛАН;прокси;посредник;ВАН;бр�
 Keywords[sv]=Nätverk;IP;LAN;Proxy;WAN;Bredband;Modem;Bluetooth;Blåtand;vpn;DNS;
 Keywords[tr]=Ağ;IP;LAN;Proxy;WAN;Broadband;Genişbant;Modem;Bluetooth;vpn;DNS;
 Keywords[uk]=Мережа;IP;LAN;Проксі;WAN;Broadband;Модем;Bluetooth;vpn;DNS;
-Keywords[zh_CN]=Network;IP;LAN;Proxy;WAN;Broadband;Modem;Bluetooth;vpn;DNS;网络;互联网协议;局域网;代理;广域网;宽带;调制解调器;蓝牙;虚拟专用网;域名系统;
-Keywords[zh_TW]=Network;IP;LAN;Proxy;WAN;Broadband;Modem;Bluetooth;vpn;DNS;網路;區域網路;代理伺服器;寬頻;數據機;藍牙;區網;代理;藍芽;
 Keywords=Network;IP;LAN;Proxy;WAN;Broadband;Modem;Bluetooth;vpn;DNS;

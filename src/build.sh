@@ -36,6 +36,8 @@ build_pkg_from_src() {
   rm -rf "$stage"
   cp -a "$src_dir" "$stage"
   rm -rf "$stage/src" "$stage/taskbar"
+  # Preserve upstream catalogs in src, while installed UI uses the VOS locale.
+  rm -f "$stage"/usr/share/locale/zh{,_*}/LC_MESSAGES/*.mo
   case "$name" in
     found-desktop)
       local launcher_lib="libcdos-panel-launchers.so.0"
@@ -44,6 +46,7 @@ build_pkg_from_src() {
       gcc -O2 -fPIC -shared -Wl,-z,defs -Wl,-soname,"$launcher_lib" \
         $(pkg-config --cflags gio-unix-2.0 gtk+-3.0) \
         "$TASKBAR_DIR/panel-launchers-directory.c" "$TASKBAR_DIR/app-button-style.c" \
+        "$TASKBAR_DIR/calendar-labels.c" \
         $(pkg-config --libs gtk+-3.0) -ldl -o "$desktop_libdir/$launcher_lib"
       chmod 0644 "$desktop_libdir/$launcher_lib"
       patchelf --add-needed "$launcher_lib" "$stage/usr/bin/cdos-desktop"

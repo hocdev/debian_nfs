@@ -337,7 +337,7 @@
     </key>
 
     <key name="panel-launchers" type="as">
-      <default>[ 'nfs-browser.desktop', 'nemo.desktop', 'cdos-appstore.desktop', 'found-control-center.desktop']</default>
+      <default>[ 'google-chrome.desktop', 'nemo.desktop', 'cdos-appstore.desktop', 'found-control-center.desktop']</default>
       <summary>Desktop files of the applications to put in the panel launchers applet</summary>
       <description>
         Cdos allows to show applications launchers on the panel.
@@ -363,7 +363,7 @@
     </key>
 
     <key name="favorite-apps" type="as">
-      <default>[ 'nfs-browser.desktop', 'cdos-softcenter.desktop', 'thunderbird.desktop' ]</default>
+      <default>[ 'google-chrome.desktop', 'cdos-softcenter.desktop', 'thunderbird.desktop' ]</default>
       <summary>List of desktop file IDs for favorite applications</summary>
       <description>
         The applications corresponding to these identifiers

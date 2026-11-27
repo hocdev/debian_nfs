@@ -5,9 +5,6 @@
   <vendor_url>http://www.gnome.org/</vendor_url>
   <action id="org.gnome.controlcenter.user-accounts.administration">
     <description>Manage user accounts</description>
-    <description xml:lang="zh_TW">管理使用者帳號</description>
-    <description xml:lang="zh_HK">管理使用者帳號</description>
-    <description xml:lang="zh_CN">管理用户账号</description>
     <description xml:lang="vi">Quản lý tài khoản người dùng</description>
     <description xml:lang="uk">Організувати обліковий запис</description>
     <description xml:lang="ug">ئىشلەتكۈچى ھېساباتىنى باشقۇر</description>
@@ -80,9 +77,6 @@
     <description xml:lang="an">Chestionar as cuentas d'usuario</description>
     <description xml:lang="af">Bestuur gebruikerrekeninge</description>
     <message>Authentication is required to change user data</message>
-    <message xml:lang="zh_TW">改變使用者資料需要核對</message>
-    <message xml:lang="zh_HK">改變使用者資料需要核對</message>
-    <message xml:lang="zh_CN">改变用户数据需要认证</message>
     <message xml:lang="vi">Cần xác thực để thay đổi dữ liệu người dùng</message>
     <message xml:lang="uk">Потрібна автентифікація, щоб змінити дані про користувача</message>
     <message xml:lang="ug">ئىشلەتكۈچى سانلىق-مەلۇماتىنى ئۆزگەرتىش ئۈچۈن سالاھىيەت دەلىللەش زۆرۈر</message>
@@ -161,9 +155,6 @@
   </action>
   <action id="org.gnome.controlcenter.user-accounts.groupadd">
     <description>Manage user accounts</description>
-    <description xml:lang="zh_TW">管理使用者帳號</description>
-    <description xml:lang="zh_HK">管理使用者帳號</description>
-    <description xml:lang="zh_CN">管理用户账号</description>
     <description xml:lang="vi">Quản lý tài khoản người dùng</description>
     <description xml:lang="uk">Організувати обліковий запис</description>
     <description xml:lang="ug">ئىشلەتكۈچى ھېساباتىنى باشقۇر</description>
@@ -236,9 +227,6 @@
     <description xml:lang="an">Chestionar as cuentas d'usuario</description>
     <description xml:lang="af">Bestuur gebruikerrekeninge</description>
     <message>Authentication is required to change user data</message>
-    <message xml:lang="zh_TW">改變使用者資料需要核對</message>
-    <message xml:lang="zh_HK">改變使用者資料需要核對</message>
-    <message xml:lang="zh_CN">改变用户数据需要认证</message>
     <message xml:lang="vi">Cần xác thực để thay đổi dữ liệu người dùng</message>
     <message xml:lang="uk">Потрібна автентифікація, щоб змінити дані про користувача</message>
     <message xml:lang="ug">ئىشلەتكۈچى سانلىق-مەلۇماتىنى ئۆزگەرتىش ئۈچۈن سالاھىيەت دەلىللەش زۆرۈر</message>
@@ -317,9 +305,6 @@
   </action>
   <action id="org.gnome.controlcenter.user-accounts.gpasswd">
     <description>Manage user accounts</description>
-    <description xml:lang="zh_TW">管理使用者帳號</description>
-    <description xml:lang="zh_HK">管理使用者帳號</description>
-    <description xml:lang="zh_CN">管理用户账号</description>
     <description xml:lang="vi">Quản lý tài khoản người dùng</description>
     <description xml:lang="uk">Організувати обліковий запис</description>
     <description xml:lang="ug">ئىشلەتكۈچى ھېساباتىنى باشقۇر</description>
@@ -392,9 +377,6 @@
     <description xml:lang="an">Chestionar as cuentas d'usuario</description>
     <description xml:lang="af">Bestuur gebruikerrekeninge</description>
     <message>Authentication is required to change user data</message>
-    <message xml:lang="zh_TW">改變使用者資料需要核對</message>
-    <message xml:lang="zh_HK">改變使用者資料需要核對</message>
-    <message xml:lang="zh_CN">改变用户数据需要认证</message>
     <message xml:lang="vi">Cần xác thực để thay đổi dữ liệu người dùng</message>
     <message xml:lang="uk">Потрібна автентифікація, щоб змінити дані про користувача</message>
     <message xml:lang="ug">ئىشلەتكۈچى سانلىق-مەلۇماتىنى ئۆزگەرتىش ئۈچۈن سالاھىيەت دەلىللەش زۆرۈر</message>
@@ -473,9 +455,6 @@
   </action>
   <action id="org.gnome.controlcenter.user-accounts.groupsettings">
     <description>Manage user accounts</description>
-    <description xml:lang="zh_TW">管理使用者帳號</description>
-    <description xml:lang="zh_HK">管理使用者帳號</description>
-    <description xml:lang="zh_CN">管理用户账号</description>
     <description xml:lang="vi">Quản lý tài khoản người dùng</description>
     <description xml:lang="uk">Організувати обліковий запис</description>
     <description xml:lang="ug">ئىشلەتكۈچى ھېساباتىنى باشقۇر</description>
@@ -548,9 +527,6 @@
     <description xml:lang="an">Chestionar as cuentas d'usuario</description>
     <description xml:lang="af">Bestuur gebruikerrekeninge</description>
     <message>Authentication is required to change user data</message>
-    <message xml:lang="zh_TW">改變使用者資料需要核對</message>
-    <message xml:lang="zh_HK">改變使用者資料需要核對</message>
-    <message xml:lang="zh_CN">改变用户数据需要认证</message>
     <message xml:lang="vi">Cần xác thực để thay đổi dữ liệu người dùng</message>
     <message xml:lang="uk">Потрібна автентифікація, щоб змінити дані про користувача</message>
     <message xml:lang="ug">ئىشلەتكۈچى سانلىق-مەلۇماتىنى ئۆزگەرتىش ئۈچۈن سالاھىيەت دەلىللەش زۆرۈر</message>

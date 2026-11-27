@@ -5,8 +5,6 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>GNOME Settings</name>
-  <name xml:lang="zh_TW">GNOME 設定</name>
-  <name xml:lang="zh_CN">GNOME 设置</name>
   <name xml:lang="uk">Параметри GNOME</name>
   <name xml:lang="tr">GNOME Ayarlar</name>
   <name xml:lang="sv">GNOME Inställningar</name>
@@ -53,8 +51,6 @@
   <name xml:lang="bn_IN">জিনোম সেটিংস</name>
   <name xml:lang="ar">إعدادات جنوم</name>
   <summary>Utility to configure the GNOME desktop</summary>
-  <summary xml:lang="zh_TW">設定 GNOME 桌面的工具程式</summary>
-  <summary xml:lang="zh_CN">用来配置 GNOME 桌面的工具</summary>
   <summary xml:lang="uk">Програма для налаштовування середовища GNOME</summary>
   <summary xml:lang="tr">GNOME masaüstünü yapılandırma aracı</summary>
   <summary xml:lang="sv">Verktyg för att konfigurera GNOME-skrivbordet</summary>
@@ -103,8 +99,6 @@
     <p>
       Settings is the primary interface for configuring your system.
     </p>
-    <p xml:lang="zh_TW">《設定》是設定系統的主要介面。</p>
-    <p xml:lang="zh_CN">“设置”是配置您的系统的主要界面。</p>
     <p xml:lang="uk">«Параметри» є основним інтерфейсом для налаштовування вашої системи.</p>
     <p xml:lang="tr">Ayarlar, sisteminizi yapılandırmak için birincil arayüzdür.</p>
     <p xml:lang="sv">Inställningar är det primära gränssnittet för att konfigurera ditt system.</p>
@@ -154,8 +148,6 @@
   <project_group>GNOME</project_group>
   <launchable type="desktop-id">found-control-center.desktop</launchable>
   <developer_name>The GNOME Project</developer_name>
-  <developer_name xml:lang="zh_TW">GNOME 專案</developer_name>
-  <developer_name xml:lang="zh_CN">GNOME 项目</developer_name>
   <developer_name xml:lang="uk">Проєкт GNOME</developer_name>
   <developer_name xml:lang="tr">GNOME Projesi</developer_name>
   <developer_name xml:lang="sv">GNOME-projektet</developer_name>

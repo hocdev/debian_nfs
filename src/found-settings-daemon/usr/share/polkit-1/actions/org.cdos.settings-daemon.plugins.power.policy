@@ -65,9 +65,6 @@
     <description xml:lang="ug">يان كومپيۇتېر يورۇقلۇقىنى ئۆزگەرتىش</description>
     <description xml:lang="uk">Змінити яскравість ноутбука</description>
     <description xml:lang="vi">Điều chỉnh độ sáng laptop</description>
-    <description xml:lang="zh_CN">修改笔记本亮度</description>
-    <description xml:lang="zh_HK">修改手提電腦亮度</description>
-    <description xml:lang="zh_TW">修改筆記型電腦亮度</description>
     <message>Authentication is required to modify the laptop brightness</message>
     <message xml:lang="ar">الاستيثاق مطلوب لتغيير سطوع الحاسوب</message>
     <message xml:lang="as">লেপটপৰ উজ্জ্বলতা পৰিবৰ্তন কৰিবলে প্ৰমাণীকৰণৰ প্ৰয়োজন</message>
@@ -121,9 +118,6 @@
     <message xml:lang="ug">يان كومپيۇتېرنىڭ يورۇقلۇقىنى ئۆزگەرتىش ئۈچۈن سالاھىيەت دەلىللەش زۆرۈر</message>
     <message xml:lang="uk">Потрібна аутентифікація для зміни яскравості ноутбука</message>
     <message xml:lang="vi">Cần xác thực để điều chỉnh độ sáng laptop</message>
-    <message xml:lang="zh_CN">修改笔记本亮度需要认证</message>
-    <message xml:lang="zh_HK">修改手提電腦亮度需要驗證</message>
-    <message xml:lang="zh_TW">修改筆記型電腦亮度需要驗證</message>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>

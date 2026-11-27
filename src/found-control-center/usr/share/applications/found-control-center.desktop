@@ -70,9 +70,6 @@ Name[tr]=Ayarlar
 Name[ug]=تەڭشەكلەر
 Name[uk]=Параметри
 Name[vi]=Cài đặt
-Name[zh_CN]=设置
-Name[zh_HK]=設定值
-Name[zh_TW]=設定值
 Name=Settings
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
 Icon=found-control-center
@@ -158,7 +155,4 @@ Keywords[tr]=Tercihler;Ayarlar;
 Keywords[ug]=Preferences;Settings;مايىللىق;تەڭشەكلەر;
 Keywords[uk]=Налаштування;Параметри;
 Keywords[vi]=Preferences;Tùy;thích;Tuy;thich;Cấu;hình;Cau;hinh;Settings;Thiết;lập;Thiet;lap;Cài;đặt;cai;dat;Tùy;chọn;Tuy;chon;Cá;ca;nhân;nhan;hóa;hoa;
-Keywords[zh_CN]=Preferences;Settings;首选项;设置;
-Keywords[zh_HK]=Preferences;Settings;偏好設定;設定值;
-Keywords[zh_TW]=Preferences;Settings;偏好設定;設定值;
 Keywords=Preferences;Settings;

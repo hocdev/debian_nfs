@@ -1,5 +1,4 @@
 [Desktop Entry]
-Name[zh_CN]=性能模式
 Name=Performance mode
 Comment=change desktop components for speed up
 Exec=found-control-center performance-mode
@@ -73,6 +72,4 @@ Keywords[sv]=standard;program;föredragen;media;
 Keywords[tr]=öntanımlı;uygulama;tercihen;yeğlenen;ortam;
 Keywords[uk]=типове;програма;бажане;носій;default;application;preferred;media;
 Keywords[vi]=default;application;preferred;media;mặc định;mac dinh;ứng dụng;ung dung;ưa dùng;uu dung;
-Keywords[zh_CN]=default;application;preferred;media;默认;应用程序;首选;偏好;媒体;介质;
-Keywords[zh_TW]=default;application;preferred;media;預設;應用程式;偏好;首選;媒體;
 Keywords=default;application;preferred;media;

@@ -2,7 +2,6 @@
 Name[ast]=Información del sistema
 Name[bn]=সিস্টেমের তথ্য
 Name[ku]=Agahiyên pergalî
-Name[zh_CN]=系统信息
 Name=System Info
 Comment[af]=Vertoon inligting oor die stelsel
 Comment[an]=Veyer información sobre o tuyo sistema
@@ -72,9 +71,6 @@ Comment[th]=ดูข้อมูลเกี่ยวกับระบบข�
 Comment[tr]=Sisteminiz hakkında bilgi edinin
 Comment[uk]=Переглянути інформацію про вашу систему
 Comment[vi]=Xem thông tin về hệ thống của bạn
-Comment[zh_CN]=查看系统信息
-Comment[zh_HK]=檢視你系統的資訊
-Comment[zh_TW]=檢視您系統的資訊
 Comment=View information about your system
 Exec=found-control-center info-overview
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
@@ -134,6 +130,4 @@ Keywords[sr]=уређај;систем;информације;меморија;�
 Keywords[sv]=enhet;system;information;värdnamn;minne;processor;version;standard;program;föredragen;cd;dvd;usb;ljud;video;skiva;flyttbar;media;automatisk körning;
 Keywords[tr]=aygıt;sistem;bilgi;makineadı;anamakineadı;bellek;işlemci;sürüm;öntanımlı;uygulama;korumalı;tercihedilen;yeğlenen;cd;dvd;usb;ses;video;disk;çıkarılabilir;ortam;otomatikçalıştır;
 Keywords[uk]=пристрій;система;інформація;назва;вузол;пам'ять;процесор;версія;типово;програма;альтернативний;переважний;cd;dvd;usb;аудіо;звук;відео;диск;знімний;знімний;носій;автозапуск;device;system;information;hostname;memory;processor;version;default;application;preferred;cd;dvd;usb;audio;video;disc;removable;media;autorun;
-Keywords[zh_CN]=device;system;information;memory;processor;version;default;application;preferred;cd;dvd;usb;audio;video;disc;removable;media;autorun;设备;系统;信息;内存;处理器;CPU;版本;默认;应用程序;首选;音频;视频;光盘;光碟;盘片;可擦写;可移除;可移动;媒体;介质;自动运行;
-Keywords[zh_TW]=device;system;information;hostname;memory;processor;version;default;application;preferred;cd;dvd;usb;audio;video;disc;removable;media;autorun;裝置;系統;資訊;記憶體;處理器;版本;預設;應用程式;首選;音訊;視訊;碟片;可移除;媒體;自動執行;主機名;主機名稱;
 Keywords=device;system;information;hostname;memory;processor;version;default;application;preferred;cd;dvd;usb;audio;video;disc;removable;media;autorun;

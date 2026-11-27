@@ -1,7 +1,5 @@
 [Desktop Entry]
-Name[zh_CN]=无线局域网
 Name=Wireless network
-Comment[zh_CN]=控制连接到无线局域网的方式
 Comment=Control how you connect to wireless networks
 Exec=found-control-center wifi
 # Translators: Do NOT translate or transliterate this text (this is an icon file name)!
@@ -59,6 +57,4 @@ Keywords[sr]=мрежа;бежична;вај-фај;ип;лан;широкоп�
 Keywords[sv]=Nätverk;Trådlöst;Wi-Fi;Wifi;IP;LAN;Bredband;DNS;Hotspot;Surfzon;
 Keywords[tr]=Ağ;Wireless;Wi-Fi;Wifi;IP;LAN;Broadband;Genişbant;DNS;Hotspot;Bağlantı Noktası;
 Keywords[uk]=Мережа;Бездротова;Wi-Fi;Wifi;IP;LAN;Broadband;DNS;Hotspot;
-Keywords[zh_CN]=Network;Wireless;Wi-Fi;Wifi;IP;LAN;Broadband;DNS;Hotspot;网络;无线;无线保真;互联网协议;局域网;宽带;域名系统;热点;
-Keywords[zh_TW]=Network;Wireless;Wi-Fi;Wifi;IP;LAN;Broadband;DNS;Hotspot;網路;無線網路;區域網路;寬頻;熱點;區網;
 Keywords=Network;Wireless;Wi-Fi;Wifi;IP;LAN;Broadband;DNS;Hotspot;

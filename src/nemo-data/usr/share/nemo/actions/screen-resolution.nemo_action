@@ -13,6 +13,3 @@ Extensions=any;
 Dependencies=found-control-center;
 
 Conditions=desktop;
-
-Name[zh_CN]=显示设置
-Comment[zh_CN]=显示设置

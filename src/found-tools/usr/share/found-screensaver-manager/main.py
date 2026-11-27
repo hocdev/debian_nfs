@@ -69,7 +69,7 @@ SCREENSAVER_ICON_VIEW_ITEM_HEIGHT = 60
 SCREENSAVER_PREVIEW_WIDTH = 160
 SCREENSAVER_PREVIEW_HEIGHT = 90
 BACKGROUND_PROPERTIES = "/usr/share/background-properties"
-LOGIN_BACKGROUND_DEFAULT = "/usr/share/nfs-login-qt/sources/accounts"
+LOGIN_BACKGROUND_DEFAULT = "/usr/share/vos-login-qt/sources/accounts"
 LOGIN_BACKGROUND_KEY = "use-for-greeter"
 if get_field_value() == "sugon" or get_field_value() == "hygoncpu":
     BACKGROUNDS_FOLDER_PATH = "/usr/share/backgrounds/hygoncpu/"

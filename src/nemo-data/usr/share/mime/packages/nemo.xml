@@ -47,7 +47,6 @@
      <comment xml:lang="sv">Sparad sökning</comment>
      <comment xml:lang="tr">Kayıtlı arama</comment>
      <comment xml:lang="uk">Збережений пошук</comment>
-     <comment xml:lang="zh_HK">已儲存搜尋</comment>
      <glob pattern="*.savedSearch"/>
    </mime-type>
 
@@ -95,7 +94,6 @@
      <comment xml:lang="sv">Nemos åtgärdsdefinition</comment>
      <comment xml:lang="tr">Nemo aksiyon tanımı</comment>
      <comment xml:lang="uk">Визначник дій Nemo</comment>
-     <comment xml:lang="zh_HK">Nemo動作定義</comment>
      <generic-icon name="text-x-generic"/>
      <sub-class-of type="text/plain"/>
      <glob pattern="*.nemo_action"/>

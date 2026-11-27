@@ -45,9 +45,35 @@ const EXPORT_PACKAGES: &[&str] = &[
     "mutter-common",
     "libmutter-6-0",
     "gir1.2-mutter-6",
-    "nfs-custom-jjw",
-    "cdos-plymouth-theme-nfslogo",
+    "vos-custom-jjw",
+    "cdos-plymouth-theme-voslogo",
 ];
+
+// These names are needed only to read package records and paths in older ISOs.
+const LEGACY_CUSTOM: &str = "nfs-custom-jjw";
+const LEGACY_PLYMOUTH: &str = "cdos-plymouth-theme-nfslogo";
+const LEGACY_THEME: &str = "nfslogo";
+
+fn rename_legacy_paths(path: &str) -> String {
+    path.replace(LEGACY_CUSTOM, "vos-custom-jjw")
+        .replace(LEGACY_PLYMOUTH, "cdos-plymouth-theme-voslogo")
+        .replace(LEGACY_THEME, "voslogo")
+}
+
+fn rebrand_package_refs(raw: &str) -> String {
+    raw.split_inclusive([',', '|'])
+        .map(|reference| {
+            let renamed = rename_legacy_paths(reference);
+            let package = renamed.trim_start().split([' ', '(', ':', ',', '|']).next().unwrap_or("");
+            if EXPORT_PACKAGES.contains(&package) {
+                renamed.replace("nfs5", "vos5")
+            } else {
+                renamed
+            }
+        })
+        .collect::<Vec<_>>()
+        .concat()
+}
 
 const COMPAT_SOURCES: &[(&str, &[&str])] = &[
     ("libcroco3", &["usr/lib/x86_64-linux-gnu/libcroco-0.6.so.3"]),
@@ -305,7 +331,7 @@ fn rewrite_dep_list(raw: &str, pkg: &str) -> String {
             | "libgeocode-glib0" => Some("vos-compat-libs".to_string()),
             "tracker-extract" => Some("tracker-miner-fs".to_string()),
             "gnome-themes-standard" => Some("gnome-themes-extra".to_string()),
-            _ => Some(t.to_string()),
+            _ => Some(rebrand_package_refs(t)),
         };
 
         if let Some(m) = mapped {
@@ -350,6 +376,9 @@ fn build_control_text(pkg: &str, fields: &[(String, String)], version_override: 
                 if !rw.is_empty() {
                     lines.push(format!("{}: {}", k, rw));
                 }
+            }
+            "Breaks" | "Conflicts" | "Replaces" | "Suggests" | "Provides" => {
+                lines.push(format!("{}: {}", k, rebrand_package_refs(v)));
             }
             _ => {
                 lines.push(format!("{}: {}", k, v));
@@ -429,27 +458,35 @@ fn patch_maintainer_script(pkg: &str, ext: &str, raw: &[u8]) -> Vec<u8> {
         ("found-desktop-environment", "postinst") => s
             .replace("found-de -l $packages_file", "found-de -l $packages_file || true")
             .into_bytes(),
-        ("cdos-plymouth-theme-nfslogo", "postinst") => {
+        ("cdos-plymouth-theme-voslogo", "postinst") => {
             let patched = r#"#!/bin/sh
 set -e
 case "$1" in
     configure|upgrade|update|reconfigure)
         mkdir -p /usr/share/initramfs-tools/hooks
-        cp -f /usr/share/plymouth/themes/nfslogo/chinese /usr/share/initramfs-tools/hooks/ || true
+        cp -f /usr/share/plymouth/themes/voslogo/chinese /usr/share/initramfs-tools/hooks/ || true
         if command -v plymouth-set-default-theme >/dev/null 2>&1; then
-            plymouth-set-default-theme nfslogo || true
+            plymouth-set-default-theme voslogo || true
         fi
         update-alternatives --install \
             /usr/share/desktop-base/active-theme \
             desktop-theme \
-            /usr/share/plymouth/themes/nfslogo 60 || true
+            /usr/share/plymouth/themes/voslogo 60 || true
     ;;
 esac
 exit 0
 "#;
             patched.as_bytes().to_vec()
         }
-        _ => raw.to_vec(),
+        ("cdos-plymouth-theme-voslogo", "postrm") => rename_legacy_paths(&s)
+            .replace(
+                "            /usr/share/desktop-base/active-theme",
+                "            /usr/share/plymouth/themes/voslogo",
+            )
+            .into_bytes(),
+        _ => std::str::from_utf8(raw)
+            .map(|text| rename_legacy_paths(text).into_bytes())
+            .unwrap_or_else(|_| raw.to_vec()),
     }
 }
 
@@ -486,7 +523,7 @@ fn export_package(
     let version = fields
         .iter()
         .find(|(k, _)| k == "Version")
-        .map(|(_, v)| v.clone())
+        .map(|(_, v)| v.replace("nfs5", "vos5"))
         .ok_or("Missing Version")?;
     let arch = fields
         .iter()
@@ -513,24 +550,32 @@ fn export_package(
         let Some(node) = paths.get(rel) else {
             continue;
         };
+        let output_path = rename_legacy_paths(rel);
         match &node.kind {
             Kind::Dir { .. } => {
-                ensure_parent_dirs(&mut data_items, rel, paths);
-                let tar_dir = format!("./{rel}/");
+                ensure_parent_dirs(&mut data_items, &output_path, paths);
+                let tar_dir = format!("./{output_path}/");
                 data_items.insert(tar_dir, TarItem::Dir { mode: node_mode(node) });
             }
             Kind::File { size, .. } => {
-                ensure_parent_dirs(&mut data_items, rel, paths);
-                let data = if let Some(pam) = pam_screensaver_replacement(rel) {
+                ensure_parent_dirs(&mut data_items, &output_path, paths);
+                let mut data = if let Some(pam) = pam_screensaver_replacement(rel) {
                     pam.as_bytes().to_vec()
                 } else if let Some(ov) = branding.get(rel) {
                     ov.clone()
                 } else {
                     squash.read_node(node)?
                 };
+                if rel.ends_with(".plymouth") || rel.ends_with(".script")
+                    || (pkg == "vos-custom-jjw" && rel.ends_with("/post-install"))
+                {
+                    if let Ok(text) = std::str::from_utf8(&data) {
+                        data = rename_legacy_paths(text).into_bytes();
+                    }
+                }
                 total_bytes += data.len().max(*size as usize) as u64;
                 data_items.insert(
-                    format!("./{rel}"),
+                    format!("./{output_path}"),
                     TarItem::File {
                         mode: node_mode(node),
                         data,
@@ -538,11 +583,11 @@ fn export_package(
                 );
             }
             Kind::Link(target) => {
-                ensure_parent_dirs(&mut data_items, rel, paths);
+                ensure_parent_dirs(&mut data_items, &output_path, paths);
                 data_items.insert(
-                    format!("./{rel}"),
+                    format!("./{output_path}"),
                     TarItem::Link {
-                        target: target.clone(),
+                        target: rename_legacy_paths(target),
                     },
                 );
             }
@@ -586,7 +631,7 @@ fn export_package(
     let mut control_txt = build_control_text(
         pkg,
         &adjusted_fields,
-        None,
+        Some(&version),
         None,
         (total_bytes / 1024).max(1),
     );
@@ -609,7 +654,7 @@ fn export_package(
         },
     );
 
-    if pkg == control_pkg_name {
+    if pkg != "found-icon-theme-dark" {
         for ext in ["preinst", "postinst", "prerm", "postrm", "triggers", "conffiles", "shlibs"] {
             let p1 = format!("var/lib/dpkg/info/{control_pkg_name}.{ext}");
             let p2 = format!("var/lib/dpkg/info/{control_pkg_name}:{arch}.{ext}");
@@ -759,7 +804,7 @@ libgeocode-glib0, libsm_devctl) alongside the standard system packages.\n",
 fn main() -> Result<()> {
     let args: Vec<String> = std::env::args().collect();
     if args.len() < 4 {
-        eprintln!("Usage: nfs-exporter <nfs.iso> <branding_edit_dir> <staging_dir>");
+        eprintln!("Usage: vos-exporter <source.iso> <branding_edit_dir> <staging_dir>");
         std::process::exit(1);
     }
     let iso_path = PathBuf::from(&args[1]);
@@ -803,9 +848,18 @@ fn main() -> Result<()> {
                 Some("FoundDark icon theme split from found-icon-theme"),
             )?;
         } else {
+            let source_package = if dpkg_status.contains_key(pkg) {
+                pkg
+            } else {
+                match pkg {
+                    "vos-custom-jjw" => LEGACY_CUSTOM,
+                    "cdos-plymouth-theme-voslogo" => LEGACY_PLYMOUTH,
+                    _ => pkg,
+                }
+            };
             export_package(
                 pkg,
-                pkg,
+                source_package,
                 &mut squash,
                 &paths,
                 &dpkg_status,

@@ -15,7 +15,7 @@ ISO **VOS** (amd64) hỗ trợ chạy Live và cài đặt. VOS dùng nền Book
 
 - [repo/pool/main/](repo/pool/main/): Các gói `.deb` tương thích với Bookworm.
 - [src/](src/): Cây gói `.deb` và mã C phục dựng. Build tích hợp hàm lấy thư mục launcher vào `cdos-desktop` và hai hàm kiểm tra môi trường vào `libfound-desktop-4`. Các phần còn lại của hai thư viện vẫn cần binary Found hiện có để cung cấp đủ ABI.
-- [tools/nfs-exporter/](tools/nfs-exporter/): Công cụ Rust + Python hỗ trợ đóng gói và trích xuất tài nguyên hệ thống.
+- [tools/vos-exporter/](tools/vos-exporter/): Công cụ Rust + Python hỗ trợ đóng gói và trích xuất tài nguyên hệ thống.
 - [live-build/](live-build/): Cấu hình `live-build` (`bookworm`, `amd64`, LightDM mặc định phiên `cdos-xorg`, Calamares, hook `ldd` kiểm tra liên kết động).
 - [.github/workflows/build-iso.yml](.github/workflows/build-iso.yml): Workflow GitHub Actions tự động build ISO trong container `debian:bookworm` và tải artifact chứa `vos-desktop-amd64.iso`.
 

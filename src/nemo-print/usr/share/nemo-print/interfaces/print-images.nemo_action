@@ -6,6 +6,4 @@ Selection=notnone
 Icon-Name=printer
 Mimetypes=image/*;
 Name[en_GB]=Print
-Name[zh_CN]=打印
 Comment[en_GB]=Print the selected images.
-Comment[zh_CN]=打印选中的图片

@@ -1,9 +1,6 @@
 [Desktop Entry]
 Name=switcher
-Name[zh_CN]=自动恢复外显模式
-GenericName[zh_CN]=自动恢复外显模式
 Comment=Auto resume monitor mode, adjust preferred geometry.
-Comment[zh_CN]=自动恢复关机前外接显示器的模式
 Exec=/usr/share/found-monitors-switcher/support_hotplug
 Terminal=false
 Type=Application

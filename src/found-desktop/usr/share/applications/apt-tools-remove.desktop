@@ -1,7 +1,6 @@
 [Desktop Entry]
 Type=Application
 Name=Deb package remove
-Name[zh_CN]=软件卸载
 Comment=Remove the deb package from your computer.
 Exec=apt-tools-remove
 Icon=package

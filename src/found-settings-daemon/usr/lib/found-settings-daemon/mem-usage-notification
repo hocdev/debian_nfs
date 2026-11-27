@@ -1,0 +1,17 @@
+#!/bin/sh
+set -eu
+
+locale=${LC_ALL:-${LC_MESSAGES:-${LANG:-C}}}
+case "$locale" in
+    C|C.*|POSIX) ;;
+    *) locale=${LANGUAGE:-$locale} ;;
+esac
+
+case "${locale%%:*}" in
+    vi|vi[_.*@]*)
+        exec notify-send 'Bộ nhớ sắp hết' 'Hãy lưu công việc và đóng bớt ứng dụng để tránh mất dữ liệu.'
+        ;;
+    *)
+        exec notify-send 'Low memory' 'Save your work and close applications to prevent data loss.'
+        ;;
+esac

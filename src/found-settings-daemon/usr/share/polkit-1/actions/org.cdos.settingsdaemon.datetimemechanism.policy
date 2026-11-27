@@ -20,7 +20,6 @@
     <message xml:lang="fa">برای تغییر تنظیمات تاریخ و زمان، باید تصدیق هویت شوید.</message>
     <message xml:lang="mk">За да ги промените поставувањата за датум и време мора да се автентицирате.</message>
     <message xml:lang="ro">Pentru a schimba ora sau data, este obligatorie autentificarea.</message>
-    <message xml:lang="zh">改变系统时间和日期设置需要认证。</message>
     <defaults>
       <allow_any>no</allow_any>
       <allow_inactive>no</allow_inactive>

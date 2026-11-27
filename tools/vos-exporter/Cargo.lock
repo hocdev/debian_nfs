@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "nfs-exporter"
+name = "vos-exporter"
 version = "0.1.0"

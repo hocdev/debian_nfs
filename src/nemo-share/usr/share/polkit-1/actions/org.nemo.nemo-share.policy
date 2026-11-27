@@ -6,7 +6,6 @@
 
   <action id="org.nemo.nemo-share.samba-add">
     <message>Authentication is required to run the Users and Groups</message>
-    <message xml:lang="zh">输入您的密码以执行管理任务</message>
     <icon_name>system-users</icon_name>
     <defaults>
       <allow_any>auth_admin</allow_any>
@@ -19,7 +18,6 @@
 
   <action id="org.nemo.nemo-share.samba-user-clear">
     <message>Authentication is required to run the Users and Groups</message>
-    <message xml:lang="zh">输入您的密码以执行管理任务</message>
     <icon_name>system-users</icon_name>
     <defaults>
       <allow_any>auth_admin</allow_any>
@@ -32,7 +30,6 @@
 
   <action id="org.nemo.nemo-share.restart">
     <message>Authentication is required to run the Users and Groups</message>
-    <message xml:lang="zh">输入您的密码以执行管理任务</message>
     <icon_name>system-users</icon_name>
     <defaults>
       <allow_any>auth_admin</allow_any>

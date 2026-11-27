@@ -109,7 +109,6 @@ class Module:
             # add for translate
             self.window.set_title(_("Language Support"))
             self.window.connect("destroy", Gtk.main_quit)
-            self.lang = None
             #self.set_theme(CLASS_FILE_PATH)
             self.lang_widget_construct()
             # add for translate
@@ -142,107 +141,56 @@ class Module:
                                         provider,
                                         Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
-    def lang_widget_set_default(self, combo):
-        cur_lang = os.getenv('LANGUAGE')
-        if cur_lang is None:
-            cur_lang = os.getenv('LANG', default='zh_CN.UTF-8')
-
-        if cur_lang and (cur_lang.split(':')[0].split('_')[0] == 'zh'):
-            combo.set_active(0)
-        else:
-            # print(cur_lang)
-            combo.set_active(1)
-
-    def on_lang_combo_changed(self, combo):
-        tree_iter = combo.get_active_iter()
-        if tree_iter is not None:
-            if combo.get_active() == 0:
-                self.trans_en_to_zh()
-                self.lang = 'zh_CN.UTF-8'
-            else:
-                self.trans_zh_to_en()
-                self.lang = 'en_US.UTF-8'
+    def configured_locale(self):
+        try:
+            with open(LOCAL_FILE_PATH, encoding="utf-8") as config:
+                for line in config:
+                    name, _, value = line.partition("=")
+                    if name.strip() == "LANG":
+                        return value.strip().strip("'\"")
+        except OSError:
+            pass
+        return os.environ.get("LANG") or "en_US.UTF-8"
 
     def lang_widget_construct(self):
-        lang_store = Gtk.ListStore(str)
-        #languages = [_("Chinese"), _("English")]
-        languages = [_("Chinese")]
-        for lang in languages:
-            lang_store.append([lang])
+        lang_store = Gtk.ListStore(str, str)
+        lang_store.append([_("English"), "en_US.UTF-8"])
+        lang_store.append([_("Vietnamese"), "vi_VN.UTF-8"])
+
         lang_combo = self.builder.get_object("lang_combo")
         lang_combo.set_model(lang_store)
-        self.lang_widget_set_default(lang_combo)
-        lang_combo.connect("changed", self.on_lang_combo_changed)
+        current_locale = self.configured_locale()
+        language = current_locale.split(".")[0].replace("-", "_").split("_")[0]
+        lang_combo.set_active(1 if language == "vi" else 0)
+
         renderer_text = Gtk.CellRendererText()
         lang_combo.pack_start(renderer_text, True)
         lang_combo.add_attribute(renderer_text, "text", 0)
 
     def on_apply_button_clicked(self, button):
-        if self.lang is None:
-            self.lang = 'zh_CN.UTF-8'
-        self.apply_to_system_wide(self.lang)
-        LogoutDialog(self.window)
-
-    def trans_zh_to_en(self):
-        try:
-            f = open(LOCAL_FILE_PATH, 'r+')
-            all_lines = f.readlines()
-            f.seek(0)
-            f.truncate()
-            for line in all_lines:
-                if(line.find('LANG=') != -1) or (line.find('LANGUAGE=') != -1):
-                    line = line.replace('zh', 'en')
-                    line = line.replace('CN', 'US')
-                    f.write(line)
-                else:
-                    f.write(line)  # not change other line
-            f.close()
-        except Exception as e:
-            AlertDialog(self.window,
-                        message=_("Change language configuration failed!"),
-                        info=str(e))
-            print(e)
-
-    def trans_en_to_zh(self):
-        try:
-            f = open(LOCAL_FILE_PATH, 'r+')
-            all_lines = f.readlines()
-            f.seek(0)
-            f.truncate()
-            for line in all_lines:
-                if(line.find('LANG=') != -1) or (line.find('LANGUAGE=') != -1):
-                    line = line.replace('en', 'zh')
-                    line = line.replace('US', 'CN')
-                    f.write(line)
-                else:
-                    f.write(line)  # not change other line
-            f.close()
-        except Exception as e:
-            AlertDialog(self.window,
-                        message=_("Change language configuration failed!"),
-                        info=str(e))
-            print(e)
+        combo = self.builder.get_object("lang_combo")
+        selected = combo.get_active_iter()
+        if selected is not None:
+            language = combo.get_model().get_value(selected, 1)
+            if self.apply_to_system_wide(language):
+                LogoutDialog(self.window)
 
     def apply_to_system_wide(self, lang_with_encoding, file=LOCAL_FILE_PATH):
-        if lang_with_encoding is None:
-            return
-
         lang = lang_with_encoding[0:2]
         country = lang_with_encoding[0:5]
         result = locale_template.safe_substitute(encoding=lang_with_encoding,
                                                  country=country,
                                                  lang=lang)
         try:
-            f = open(file, 'w')
-            f.seek(0)
-            f.truncate()
-            f.write(result)
-            f.close()
+            with open(file, "w", encoding="utf-8") as config:
+                config.write(result)
+            return True
         except Exception as e:
             AlertDialog(self.window,
                         message=_("Change language configuration failed!"),
                         info=str(e))
             print(e)
+            return False
 
 
 if __name__ == "__main__":

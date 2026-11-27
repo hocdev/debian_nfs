@@ -43,8 +43,6 @@ Name[sv]=Verktyg för status-appen XApp
 Name[tr]=XApp Durum Uygulamacığı Üreticisi
 Name[uk]=Фабрика аплета статусу XApp
 Name[uz]=XApp holat appletining boshlang'ich holati
-Name[zh_CN]=XApp 状态小应用工厂
-Name[zh_HK]=XApp狀態小程序工廠
 Name=XApp Status Applet Factory
 Description=Area where XApp status icons appear
 
@@ -91,8 +89,6 @@ Name[sv]=Status-appen XApp
 Name[tr]=XApp Durum Uygulamacığı
 Name[uk]=Аплет статусу XApp
 Name[uz]=XApp holat appleti
-Name[zh_CN]=XApp 状态小应用
-Name[zh_HK]=XApp 狀態小工具
 Name=XApp Status Applet
 Description=Area where XApp status icons appear
 Icon=panel-applets

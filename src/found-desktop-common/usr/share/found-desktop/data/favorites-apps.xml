@@ -10,7 +10,6 @@
   </group>
   <group name="1" section="2">
     <label translatable="yes">Work &amp; assistance</label>
-    <item>nfs-screenshot.desktop</item>
     <item>gnome-calculator.desktop</item>
     <item>cdos-phone-manager.desktop</item>
     <item>org.gnome.Terminal.desktop</item>
@@ -20,7 +19,6 @@
   <group name="2" section="1">
     <label translatable="yes">Security</label>
     <item>nfw.desktop</item>
-    <item>NFSantivirus.desktop</item>
     <item>cdos-securitycenter.desktop</item>
   </group>
 

@@ -5,9 +5,6 @@
   <vendor_url>http://www.gnome.org/</vendor_url>
   <action id="org.gnome.controlcenter.datetime.configure">
     <description>Change system time and date settings</description>
-    <description xml:lang="zh_TW">改變系統時刻與日期設定值</description>
-    <description xml:lang="zh_HK">改變系統時刻與日期設定值</description>
-    <description xml:lang="zh_CN">更改系统时间和日期设置</description>
     <description xml:lang="vi">Thay đổi thời gian và ngày tháng</description>
     <description xml:lang="uk">Змінити параметри системних часу і дати</description>
     <description xml:lang="ug">سىستېمىنىڭ ۋاقىت ۋە چېسلا تەڭشىكىنى ئۆزگەرت</description>
@@ -81,9 +78,6 @@
     <description xml:lang="an">Cambiar a configuración d'a hora y a calendata d'o sistema</description>
     <description xml:lang="af">Verander instellings vir datum en tyd</description>
     <message>To change time or date settings, you need to authenticate.</message>
-    <message xml:lang="zh_TW">要改變時刻或日期設定值，您需要通過核對。</message>
-    <message xml:lang="zh_HK">要改變時刻或日期設定值，你需要通過核對。</message>
-    <message xml:lang="zh_CN">修改时间或日期设置需要认证。</message>
     <message xml:lang="vi">Bạn cần xác thực để có thể sửa đổi thời gian hoặc ngày tháng.</message>
     <message xml:lang="uk">Щоб змінити параметри часу і дати, потрібно авторизуватись.</message>
     <message xml:lang="ug">ۋاقىت ۋە چېسلا تەڭشىكى ئۆزگەرتىش ئۈچۈن سالاھىيەت دەلىللەش زۆرۈردۇر</message>
