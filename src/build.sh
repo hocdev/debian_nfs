@@ -99,7 +99,8 @@ build_pkg_from_src() {
         "$stage/usr/bin/cdos-session-quit" gio-2.0
       ;;
     found-settings-daemon)
-      build_c_executable "$src_dir/src/mem-usage.c" "$stage/usr/bin/mem-usage"
+      build_c_executable "$src_dir/src/mem-usage.c" "$stage/usr/bin/mem-usage" || return 1
+      make -B -C "$src_dir/src" DESTDIR="$stage" CSD_LIBDIR="$stage/usr/lib/cdos-settings-daemon-3.0" || return 1
       ;;
     mutter)
       build_c_executable "$src_dir/src/mutter-restart-helper.c" \
